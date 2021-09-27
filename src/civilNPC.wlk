@@ -1,5 +1,9 @@
 class civil {
 	
+	method image(){
+		return "nombre del archivo de la imagen"
+	}
+	
 	method verMuerto(muerto){
 		if (jugador.cercaCadaver(muerto)) 	self.delatarJugador(asesino,muerto) else self.llamarPolicia(muerto)
 	}
