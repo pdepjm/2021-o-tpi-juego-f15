@@ -1,10 +1,11 @@
 import wollok.game.*
+import pantallaDeCarga.*
 import nivel.*
 
 program juego {
-	game.cellSize(50)
-	game.height(50)
-	game.width(75)
-	nivel.configuracionInicial()
+	game.cellSize(25)
+	game.height(25)
+	game.width(50)
+	pantallaDeCarga.configuracionInicial()
 	game.start()
 }
