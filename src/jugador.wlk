@@ -1,9 +1,18 @@
 import wollok.game.*
-
+import direcciones.*
 object jugador{
-	
+	var property position = game.at(10,10)
+	method image() = "jugadorfeo.png"
+	method moverPara(direccion) {
+		position = direccion.proximaPosicion(position) 
+	}
+	method usarCuchillo(){
+		game.colliders(self).forEach{npc=>npc.morir()}
+	}
+}
+	/*
 	var objeto = null
-	var posicion = game.at(2,2)
+	
 	
 	method agarrarObjeto(obj){
 		objeto = obj
@@ -14,9 +23,6 @@ object jugador{
 	method usarEntorno(trampa){
 		trampa.accionar()
 	}
-	method usarCuchillo(personaCerca){
-		personaCerca.morir()
-	}
 	
 	method moverPara(direccion) {
 		posicion = direccion.proximaPosicion(posicion) 
@@ -26,7 +32,4 @@ object jugador{
 		posicion = unaPosicion
 	}
 	
-	method position() {
-		return posicion
-	} 
-}
+	*/

@@ -1,12 +1,10 @@
 import wollok.game.*
 import nivel.*
-import jugador.*
-import texto.*
 
 program juego {
-	game.title("Juego Base")
-	
-
+	game.cellSize(50)
+	game.height(50)
+	game.width(75)
 	nivel.configuracionInicial()
 	game.start()
 }

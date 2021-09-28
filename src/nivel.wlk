@@ -1,14 +1,14 @@
 import wollok.game.*
 import jugador.*
 import civilNPC.*
-import policiaNPC.*
+import direcciones.*
 
 
 object nivel{
-	const npc1 = new civil()
-	const npc2 = new civil()
-	const npc3 = new civil()
-	const npc4 = new civil()
+	const npc1 = new Civil()
+	const npc2 = new Civil()
+	const npc3 = new Civil()
+	const npc4 = new Civil()
 	
 	method configuracionInicial(){
 		game.addVisual(jugador)
@@ -25,7 +25,6 @@ object nivel{
 		keyboard.d().onPressDo({ jugador.moverPara(derecha) })
 		keyboard.w().onPressDo({ jugador.moverPara(arriba) })
 		keyboard.s().onPressDo({ jugador.moverPara(abajo) })
-		
-		keyboard.j().onPressDo({ jugador.usarObjeto() })
+		keyboard.e().onPressDo({ jugador.usarCuchillo() })
 	}
 }

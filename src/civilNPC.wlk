@@ -1,9 +1,18 @@
-class civil {
+import wollok.game.*
+class Civil {
 	
+	const posicion = game.at(2,2)
 	method image(){
-		return "nombre del archivo de la imagen"
+		return "npcfeo.png"
 	}
-	
+	method position() {
+		return posicion
+	}
+	method morir(){
+		game.removeVisual(self)
+	}
+}
+	/*
 	method verMuerto(muerto){
 		if (jugador.cercaCadaver(muerto)) 	self.delatarJugador(asesino,muerto) else self.llamarPolicia(muerto)
 	}
@@ -16,9 +25,8 @@ class civil {
 	}
 	method caminar(x,y){
 		/* funcion azarosa donde el npc se mueve cada cierto tiempo  */
+	/*
 	}
 	method morir(){
 		/* destruir objeto y generar otro de sangre */
-	}
-	
-}
+	/*}*/
