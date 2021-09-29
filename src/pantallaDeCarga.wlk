@@ -11,10 +11,17 @@ object pantallaDeCarga {
 		self.configurarTeclas()
 		}
 
-	method configurarTeclas(){ keyboard.enter().onPressDo({ 
-		game.removeVisual(mensajeCarga)
-		game.removeVisual(backroundCarga)
-		soundProducer.playMusic()
-		nivel.configuracionInicial()
-	}) }
+	method configurarTeclas(){
+			
+			keyboard.enter().onPressDo({
+				
+			if(game.hasVisual(backroundCarga)){
+				game.removeVisual(mensajeCarga)
+				game.removeVisual(backroundCarga)
+				soundProducer.playMusic()
+				nivel.configuracionInicial()
+			}
+			
+			})
+	}
 }
