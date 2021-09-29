@@ -1,8 +1,10 @@
 import wollok.game.*
 import direcciones.*
+import objetos.*
+
 object jugador{
-	var property position = game.at(10,10)
-	var objeto = null
+	var property position = game.at(0,0)
+	var objeto = vacio
 	method image() = "jugadorfeo.png"
 	method moverPara(direccion) {
 		position = direccion.proximaPosicion(position) 
@@ -11,16 +13,17 @@ object jugador{
 		self.objetosCerca().forEach{npc=>npc.morir()}
 
 	}
-	method objetosCerca() = game.colliders(self).addAll(game.getObjectsIn(self.position().right(1))).addAll(game.getObjectsIn(self.position().left(1))).addAll(game.getObjectsIn(self.position().down(1))).addAll(game.getObjectsIn(self.position().up(1))).addAll(game.getObjectsIn(self.position().right(1).up(1))).addAll(game.getObjectsIn(self.position().right(1).down(1))).addAll(game.getObjectsIn(self.position().left(1).up(1))).addAll(game.getObjectsIn(self.position().left(1).down(1)))
+	method objetosCerca() = game.colliders(self)
 	method agarrarObjeto(){
 		objeto.soltar()
-		objeto = self.objetosCerca().find{obj=>obj.esObjeto() == true}
+		objeto = self.objetosCerca().findOrElse({obj=> obj.esObjeto() && obj != objeto},{vacio})
 		objeto.agarrar()
 	}
 	
-	
 }
 	/*
+	 * .addAll(game.getObjectsIn(self.position().right(1)).addAll(game.getObjectsIn(self.position().left(1))).addAll(game.getObjectsIn(self.position().down(1))).addAll(game.getObjectsIn(self.position().up(1))).addAll(game.getObjectsIn(self.position().right(1).up(1))).addAll(game.getObjectsIn(self.position().right(1).down(1))).addAll(game.getObjectsIn(self.position().left(1).up(1))).addAll(game.getObjectsIn(self.position().left(1).down(1)))
+	 * .addAll(game.getObjectsIn(self.position().right(1))).addAll(game.getObjectsIn(self.position().left(1))).addAll(game.getObjectsIn(self.position().down(1))).addAll(game.getObjectsIn(self.position().up(1))).addAll(game.getObjectsIn(self.position().right(1).up(1))).addAll(game.getObjectsIn(self.position().right(1).down(1))).addAll(game.getObjectsIn(self.position().left(1).up(1))).addAll(game.getObjectsIn(self.position().left(1).down(1)))
 	var objeto = null
 	
 	
