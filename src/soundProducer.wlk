@@ -15,7 +15,9 @@ object soundProducer {
 	}
 	
 	method sound(audioFile) = provider.sound(audioFile)
-	
+	method playMusic() {
+		self.sound("sounds/She Meditates.mp3").play()
+	}
 }
 
 object soundProviderMock {
