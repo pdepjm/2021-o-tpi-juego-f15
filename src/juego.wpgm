@@ -1,6 +1,7 @@
 import wollok.game.*
 import pantallaDeCarga.*
 import nivel.*
+import soundProducer.*
 
 program juego {
 	game.cellSize(40)
@@ -8,5 +9,7 @@ program juego {
 	game.width(50)
 	// pantallaDeCarga.configuracionInicial()
 	game.boardGround("mapa.png")
+	soundProducer.playMusic()
+    nivel.configuracionInicial()
 	game.start()
 }
