@@ -12,7 +12,7 @@ object nivel{
 	const npc3 = new Civil()
 	const npc4 = new Civil()
 	
-	const paredes = #{game.at(-3,0), game.at(-3,1), game.at(-3,2), game.at(-3,3)}
+	const paredes = #{game.at(0,1), game.at(0,1), game.at(0,2), game.at(0,3)}
 	
 	method paredes() = paredes
 	
