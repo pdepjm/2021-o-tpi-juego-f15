@@ -1,4 +1,5 @@
 import wollok.game.*
+import jugador.*
 import pantallaDeCarga.*
 import nivel.*
 import soundProducer.*

@@ -18,10 +18,13 @@ object jugador{
 	}
 	method objetosCerca() = game.colliders(self)
 	method agarrarObjeto(){
-		objeto.soltar()
-		objeto = self.objetosCerca().findOrElse({obj=> obj.esObjeto() && obj != objeto},{vacio})
-		objeto.agarrar()
+		objeto.position(self.position())
+		game.addVisual(objeto)
+		objeto = self.objetosCerca().findOrElse({obj => obj.esObjeto() && obj != objeto},{vacio})
+		game.removeVisual(objeto)
 	}
+	
+	method estaCercaDe(cosa) = (cosa.position() * self.position()) == 1
 	
 }
 	/*

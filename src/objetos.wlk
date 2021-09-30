@@ -6,23 +6,7 @@ object vestido {
 	
 	method esObjeto() = true
 	method image() = "vestido.png"
-	method soltar(){
-		self.position(jugador.position())
-		game.addVisual(self)
-	}
-	method agarrar(){
-		game.removeVisual(self)
-	}
-}/*sjfiasfinds */
+}
 object vacio {
 	method esObjeto() = true
-	method soltar(){
-		
-	}
-	method agarrar(){
-		
-	}
-	method porque(){
-		
-	}
 }
