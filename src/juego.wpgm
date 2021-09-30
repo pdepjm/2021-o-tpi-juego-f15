@@ -3,9 +3,10 @@ import pantallaDeCarga.*
 import nivel.*
 
 program juego {
-	game.cellSize(25)
+	game.cellSize(40)
 	game.height(25)
 	game.width(50)
-	pantallaDeCarga.configuracionInicial()
+	// pantallaDeCarga.configuracionInicial()
+	game.boardGround("mapa.png")
 	game.start()
 }

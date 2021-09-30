@@ -1,4 +1,5 @@
 import wollok.game.*
+import objetosNiveles.*
 import objetos.*
 import jugador.*
 import civilNPC.*
@@ -12,10 +13,12 @@ object nivel{
 	const npc4 = new Civil()
 	
 	method configuracionInicial(){
+		game.clear()
 		game.addVisual(vestido)
 		game.addVisual(npc1)
 		game.addVisual(jugador)
 		self.configurarTeclas()
+		
 	}
 	
 	method configurarTeclas(){
@@ -28,3 +31,5 @@ object nivel{
 		keyboard.r().onPressDo({ jugador.agarrarObjeto() })
 	}
 }
+
+
