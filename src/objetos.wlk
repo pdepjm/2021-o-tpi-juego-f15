@@ -10,3 +10,4 @@ object vestido {
 object vacio {
 	method esObjeto() = true
 }
+

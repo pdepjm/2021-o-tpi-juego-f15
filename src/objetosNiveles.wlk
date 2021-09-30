@@ -15,3 +15,4 @@ object fondoJuego {
 	method image() = "mapa.png"
 	method position() = game.at(0,0)
 }
+
