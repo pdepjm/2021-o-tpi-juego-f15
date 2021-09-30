@@ -15,7 +15,13 @@ object soundProducer {
 	}
 	
 	method sound(audioFile) = provider.sound(audioFile)
-	
+	method playMusic() {
+		if (0.randomUpTo(2).roundUp() == 1){
+			self.sound("sounds/She Meditates (mp3cut.net).mp3").play()	
+		}else{
+			self.sound("sounds/Blizzard.mp3").play()	
+		}
+	}
 }
 
 object soundProviderMock {
