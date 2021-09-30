@@ -1,7 +1,8 @@
 import wollok.game.*
 class Civil {
-	const esObjeto = false
 	var property position = game.at(1,0)
+	
+	method esObjeto() = false
 	method image() = "npcfeo.png"
 	method morir(){
 		game.removeVisual(self)

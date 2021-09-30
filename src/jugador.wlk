@@ -13,7 +13,7 @@ object jugador{
 		}
 	}
 	method usarCuchillo(){
-		self.objetosCerca().forEach{npc=>npc.morir()}
+		self.objetosCerca().forEach({npc => npc.morir()})
 
 	}
 	method objetosCerca() = game.colliders(self)
