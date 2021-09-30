@@ -6,28 +6,35 @@ import nivel.*
 object jugador{
 	var property position = game.at(0,0)
 	var objeto = vacio
-	method image() = "jugadorfeo.png"
+	var property image = "jugadorfeo.png"
+	
 	method moverPara(direccion) {
 		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){
 			position = direccion.proximaPosicion(position)
 		}
+		self.imageFlip(direccion)
 	}
-	method usarCuchillo(){
-		self.npcCerca().forEach({npc => npc.morir()})
-
+	method imageFlip(direccion){
+		if(direccion.equals(izquierda)){
+			image = "jugadorfeo2.png"
+		}
+		if(direccion.equals(derecha)){
+			image = "jugadorfeo.png"
+		}
 	}
+	method usarCuchillo(){ self.npcCerca().forEach({npc => npc.morir()}) }
 	method objetosCerca() = game.colliders(self).filter({obj => obj.esObjeto()})
     method npcCerca() = game.colliders(self).filter({npc => npc.esObjeto().negate()})
 	method agarrarObjeto(){
-		if(objeto == vacio){
+		if( objeto.equals(vacio) ){
         objeto = self.objetosCerca().findOrElse({obj => obj.esObjeto() && obj != objeto}, {vacio})
-        if(objeto != vacio){
+        if( objeto.equals(vacio).negate() ){
         	game.removeVisual(objeto)
         }
         }
     }
     method soltarObjeto(){
-    	if(objeto != vacio){
+    	if( objeto.equals(vacio).negate() ){
         objeto.position(position)
         game.addVisual(objeto)
         }
