@@ -1,13 +1,16 @@
 import wollok.game.*
 import direcciones.*
 import objetos.*
+import nivel.*
 
 object jugador{
-	var property position = game.at(0,0)
+	var property position = game.at(24,0)
 	var objeto = vacio
 	method image() = "jugadorfeo.png"
 	method moverPara(direccion) {
-		position = direccion.proximaPosicion(position) 
+		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){
+			position = direccion.proximaPosicion(position)
+		}
 	}
 	method usarCuchillo(){
 		self.objetosCerca().forEach{npc=>npc.morir()}
