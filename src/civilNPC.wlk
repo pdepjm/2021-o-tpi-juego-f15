@@ -1,4 +1,6 @@
 import wollok.game.*
+import soundProducer.*
+
 class Civil {
 	var property position = game.at(1,0)
 	
@@ -6,6 +8,7 @@ class Civil {
 	method image() = "npcfeo.png"
 	method morir(){
 		game.removeVisual(self)
+		soundProducer.sound("sounds/Death Sound.mp3").play()
 	}
 }
 	/*
