@@ -35,7 +35,7 @@ class Cadaver {
 	var property position 
 	
 	method esCadaver() = true
-	method image() = "sangre.png"
+	method image() = "blood.png"
 	
 }
 
