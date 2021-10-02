@@ -27,11 +27,7 @@ class Civil {
 	
 	method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
-	method verMuerto(cadaver){
-		if(self.muertoCerca().size() >= 1 && jugador.estaCercaDe(cadaver)) {
-			game.say(self, "encontre al asesino") // lo pongo para ver si funciona
-		}
-	}
+	
 }
 
 
