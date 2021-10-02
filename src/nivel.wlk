@@ -22,8 +22,8 @@ object nivel{
 		game.addVisual(npc1) 
 		game.addVisual(npc2)
 		game.addVisual(jugador) 
-		game.onTick(9000, "movimiento" , {npc1.moverse()}) //para el movimiento de los npc pero es para probar algo dsp lo cambiamos
-		game.onTick(9000, "movimiento", {npc2.moverse()})
+		game.onTick(1000, "movimiento" , {npc1.moverse()}) //para el movimiento de los npc pero es para probar algo dsp lo cambiamos
+		game.onTick(1000, "movimiento", {npc2.moverse()})
 		self.configurarTeclas()
 		
 	}

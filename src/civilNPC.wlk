@@ -3,9 +3,11 @@ import soundProducer.*
 import direcciones.*
 import objetos.*
 import jugador.*
+import nivel.*
+
 
 class Civil {
-	var property position = game.at(1,0) 
+	var property position = game.at(5,5) 
 	
 	method esObjeto() = false 
 	
@@ -20,9 +22,18 @@ class Civil {
 	}
 	
 	method moverse(){ //no se mueven asi pero es para probar una cosa
-		const x = 0.randomUpTo(game.width()).truncate(0)
+		const aux = direcciones.direccionRandom()
+		self.moverPara(aux)
+		
+		/*const x = 0.randomUpTo(game.width()).truncate(0)
     	const y = 0.randomUpTo(game.height()).truncate(0)
-		position = game.at(x,y)
+		position = game.at(x,y)*/
+	}
+	
+	method moverPara(direccion) {
+		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){ 
+			position = direccion.proximaPosicion(position)
+		}
 	}
 	
 	method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
