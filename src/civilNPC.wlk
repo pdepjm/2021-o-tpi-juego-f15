@@ -1,16 +1,50 @@
 import wollok.game.*
 import soundProducer.*
+import direcciones.*
+import objetos.*
+import jugador.*
 
 class Civil {
-	var property position = game.at(1,0)
+	var property position = game.at(1,0) 
 	
-	method esObjeto() = false
+	method esObjeto() = false 
+	
 	method image() = "npcfeo.png"
+	
 	method morir(){
-		game.removeVisual(self)
-		soundProducer.sound("sounds/Death Sound.mp3").play()
+		const sangre = new Cadaver(position = self.position())
+		game.addVisual(sangre)
+		game.removeVisual(self) 
+		soundProducer.sound("sounds/Death Sound.mp3").play() 
+		
+	}
+	
+	method moverse(){ //no se mueven asi pero es para probar una cosa
+		const x = 0.randomUpTo(game.width()).truncate(0)
+    	const y = 0.randomUpTo(game.height()).truncate(0)
+		position = game.at(x,y)
+	}
+	
+	method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
+	
+	method verMuerto(cadaver){
+		if(self.muertoCerca().size() >= 1 && jugador.estaCercaDe(cadaver)) {
+			game.say(self, "encontre al asesino") // lo pongo para ver si funciona
+		}
 	}
 }
+
+
+class Cadaver {
+	var property position 
+	
+	method esCadaver() = true
+	method image() = "sangre.png"
+	
+}
+
+
+
 	/*
 	method verMuerto(muerto){
 		if (jugador.cercaCadaver(muerto)) 	self.delatarJugador(asesino,muerto) else self.llamarPolicia(muerto)
