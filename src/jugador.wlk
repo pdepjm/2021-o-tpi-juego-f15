@@ -46,8 +46,8 @@ object jugador{
     	if( objeto.equals(vacio).negate() and (image == "player_default.png" or image == "playerFlip_default.png")){
         	objeto.position(position)
         	game.addVisual(objeto)
+        	objeto = vacio
         }
-        objeto = vacio
     }
     
     method usarObjeto() {
