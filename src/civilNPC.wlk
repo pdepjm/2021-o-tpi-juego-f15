@@ -6,7 +6,7 @@ import jugador.*
 import nivel.*
 
 class Civil {
-	var property position = game.at(5,5) 
+	var property position = null
 	
 	method esObjeto() = false
 	
