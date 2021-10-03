@@ -8,10 +8,15 @@ object vestido {
 	method esObjeto() = true
 	
 	method image() = "vestido.png"
+	
+	method usar(personaje) {
+		personaje.cambiarRopa()
+	}
 }
 
 object vacio {
 	method esObjeto() = true
+	method usar(personaje){}
 }
 
 

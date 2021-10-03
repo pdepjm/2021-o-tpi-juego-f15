@@ -7,7 +7,9 @@ import civilNPC.*
 object jugador{
 	var property position = game.at(0,0)
 	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
-	var property image = "jugadorfeo.png"
+	var property image = "player_default.png"
+	var imageAux = "default"
+	
 	
 	method moverPara(direccion) {
 		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){ 
@@ -18,10 +20,10 @@ object jugador{
 	
 	method imageFlip(direccion){
 		if(direccion.equals(izquierda)){
-			image = "jugadorfeo2.png"
+			image = "playerFlip_"+ imageAux +".png"
 		}
 		if(direccion.equals(derecha)){
-			image = "jugadorfeo.png"
+			image = "player_"+ imageAux +".png"
 		}
 	}
 	
@@ -41,11 +43,43 @@ object jugador{
     }
     
     method soltarObjeto(){
-    	if( objeto.equals(vacio).negate() ){
+    	if( objeto.equals(vacio).negate() and (image == "jugadorfeo_default.png" or image == "jugadorfeo2_default.png")){
         	objeto.position(position)
         	game.addVisual(objeto)
         }
         objeto = vacio
+    }
+    
+    method usarObjeto() {
+    	objeto.usar(self)
+    }
+    
+    method cambiarRopa() {
+    	if(imageAux == "vestido"){
+    		self.sacarRopa()
+    	}else{
+    		self.vestirse()
+    	}
+    }
+    
+    method vestirse(){
+    	if(image == "player_default.png"){
+    		image = "player_vestido.png"
+    		imageAux = "vestido"
+    	}else{
+    		image = "playerFlip_vestido.png"
+    		imageAux = "vestido"
+    	}
+    }
+    
+    method sacarRopa(){
+    	if(image == "playerFlip_vestido.png"){
+    		image = "playerFlip_default.png"
+    		imageAux = "default"
+    	}else{
+    		image = "player_default.png"
+    		imageAux = "default"
+    	}
     }
 }
 	/*
