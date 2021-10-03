@@ -24,10 +24,6 @@ class Civil {
 	method moverse(){ //no se mueven asi pero es para probar una cosa
 		const aux = direcciones.direccionRandom()
 		self.moverPara(aux)
-		
-		/*const x = 0.randomUpTo(game.width()).truncate(0)
-    	const y = 0.randomUpTo(game.height()).truncate(0)
-		position = game.at(x,y)*/
 	}
 	
 	method moverPara(direccion) {
@@ -35,6 +31,7 @@ class Civil {
 			position = direccion.proximaPosicion(position)
 		}
 	}
+	
 }
 
 class Cadaver {

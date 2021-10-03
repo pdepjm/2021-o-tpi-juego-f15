@@ -18,14 +18,18 @@ object nivel{
 		game.addVisual(veneno)
 		game.addVisual(npc1)
 		game.addVisual(npc2)
+		game.addVisual(npc3)
+		game.addVisual(npc4)
 		game.addVisual(jugador)
-		game.onTick(1000, "movimiento" , {npc1.moverse()})//para el movimiento de los npc pero es para probar algo dsp lo cambiamos
-		game.onTick(1000, "movimiento", {npc2.moverse()})
+		game.onTick(500, "movimiento" , {npc1.moverse()})//para el movimiento de los npc pero es para probar algo dsp lo cambiamos
+		game.onTick(500, "movimiento", {npc2.moverse()})
+		game.onTick(500, "movimiento", {npc3.moverse()})
+		game.onTick(500, "movimiento", {npc4.moverse()})
+		
 		self.configurarTeclas()
 	}
 	
 	method configurarTeclas(){
-		// FALTA CONFIGURAR EL MANTENER APRETADO LAS TECLAS (whenKeyPressedDo)
 		keyboard.w().onPressDo({ jugador.moverPara(arriba) })
 		keyboard.a().onPressDo({ jugador.moverPara(izquierda) })
 		keyboard.s().onPressDo({ jugador.moverPara(abajo) })

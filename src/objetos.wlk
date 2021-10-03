@@ -16,6 +16,7 @@ object vestido {
 
 object vacio {
 	method esObjeto() = true
+	
 	method usar(personaje){}
 }
 
