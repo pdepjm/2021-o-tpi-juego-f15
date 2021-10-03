@@ -43,7 +43,7 @@ object jugador{
     }
     
     method soltarObjeto(){
-    	if( objeto.equals(vacio).negate() and (image == "jugadorfeo_default.png" or image == "jugadorfeo2_default.png")){
+    	if( objeto.equals(vacio).negate() and (image == "player_default.png" or image == "playerFlip_default.png")){
         	objeto.position(position)
         	game.addVisual(objeto)
         }

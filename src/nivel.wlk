@@ -5,7 +5,6 @@ import jugador.*
 import civilNPC.*
 import direcciones.*
 
-
 object nivel{
 	const npc1 = new Civil() 
 	const npc2 = new Civil()
@@ -15,11 +14,12 @@ object nivel{
 	
 	method configuracionInicial(){
 		game.clear()
-		game.addVisual(vestido) 
-		game.addVisual(npc1) 
+		game.addVisual(vestido)
+		game.addVisual(veneno)
+		game.addVisual(npc1)
 		game.addVisual(npc2)
-		game.addVisual(jugador) 
-		game.onTick(1000, "movimiento" , {npc1.moverse()}) //para el movimiento de los npc pero es para probar algo dsp lo cambiamos
+		game.addVisual(jugador)
+		game.onTick(1000, "movimiento" , {npc1.moverse()})//para el movimiento de los npc pero es para probar algo dsp lo cambiamos
 		game.onTick(1000, "movimiento", {npc2.moverse()})
 		self.configurarTeclas()
 	}
