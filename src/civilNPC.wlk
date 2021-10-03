@@ -44,7 +44,6 @@ class Cadaver {
 	
 	method image() = "blood.png"
 }
-
 	/*
 	method verMuerto(muerto){
 		if (jugador.cercaCadaver(muerto)) 	self.delatarJugador(asesino,muerto) else self.llamarPolicia(muerto)
