@@ -12,6 +12,10 @@
 ## Reglas de Juego / Instrucciones
 
 (Escribirlas)
+Movimiento: w, a, s, d
+Usar Cuchillo: r
+Agarrar Objeto: e
+Soltar Objeto: q
 
 ## Respuestas teóricas
 
