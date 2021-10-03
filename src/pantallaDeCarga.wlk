@@ -10,9 +10,7 @@ object pantallaDeCarga {
         game.schedule(2000, {=> game.addVisual(mensajeCarga)})
         self.configurarTeclas()
     }
-
     method configurarTeclas(){
-
         keyboard.enter().onPressDo({
         	if(game.hasVisual(backroundCarga)){
             	game.clear()

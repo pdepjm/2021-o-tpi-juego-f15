@@ -5,20 +5,20 @@ import objetos.*
 import jugador.*
 import nivel.*
 
-
 class Civil {
 	var property position = game.at(5,5) 
 	
-	method esObjeto() = false 
+	method esObjeto() = false
 	
 	method image() = "npcfeo.png"
+	
+	method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
 	method morir(){
 		const sangre = new Cadaver(position = self.position())
 		game.addVisual(sangre)
 		game.removeVisual(self) 
 		soundProducer.sound("sounds/Death Sound.mp3").play() 
-		
 	}
 	
 	method moverse(){ //no se mueven asi pero es para probar una cosa
@@ -35,22 +35,15 @@ class Civil {
 			position = direccion.proximaPosicion(position)
 		}
 	}
-	
-	method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
-	
-	
 }
-
 
 class Cadaver {
 	var property position 
 	
 	method esCadaver() = true
-	method image() = "blood.png"
 	
+	method image() = "blood.png"
 }
-
-
 
 	/*
 	method verMuerto(muerto){

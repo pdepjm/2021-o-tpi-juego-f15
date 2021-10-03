@@ -8,7 +8,4 @@ object policiaNPC {
 		/* polcia se mueve hasta el objetivo */
 		objetivo.policia()
 	}
-	
-	
-	
 }
