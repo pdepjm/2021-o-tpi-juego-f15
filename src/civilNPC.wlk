@@ -12,13 +12,21 @@ class Civil {
 	
 	method image() = "npcfeo.png"
 	
-	method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
+	// method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
+	method estaCercaDe(unMuerto){
+		if((self.position().distance(unMuerto.position()) < 10) && nivel.existeMuerto(unMuerto))
+		{
+			self.position().say(self, "hay un asesino entre nosotros")
+		}
+	}
+		
 	method morir(){
 		const sangre = new Cadaver(position = self.position())
 		game.addVisual(sangre)
 		game.removeVisual(self) 
-		soundProducer.sound("sounds/Death Sound.mp3").play() 
+		soundProducer.sound("sounds/Death Sound.mp3").play()
+		return nivel.agregarMuerto(sangre)
 	}
 	
 	method moverse(){ //no se mueven asi pero es para probar una cosa
@@ -30,8 +38,7 @@ class Civil {
 		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){ 
 			position = direccion.proximaPosicion(position)
 		}
-	}
-	
+	}	
 }
 
 class Cadaver {
