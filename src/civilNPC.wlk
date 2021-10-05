@@ -7,6 +7,7 @@ import nivel.*
 
 class Civil {
 	var property position = null
+	var property estaVivo = true
 	
 	method esObjeto() = false
 	
@@ -14,18 +15,27 @@ class Civil {
 	
 	// method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
-	method estaCercaDe(unMuerto){
-		if((self.position().distance(unMuerto.position()) < 10) && nivel.existeMuerto(unMuerto))
+	/*	method estaCercaDe(unMuerto){
+		if(nivel.existeMuerto(unMuerto) && (self.position().distance(unMuerto.position()) < 5))
 		{
 			self.position().say(self, "hay un asesino entre nosotros")
 		}
+	} */
+
+	method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 3
+	
+	method delatarAsesino(){
+		if(self.estaCercaDeUnMuerto()){
+			game.say(self, "hay un asesino entre nosotros")
+		}
 	}
-		
+	
 	method morir(){
 		const sangre = new Cadaver(position = self.position())
 		game.addVisual(sangre)
 		game.removeVisual(self) 
 		soundProducer.sound("sounds/Death Sound.mp3").play()
+		estaVivo = false
 		return nivel.agregarMuerto(sangre)
 	}
 	
