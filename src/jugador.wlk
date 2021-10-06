@@ -33,7 +33,6 @@ object jugador{
     
     method usarCuchillo(){ 
     	self.npcCerca().forEach({npc => npc.morir()})
-    	
     }
     
 	method agarrarObjeto(){

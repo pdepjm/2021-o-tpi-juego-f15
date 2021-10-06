@@ -56,7 +56,7 @@ class Cadaver {
 	var property position 
 	
 	method estaVivo() = false
-	method esObjeto() = false
+	method esObjeto() = true
 	
 	method image() = "blood.png"
 }

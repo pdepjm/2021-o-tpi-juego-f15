@@ -11,17 +11,21 @@ import wollok.game.*
 // Les dejamos algunos ejemplos
 // ¡También se puede combinar con las imágenes!
 
-object texto {
+object contador {
+	var cont = 0
 	
-	method position() = game.at(2, 4)
+	method position() = game.at(10, 10)
 	
-	method text() = "¡Pepita!"
+	method text(numero) = numero
 	
-	method textColor() = paleta.verde()
+	method textColor() = paleta.rojo()
 	
+	method mostrar(){
+		self.text(cont.toString())
+		cont += 1
+	}
 }
 
 object paleta {
-	method verde() = "00FF00FF"
 	method rojo() = "FF0000FF"
 }

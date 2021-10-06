@@ -4,6 +4,7 @@ import objetos.*
 import jugador.*
 import civilNPC.*
 import direcciones.*
+import texto.*
 
 object nivel{
 	const npc1 = new Civil(position = game.at(5,5)) 
@@ -15,6 +16,7 @@ object nivel{
 	const listaMuertos = [cadaverFicticio]
 	
 	method configuracionInicial(){
+		//game.onTick(1000, "contador" , {contador.mostrar()})
 		game.clear()
 		game.addVisual(vestido)
 		game.addVisual(veneno)
