@@ -31,7 +31,10 @@ object jugador{
 	
     method npcCerca() = game.colliders(self).filter({npc => npc.esObjeto().negate()}) // lista con los npc que tiene cerca
     
-    method usarCuchillo(){ self.npcCerca().forEach({npc => npc.morir()}) }
+    method usarCuchillo(){ 
+    	self.npcCerca().forEach({npc => npc.morir()})
+    	
+    }
     
 	method agarrarObjeto(){
 		if( objeto.equals(vacio) ){

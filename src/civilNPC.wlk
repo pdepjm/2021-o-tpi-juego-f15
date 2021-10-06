@@ -27,6 +27,7 @@ class Civil {
 	method delatarAsesino(){
 		if(self.estaCercaDeUnMuerto()){
 			game.say(self, "hay un asesino entre nosotros")
+			policia.buscarAsesino()
 		}
 	}
 	
@@ -54,11 +55,28 @@ class Civil {
 class Cadaver {
 	var property position 
 	
-	method esCadaver() = true
+	method estaVivo() = false
 	method esObjeto() = false
 	
 	method image() = "blood.png"
 }
+
+object policia {
+	var property position = null
+	var property estaVivo = true
+	
+	method image() = "police.png"
+	
+	method buscarAsesino(){ // Falta codear el caso de que el jugador este usando el vestido (en ese caso, no lo encuentra)
+		position = jugador.position()
+		game.addVisual(self) // CORREGIR TAMAÑO DEL POLICIA (queda muuuyy grande respecto a todo lo demas)
+		game.say(self, "Te hemos encontrado, has perdido!!")
+		game.onTick(2000, "encontrarAsesino", {game.stop()})
+	}
+	
+	
+}
+
 	/*
 	method verMuerto(muerto){
 		if (jugador.cercaCadaver(muerto)) 	self.delatarJugador(asesino,muerto) else self.llamarPolicia(muerto)
