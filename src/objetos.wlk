@@ -10,8 +10,8 @@ class Objeto {
 	var property position = game.at(10,10) 
 }
 
-class Vestido inherits Objeto {
-	var property image = "vestido.png"
+class Remera inherits Objeto {
+	var property image = "remera.png"
 	method usar(personaje) {
 		personaje.cambiarRopa()
 	}

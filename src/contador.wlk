@@ -46,10 +46,6 @@ object contador {
         	game.stop()
         }
     }
-
-    method consultarSegundos() = self.segundos()
-    
-    method consultaMinutos() = self.minutos()
  }
  
  object paletaDeColores {
