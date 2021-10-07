@@ -5,26 +5,26 @@ import nivel.*
 import civilNPC.*
 
 object jugador{
-	var property position = game.at(0,0)
+	var property position = game.at(1,1)
 	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
-	var property image = "player_default.png"
+	var property image = "player_derechadefault.png"
 	var imageAux = "default"
 	
+	method interactuar(){
+		self.interactuablesCerca().forEach({int=>int.interactuar()})
+	}
 	
 	method moverPara(direccion) {
 		position = mover.mov(direccion,self)
 	}
 	
 	method imageFlip(direccion){
-		if(direccion.equals(izquierda)){
-			image = "playerFlip_"+ imageAux +".png"
-		}
-		if(direccion.equals(derecha)){
-			image = "player_"+ imageAux +".png"
-		}
+		image = "player_"+ direccion + imageAux +".png"
 	}
 	
 	method objetosCerca() = game.colliders(self).filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
+	
+	method interactuablesCerca() = game.colliders(self).filter({obj => obj.esInteractuable()})
 	
     method npcCerca() = game.colliders(self).filter({npc => npc.esObjeto().negate()}) // lista con los npc que tiene cerca
     

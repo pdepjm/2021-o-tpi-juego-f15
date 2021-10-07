@@ -3,6 +3,7 @@ import jugador.*
 import civilNPC.*
 
 object vestido {
+	var property objetoAtravesable = true
 	var property position = game.at(10,10) 
 	
 	method esObjeto() = true
@@ -21,6 +22,8 @@ object vacio {
 }
 
 object veneno {
+	var property objetoAtravesable = true
+	
 	var property position = game.at(15,5) 
 	
 	method esObjeto() = true

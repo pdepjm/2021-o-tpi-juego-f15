@@ -6,20 +6,26 @@ import civilNPC.*
 import direcciones.*
 import texto.*
 import paredes.*
+import interactuables.*
 
 object nivel{
 	const npc1 = new Civil(position = game.at(5,5)) 
 	const npc2 = new Civil(position = game.at(10,20))
 	const npc3 = new Civil(position = game.at(8,15))
 	const npc4 = new Civil(position = game.at(2,7))
+	const escotillaBanio = new Trampa(position = game.at(7,7),image="blood.png")
+	const escotillaEstudio = new Trampa(position = game.at(14,14),destino = escotillaBanio,image="blood.png")
 	const cadaverFicticio = new Cadaver(position = game.at(40,40)) // lo agrego para que listaMuertos no sea vacia (tira error el anyOne sino)
 	const listaMuertos = [cadaverFicticio]
 	
 	
 	method configuracionInicial(){
-		todasLasParedes.cargar()
 		//game.onTick(1000, "contador" , {contador.mostrar()})
 		game.clear()
+		todasLasParedes.cargar()
+		escotillaBanio.destino(escotillaEstudio)
+		game.addVisual(escotillaBanio)
+		game.addVisual(escotillaEstudio)
 		game.addVisual(vestido)
 		game.addVisual(veneno)
 		game.addVisual(npc1)
@@ -49,6 +55,7 @@ object nivel{
 		keyboard.e().onPressDo({ jugador.agarrarObjeto() })
 		keyboard.q().onPressDo({ jugador.soltarObjeto() })
 		keyboard.f().onPressDo({ jugador.usarObjeto() })
+		keyboard.g().onPressDo({ jugador.interactuar() })
 	}
 	
 	method agregarMuerto(unMuerto) = listaMuertos.add(unMuerto)

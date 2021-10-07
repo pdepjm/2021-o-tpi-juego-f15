@@ -8,6 +8,7 @@ import nivel.*
 class Civil {
 	var property position = null
 	var property estaVivo = true
+	var property objetoAtravesable = true
 	var property image = "npcfeoderecha.png"
 	
 	method esObjeto() = false
