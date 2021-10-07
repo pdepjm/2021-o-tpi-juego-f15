@@ -4,7 +4,7 @@ import objetos.*
 import jugador.*
 import civilNPC.*
 import direcciones.*
-import texto.*
+import contador.*
 import paredes.*
 import interactuables.*
 
@@ -22,8 +22,10 @@ object nivel{
 	
 	
 	method configuracionInicial(){
-		//game.onTick(1000, "contador" , {contador.mostrar()})
 		game.clear()
+		game.addVisual(contador)
+		game.addVisual(marcoContador)
+		contador.iniciar()
 		todasLasParedes.cargar()
 		escotillaBanio.destino(escotillaEstudio)
 		game.addVisual(escotillaBanio)
