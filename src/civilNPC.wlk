@@ -12,6 +12,8 @@ class Civil {
 	var property image = "npcfeoderecha.png"
 	
 	method esObjeto() = false
+	method esInteractuable() = false
+	method esNPC() = true
 	
 	// method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
@@ -46,7 +48,7 @@ class Civil {
 		(5..20).anyOne().times({i=>game.schedule(500,{=> position = mover.mov(direcciones.direccionRandom(),self)})})
 		 */
 		 
-		(5..20).anyOne().times({=>game.schedule(500,{i=>position = mover.mov(direcciones.direccionRandom(),self)})})
+		(5..20).anyOne().times({ => game.schedule(500,{i=>position = mover.mov(direcciones.direccionRandom(),self)}) })
 		 
 		/*const aux = direcciones.direccionRandom()
 		self.moverPara(aux) */
@@ -75,7 +77,7 @@ object policia {
 	
 	method buscarAsesino(){ // Falta codear el caso de que el jugador este usando el vestido (en ese caso, no lo encuentra)
 		position = jugador.position()
-		game.addVisual(self) // CORREGIR TAMAÑO DEL POLICIA (queda muuuyy grande respecto a todo lo demas)
+		game.addVisual(self)
 		game.say(self, "Te hemos encontrado, has perdido!!")
 		game.onTick(2000, "encontrarAsesino", {game.stop()})
 	}

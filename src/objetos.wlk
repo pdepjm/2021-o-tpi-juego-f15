@@ -2,11 +2,15 @@ import wollok.game.*
 import jugador.*
 import civilNPC.*
 
-object vestido {
+class Objeto {
+	method esObjeto() = true
+	method esInteractuable() = false
+	method esNPC() = false
+}
+
+object vestido inherits Objeto {
 	var property objetoAtravesable = true
 	var property position = game.at(10,10) 
-	
-	method esObjeto() = true
 	
 	method image() = "vestido.png"
 	
@@ -15,18 +19,15 @@ object vestido {
 	}
 }
 
-object vacio {
-	method esObjeto() = true
+object vacio inherits Objeto {
 	
 	method usar(personaje){}
 }
 
-object veneno {
+object veneno inherits Objeto {
 	var property objetoAtravesable = true
 	
 	var property position = game.at(15,5) 
-	
-	method esObjeto() = true
 	
 	method image() = "veneno.png"
 	
@@ -35,11 +36,9 @@ object veneno {
 	}
 }
 
-object pizza {
+object pizza inherits Objeto {
 	var property position = game.at(25,5) 
 	
-	method esObjeto() = true
-	
 	method image() = ".png"
 	
 	method usar(personaje) {
@@ -47,11 +46,9 @@ object pizza {
 	}
 }
 
-object bomba {
+object bomba inherits Objeto {
 	var property position = game.at(30,5) 
 	
-	method esObjeto() = true
-	
 	method image() = ".png"
 	
 	method usar(personaje) {
@@ -59,10 +56,8 @@ object bomba {
 	}
 }
 
-object bombaDeHumo {
+object bombaDeHumo inherits Objeto {
 	var property position = game.at(10,5) 
-	
-	method esObjeto() = true
 	
 	method image() = ".png"
 	

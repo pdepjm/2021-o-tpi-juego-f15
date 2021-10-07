@@ -13,8 +13,8 @@ object nivel{
 	const npc2 = new Civil(position = game.at(10,20))
 	const npc3 = new Civil(position = game.at(8,15))
 	const npc4 = new Civil(position = game.at(2,7))
-	const escotillaBanio = new Trampa(position = game.at(7,7),image="blood.png")
-	const escotillaEstudio = new Trampa(position = game.at(14,14),destino = escotillaBanio,image="blood.png")
+	const escotillaBanio = new Trampa(position = game.at(3,23),image="pared.png")
+	const escotillaEstudio = new Trampa(position = game.at(44,5),destino = escotillaBanio,image="trapdoor.png")
 	const cadaverFicticio = new Cadaver(position = game.at(40,40)) // lo agrego para que listaMuertos no sea vacia (tira error el anyOne sino)
 	const listaMuertos = [cadaverFicticio]
 	
@@ -41,8 +41,6 @@ object nivel{
 		game.onTick(100,"delatarAsesino",{if(npc2.estaVivo()) {npc2.delatarAsesino()}})
 		game.onTick(100,"delatarAsesino",{if(npc3.estaVivo()) {npc3.delatarAsesino()}})
 		game.onTick(100,"delatarAsesino",{if(npc4.estaVivo()) {npc4.delatarAsesino()}})
-
-		
 		self.configurarTeclas()
 	}
 	

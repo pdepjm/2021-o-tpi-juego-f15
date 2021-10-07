@@ -19,14 +19,21 @@ object jugador{
 	}
 	
 	method imageFlip(direccion){
-		image = "player_"+ direccion + imageAux +".png"
+		if(direccion.equals(izquierda)){
+			image = "player_"+ direccion + "_"+ imageAux +".png"
+		}
+		if(direccion.equals(derecha)){
+			image = "player_"+ direccion + "_" + imageAux +".png"
+		}
 	}
 	
-	method objetosCerca() = game.colliders(self).filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
+	method cercanos() = game.colliders(self)
 	
-	method interactuablesCerca() = game.colliders(self).filter({obj => obj.esInteractuable()})
+	method objetosCerca() = self.cercanos().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
 	
-    method npcCerca() = game.colliders(self).filter({npc => npc.esObjeto().negate()}) // lista con los npc que tiene cerca
+	method interactuablesCerca() = self.cercanos().filter({obj => obj.esInteractuable()})
+	
+    method npcCerca() = self.cercanos().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
     
     method usarCuchillo(){ 
     	self.npcCerca().forEach({npc => npc.morir()})
@@ -62,21 +69,21 @@ object jugador{
     }
     
     method vestirse(){
-    	if(image == "player_default.png"){
-    		image = "player_vestido.png"
+    	if(image == "player_izquierda_default.png"){
+    		image = "player_izquierda_vestido.png"
     		imageAux = "vestido"
     	}else{
-    		image = "playerFlip_vestido.png"
+    		image = "player_derecha_vestido.png"
     		imageAux = "vestido"
     	}
     }
     
     method sacarRopa(){
-    	if(image == "playerFlip_vestido.png"){
-    		image = "playerFlip_default.png"
+    	if(image == "player_izquierda_vestido.png"){
+    		image = "player_izquierda_default.png"
     		imageAux = "default"
     	}else{
-    		image = "player_default.png"
+    		image = "player_derecha_default.png"
     		imageAux = "default"
     	}
     }
