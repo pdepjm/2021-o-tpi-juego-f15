@@ -30,7 +30,7 @@ object jugador{
 	
 	method interactuablesCerca() = self.colisiones().filter({int => int.esInteractuable()})
 	
-   // method npcCerca() = self.cercanos().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
+   method npcColision() = self.colisiones().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
     
     method usarCuchillo(){ 
     	self.npcCerca().forEach({npc => npc.morir()})
@@ -96,7 +96,7 @@ object jugador{
     }
     
     method npcCerca() {
-    	return direcciones.cosasCerca(self).filter({npc => npc.esNPC()}) 
+    	return direcciones.cosasCerca(self).filter({npc => npc.esNPC()}) + self.npcColision()
     } 
     
     
