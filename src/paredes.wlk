@@ -33,7 +33,7 @@ object todasLasParedes{
 	4.times({i=>game.addVisual(new Pared(position = game.at(31,-1+i)))})
 	9.times({i=>game.addVisual(new Pared(position = game.at(23+i,0)))})
 	2.times({i=>game.addVisual(new Pared(position = game.at(24+i,4)))})
-	8.times({i=>game.addVisual(new Pared(position = game.at(12,24+i)))})
+	8.times({i=>game.addVisual(new Pared(position = game.at(12,15+i)))})
+	//8.times({i=>game.addVisual(new Pared(position = game.at(12,24+i)))})
 	}
-	
 }

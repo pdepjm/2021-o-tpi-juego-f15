@@ -10,4 +10,7 @@ class Trampa{
 	method interactuar(){
 		jugador.position(destino.position())
 	}
+	method esObjeto() = false
+	method esInteractuable() = true
+	method esNPC() = false
 }

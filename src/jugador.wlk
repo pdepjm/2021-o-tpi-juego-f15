@@ -31,7 +31,7 @@ object jugador{
 	
 	method objetosCerca() = self.cercanos().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
 	
-	method interactuablesCerca() = self.cercanos().filter({obj => obj.esInteractuable()})
+	method interactuablesCerca() = self.cercanos().filter({int => int.esInteractuable()})
 	
     method npcCerca() = self.cercanos().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
     
@@ -49,7 +49,7 @@ object jugador{
     }
     
     method soltarObjeto(){
-    	if( objeto.equals(vacio).negate() and (image == "player_default.png" or image == "playerFlip_default.png")){
+    	if( objeto.equals(vacio).negate() and (image == "player_derecha_default.png" or image == "player_izquierda_default.png")){
         	objeto.position(position)
         	game.addVisual(objeto)
         	objeto = vacio

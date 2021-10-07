@@ -24,7 +24,7 @@ class Civil {
 		}
 	} */
 
-	method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 3
+	method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
 	
 	method delatarAsesino(){
 		if(self.estaCercaDeUnMuerto()){
@@ -48,12 +48,11 @@ class Civil {
   		game.schedule(intervalo * cantidad, { game.removeTickEvent(nombreAleatorio) })
 	}
 	
-	method moverse(){ //no se mueven asi pero es para probar una cosa
-		
-		//(5..20).anyOne().times({i=>game.schedule(500,{=> position = mover.mov(direcciones.direccionRandom(),self)})})
-		 
+	method moverse(){
 		//(5..20).anyOne().times({ => game.schedule(500,{i=>position = mover.mov(direcciones.direccionRandom(),self)}) })
-		position = mover.mov(direcciones.direccionRandom(),self)
+		
+		self.repetirNVeces(1000, (5..20).anyOne() , {position = mover.mov(direcciones.direccionRandom(),self)})
+		//position = mover.mov(direcciones.direccionRandom(),self)
 		/*const aux = direcciones.direccionRandom()
 		self.moverPara(aux) */
 		
@@ -69,6 +68,7 @@ class Cadaver {
 	
 	method estaVivo() = false
 	method esObjeto() = true
+	method esNPC() = false
 	
 	method image() = "blood.png"
 }
