@@ -7,7 +7,7 @@ import civilNPC.*
 object jugador{
 	var property position = game.at(1,1)
 	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
-	var property image = "player_derechadefault.png"
+	var property image = "player_derecha_default.png"
 	var imageAux = "default"
 	
 	method interactuar(){
