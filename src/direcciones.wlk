@@ -4,11 +4,6 @@ import jugador.*
 import civilNPC.*
 
 object mover{
-	method repetirNVeces(intervalo, cantidad, accion) {
-  		const nombreAleatorio = 0.randomUpTo(10).toString()
-  		game.onTick(intervalo, nombreAleatorio, accion)
-  		game.schedule(intervalo * cantidad, { game.removeTickEvent(nombreAleatorio) })
-}
 	method mov(sentido,player){
 		player.imageFlip(sentido)
 		if (self.condicionMovimiento(sentido,player)) return sentido.proximaPosicion(player.position()) else return player.position()

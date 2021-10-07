@@ -19,12 +19,7 @@ object jugador{
 	}
 	
 	method imageFlip(direccion){
-		if(direccion.equals(izquierda)){
-			image = "player_"+ direccion + "_"+ imageAux +".png"
-		}
-		if(direccion.equals(derecha)){
-			image = "player_"+ direccion + "_" + imageAux +".png"
-		}
+		image = "player_"+ direccion + "_" + imageAux +".png"
 	}
 	
 	method cercanos() = game.colliders(self)
