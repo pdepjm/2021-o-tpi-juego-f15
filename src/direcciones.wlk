@@ -34,19 +34,3 @@ object direcciones {
 		return listaDirecciones.anyOne()
 	}
 }
-
-object izquierdaNpc {
-	method proximaPosicion(posicionActual) = posicionActual.left(0.randomUpTo(2).truncate(0)) 
-}
-
-object derechaNpc {
-	method proximaPosicion(posicionActual) = posicionActual.right(0.randomUpTo(2).truncate(0)) 
-}
-
-object arribaNpc {
-	method proximaPosicion(posicionActual) = posicionActual.up(0.randomUpTo(2).truncate(0)) 
-}
-
-object abajoNpc {
-	method proximaPosicion(posicionActual) = posicionActual.down(0.randomUpTo(2).truncate(0)) 
-}

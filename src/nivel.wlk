@@ -33,7 +33,7 @@ object nivel{
 		game.addVisual(npc3)
 		game.addVisual(npc4)
 		game.addVisual(jugador)
-		game.onTick(500, "movimiento" , {npc1.moverse()})
+		game.onTick(10000.randomUpTo(60000), "movimiento" , {npc1.moverse()})
 		game.onTick(500, "movimiento", {npc2.moverse()})
 		game.onTick(500, "movimiento", {npc3.moverse()})
 		game.onTick(500, "movimiento", {npc4.moverse()})
