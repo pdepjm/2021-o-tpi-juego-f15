@@ -22,11 +22,11 @@ object jugador{
 		image = "player_"+ direccion + "_" + imageAux +".png"
 	}
 	
-	method cercanos() = game.colliders(self)
+	method colisiones() = game.colliders(self)
 	
-	//method objetosCerca() = self.cercanos().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
+	method objetosColision() = self.colisiones().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
 	
-	method interactuablesCerca() = self.cercanos().filter({int => int.esInteractuable()})
+	method interactuablesCerca() = self.colisiones().filter({int => int.esInteractuable()})
 	
    // method npcCerca() = self.cercanos().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
     
@@ -44,7 +44,7 @@ object jugador{
     }
     
     method soltarObjeto(){
-    	if( objeto.equals(vacio).negate() and (image == "player_derecha_default.png" or image == "player_izquierda_default.png")){
+    	if( objeto.equals(vacio).negate() and imageAux == "default"){
         	objeto.position(position)
         	game.addVisual(objeto)
         	objeto = vacio
@@ -90,7 +90,7 @@ object jugador{
     //}
     
     method objetosCerca() {
-    	return direcciones.cosasCerca(self).filter({obj => obj.esObjeto()})
+    	return direcciones.cosasCerca(self).filter({obj => obj.esObjeto()}) + self.objetosColision()
     }
     
     method npcCerca() {
