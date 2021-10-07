@@ -10,7 +10,7 @@ class Civil {
 	var property position = null
 	var property estaVivo = true
 	var property objetoAtravesable = true
-	var property image = "npcfeoderecha.png"
+	var property image = "npc_abajo.png"
 	
 	method esObjeto() = false
 	method esInteractuable() = false
@@ -59,7 +59,7 @@ class Civil {
 		
 	}
 	method imageFlip(direccion){
-		image = "npcfeo" + direccion + ".png"
+		image = "npc_" + direccion + ".png"
 	}
 
 }
