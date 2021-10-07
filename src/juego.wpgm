@@ -8,8 +8,9 @@ program juego {
 	game.cellSize(40)
 	game.height(25)
 	game.width(50)
-	pantallaDeCarga.configuracionInicial()
+	//pantallaDeCarga.configuracionInicial()
 	game.boardGround("mapa.png") //meto el fondo
 	// soundProducer.playMusic()
+	nivel.configuracionInicial()
 	game.start()
 }
