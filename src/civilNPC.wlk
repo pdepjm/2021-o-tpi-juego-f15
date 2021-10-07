@@ -4,6 +4,7 @@ import direcciones.*
 import objetos.*
 import jugador.*
 import nivel.*
+import interactuables.*
 
 class Civil {
 	var property position = null
