@@ -10,6 +10,8 @@ object jugador{
 	var property image = "player_derecha_default.png"
 	var imageAux = "default"
 	
+	method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
+	
 	method interactuar(){
 		self.interactuablesCerca().forEach({int=>int.interactuar()})
 	}

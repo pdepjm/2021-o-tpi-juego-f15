@@ -20,7 +20,7 @@ class Trampa inherits Interactuable{
 
 
 class Cadaver inherits Interactuable{
-	var property image = "blood.png"
+	var property image = "cadaver.png"
 	method interactuar(){
 	}
 }

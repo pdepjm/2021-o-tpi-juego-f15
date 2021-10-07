@@ -30,7 +30,8 @@ class Civil {
 	method delatarAsesino(){
 		if(self.estaCercaDeUnMuerto()){
 			game.say(self, "hay un asesino entre nosotros")
-			policia.buscarAsesino()
+			if(jugador.estaCercaDeUnMuerto())
+				game.onTick(500, "llamar a yuta", {policia.buscarAsesino()})
 		}
 	}
 	
