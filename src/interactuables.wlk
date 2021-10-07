@@ -1,16 +1,26 @@
 import wollok.game.*
 import jugador.*
 
-class Trampa{
-	var property objetoAtravesable = true
-	var property image = "pared.png"
+class Interactuable{
+	const property objetoAtravesable = true
+	var property position = null
 	const property esInteractuable = true
-	var property position = game.at(0,0)
+	const property estaVivo = false
+	const property esObjeto = false
+	const property esNPC = false
+}
+
+class Trampa inherits Interactuable{
+	var property image = "pared.png"
 	var property destino = null
 	method interactuar(){
 		jugador.position(destino.position())
 	}
-	method esObjeto() = false
-	method esInteractuable() = true
-	method esNPC() = false
+}
+
+
+class Cadaver inherits Interactuable{
+	var property image = "blood.png"
+	method interactuar(){
+	}
 }

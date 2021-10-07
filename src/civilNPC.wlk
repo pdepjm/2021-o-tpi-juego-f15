@@ -63,16 +63,6 @@ class Civil {
 
 }
 
-class Cadaver {
-	var property position 
-	
-	method estaVivo() = false
-	method esObjeto() = true
-	method esNPC() = false
-	
-	method image() = "blood.png"
-}
-
 object policia {
 	var property position = null
 	var property estaVivo = true
