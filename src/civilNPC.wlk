@@ -8,10 +8,9 @@ import nivel.*
 class Civil {
 	var property position = null
 	var property estaVivo = true
+	var property image = "npcfeoderecha.png"
 	
 	method esObjeto() = false
-	
-	method image() = "npcfeo.png"
 	
 	// method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
@@ -41,15 +40,18 @@ class Civil {
 	}
 	
 	method moverse(){ //no se mueven asi pero es para probar una cosa
-		const aux = direcciones.direccionRandom()
-		self.moverPara(aux)
+		
+		position = mover.mov(direcciones.direccionRandom(),self)
+		
+		
+		/*const aux = direcciones.direccionRandom()
+		self.moverPara(aux) */
+		
 	}
-	
-	method moverPara(direccion) {
-		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){ 
-			position = direccion.proximaPosicion(position)
-		}
-	}	
+	method imageFlip(direccion){
+		image = "npcfeo" + direccion + ".png"
+	}
+
 }
 
 class Cadaver {

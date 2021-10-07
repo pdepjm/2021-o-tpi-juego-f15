@@ -12,10 +12,7 @@ object jugador{
 	
 	
 	method moverPara(direccion) {
-		if(nivel.paredes().contains(direccion.proximaPosicion(position)).negate()){ 
-			position = direccion.proximaPosicion(position)
-		}
-		self.imageFlip(direccion)
+		position = mover.mov(direccion,self)
 	}
 	
 	method imageFlip(direccion){
