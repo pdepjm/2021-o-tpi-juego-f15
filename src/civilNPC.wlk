@@ -31,7 +31,7 @@ class Civil {
 		if(self.estaCercaDeUnMuerto()){
 			game.say(self, "hay un asesino entre nosotros")
 			if(jugador.estaCercaDeUnMuerto())
-				//game.onTick(500, "llamar a yuta", {policia.buscarAsesino()}) cambiar
+				game.schedule(500, {policia.buscarAsesino()})
 		}
 	}
 	
