@@ -5,7 +5,7 @@ import nivel.*
 import civilNPC.*
 
 object jugador{
-	var property position = game.at(1,1)
+	var property position = game.at(6,2)
 	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property image = "player_derecha_default.png"
 	var imageAux = "default"
@@ -24,11 +24,11 @@ object jugador{
 	
 	method cercanos() = game.colliders(self)
 	
-	method objetosCerca() = self.cercanos().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
+	//method objetosCerca() = self.cercanos().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
 	
 	method interactuablesCerca() = self.cercanos().filter({int => int.esInteractuable()})
 	
-    method npcCerca() = self.cercanos().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
+   // method npcCerca() = self.cercanos().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
     
     method usarCuchillo(){ 
     	self.npcCerca().forEach({npc => npc.morir()})
@@ -82,4 +82,20 @@ object jugador{
     		imageAux = "default"
     	}
     }
+    
+    //method hayAlgoCerca(){      la hice para saber si funcionaba 
+    	//if(self.cosasCerca().size() != 0){
+    		//game.say(self, "algo cerca")
+    	//}
+    //}
+    
+    method objetosCerca() {
+    	return direcciones.cosasCerca(self).filter({obj => obj.esObjeto()})
+    }
+    
+    method npcCerca() {
+    	return direcciones.cosasCerca(self).filter({npc => npc.esNPC()}) 
+    } 
+    
+    
 }

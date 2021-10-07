@@ -45,6 +45,7 @@ object nivel{
 		game.onTick(100,"delatarAsesino",{if(npc2.estaVivo()) {npc2.delatarAsesino()}})
 		game.onTick(100,"delatarAsesino",{if(npc3.estaVivo()) {npc3.delatarAsesino()}})
 		game.onTick(100,"delatarAsesino",{if(npc4.estaVivo()) {npc4.delatarAsesino()}})
+	//	game.onTick(100,"cosasCerca",{jugador.hayAlgoCerca()})
 		self.configurarTeclas()
 	}
 	
