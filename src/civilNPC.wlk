@@ -100,3 +100,5 @@ object policia {
 		game.say(self, "Te hemos encontrado, has perdido!!")
 		game.onTick(2000, "encontrarAsesino", {game.stop()})	
 	}
+}
+	
