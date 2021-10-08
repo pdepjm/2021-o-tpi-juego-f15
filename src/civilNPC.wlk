@@ -25,13 +25,22 @@ class Civil {
 		}
 	} */
 
-	method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
+	//method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
+	
+	method cadaverCercano() {
+		return nivel.listaMuertos().filter({cadaver => self.position().distance(cadaver.position()) < 5 })
+	}
+	
+	method estaCercaDelAsesino() = self.position().distance(jugador.position()) < 5
 	
 	method delatarAsesino(){
-		if(self.estaCercaDeUnMuerto()){
-			game.say(self, "hay un asesino entre nosotros")
-			if(jugador.estaCercaDeUnMuerto())
-				game.schedule(500, {policia.buscarAsesino()})
+		if(self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate()){
+			game.say(self, "Hay un asesino entre nosotros")
+			game.schedule(2000, {policia.buscarCadaver(self.cadaverCercano())})
+		}
+		else if(self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0){
+			game.say(self, "Te descubri! Llamare a la policia")
+			game.schedule(1000, {policia.buscarAsesino()})
 		}
 	}
 	
@@ -71,31 +80,23 @@ object policia {
 	
 	method image() = "police.png"
 	
+	method buscarCadaver(cadaver){
+		cadaver.forEach{muerto => self.eliminarCadaver(muerto)}		
+	}
+	
+	method eliminarCadaver(muerto){
+		position = muerto.position()
+		game.addVisual(self)
+		game.removeVisual(muerto)
+		nivel.listaMuertos().remove(muerto) 
+		game.schedule(2000, {game.removeVisual(self)})
+		game.say(self, "ALEJENSE! Estamos quitando un cadaver!")
+		
+	}
+	
 	method buscarAsesino(){ // Falta codear el caso de que el jugador este usando el vestido (en ese caso, no lo encuentra)
 		position = jugador.position()
 		game.addVisual(self)
 		game.say(self, "Te hemos encontrado, has perdido!!")
-		game.onTick(2000, "encontrarAsesino", {game.stop()})
+		game.onTick(2000, "encontrarAsesino", {game.stop()})	
 	}
-	
-	
-}
-
-	/*
-	method verMuerto(muerto){
-		if (jugador.cercaCadaver(muerto)) 	self.delatarJugador(asesino,muerto) else self.llamarPolicia(muerto)
-	}
-	method delatarJugador(asesino,cadaver){
-		policia.asesino(asesino)
-		self.llamarPolicia(cadaver)
-	}
-	method llamarPolicia(cadaver){
-		polcia.buscarCadaverYAsesino()
-	}
-	method caminar(x,y){
-		/* funcion azarosa donde el npc se mueve cada cierto tiempo  */
-	/*
-	}
-	method morir(){
-		/* destruir objeto y generar otro de sangre */
-	/*}*/

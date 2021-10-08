@@ -10,8 +10,8 @@ object jugador{
 	var property image = "player_derecha_default.png"
 	var imageAux = "default"
 	
-	method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
-	
+	//method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
+		
 	method interactuar(){
 		self.interactuablesCerca().forEach({int=>int.interactuar()})
 	}
@@ -32,7 +32,7 @@ object jugador{
 	
    method npcColision() = self.colisiones().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
     
-    method usarCuchillo(){ 
+    method usarCuchillo(){ //OJO QUE NO DEJA MATAR A UN NPC QUE ESTA CERCA DE LA PARED
     	self.npcCerca().forEach({npc => npc.morir()})
     }
     
