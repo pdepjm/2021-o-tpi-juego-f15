@@ -1,6 +1,7 @@
 import wollok.game.*
 import jugador.*
 import civilNPC.*
+import metodosGenericos.*
 
 class Objeto {
 	const property esObjeto = true

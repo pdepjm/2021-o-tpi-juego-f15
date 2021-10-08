@@ -5,6 +5,7 @@ import objetos.*
 import jugador.*
 import nivel.*
 import interactuables.*
+import metodosGenericos.*
 
 class Civil {
 	var property position = null
@@ -53,20 +54,9 @@ class Civil {
 		return nivel.agregarMuerto(sangre)
 	}
 	
-	method repetirNVeces(intervalo, cantidad, accion) {
- 		 const nombreAleatorio = 0.randomUpTo(10).toString()
-  		game.onTick(intervalo, nombreAleatorio, accion)
-  		game.schedule(intervalo * cantidad, { game.removeTickEvent(nombreAleatorio) })
-	}
 	
 	method moverse(){
-		//(5..20).anyOne().times({ => game.schedule(500,{i=>position = mover.mov(direcciones.direccionRandom(),self)}) })
-		
-		self.repetirNVeces(1000, (5..20).anyOne() , {position = mover.mov(direcciones.direccionRandom(),self)})
-		//position = mover.mov(direcciones.direccionRandom(),self)
-		/*const aux = direcciones.direccionRandom()
-		self.moverPara(aux) */
-		
+		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20) , {position = mover.mov(direcciones.direccionRandom(),self)})
 	}
 	method imageFlip(direccion){
 		image = "npc_" + direccion + ".png"
@@ -76,7 +66,7 @@ class Civil {
 
 object policia {
 	var property position = null
-	var property estaVivo = true
+	const property estaVivo = true
 	
 	method image() = "police.png"
 	

@@ -3,6 +3,7 @@ import direcciones.*
 import objetos.*
 import nivel.*
 import civilNPC.*
+import metodosGenericos.*
 
 object jugador{
 	var property position = game.at(6,2)
@@ -24,15 +25,7 @@ object jugador{
 		image = "player_"+ direccion + "_" + imageAux +".png"
 	}
 	
-	method colisiones() = game.colliders(self)
-	
-	method objetosColision() = self.colisiones().filter({obj => obj.esObjeto()}) // lista con los objetos que tiene cerca
-	
-	method interactuablesCerca() = self.colisiones().filter({int => int.esInteractuable()})
-	
-   method npcColision() = self.colisiones().filter({npc => npc.esNPC()}) // lista con los npc que tiene cerca
-    
-    method usarCuchillo(){ //OJO QUE NO DEJA MATAR A UN NPC QUE ESTA CERCA DE LA PARED
+    method usarCuchillo(){
     	self.npcCerca().forEach({npc => npc.morir()})
     }
     
@@ -58,14 +51,6 @@ object jugador{
     }
     
     method cambiarRopa() {
-    	if(imageAux == "vestido"){
-    		self.sacarRopa()
-    	}else{
-    		self.vestirse()
-    	}
-    }
-    
-    method vestirse(){
     	if(image == "player_izquierda_default.png"){
     		image = "player_izquierda_vestido.png"
     		imageAux = "vestido"
@@ -75,28 +60,20 @@ object jugador{
     	}
     }
     
-    method sacarRopa(){
-    	if(image == "player_izquierda_vestido.png"){
-    		image = "player_izquierda_default.png"
-    		imageAux = "default"
-    	}else{
-    		image = "player_derecha_default.png"
-    		imageAux = "default"
-    	}
+    method algoCerca(tipo){
+    	return direcciones.cosasCerca(self).filter({obj => obj.esObjeto()})
     }
-    
-    //method hayAlgoCerca(){      la hice para saber si funcionaba 
-    	//if(self.cosasCerca().size() != 0){
-    		//game.say(self, "algo cerca")
-    	//}
-    //}
     
     method objetosCerca() {
-    	return direcciones.cosasCerca(self).filter({obj => obj.esObjeto()}) + self.objetosColision()
+    	return direcciones.cosasCerca(self).filter({obj => obj.esObjeto()})
     }
-    
+	
     method npcCerca() {
-    	return direcciones.cosasCerca(self).filter({npc => npc.esNPC()}) + self.npcColision()
+    	return direcciones.cosasCerca(self).filter({npc => npc.esNPC()})
+    } 
+    
+    method interactuablesCerca() {
+    	return direcciones.cosasCerca(self).filter({int => int.esInteractuable()})
     } 
     
     

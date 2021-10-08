@@ -20,43 +20,26 @@ object direcciones {
 	}
 	
 	method cosasCerca(sujeto){
-    	return self.algoArriba(arriba, sujeto) + self.algoAbajo(abajo, sujeto) + self.algoALaIzquierda(izquierda, sujeto) + self.algoALaDerecha(derecha, sujeto)
+    	return self.algoA(arriba, sujeto) + self.algoA(abajo, sujeto) + self.algoA(izquierda, sujeto) + self.algoA(derecha, sujeto) + game.colliders(sujeto)
     }
     
-    method algoArriba(orientacion, sujeto){
-    	return game.getObjectsIn(orientacion.rangoDeUno(sujeto.position()))
-    }
-    
-    method algoAbajo(orientacion, sujeto){
-    	return game.getObjectsIn(orientacion.rangoDeUno(sujeto.position()))
-    }
-    
-    method algoALaIzquierda(orientacion, sujeto){
-    	return game.getObjectsIn(orientacion.rangoDeUno(sujeto.position()))
-    }
-    
-    method algoALaDerecha(orientacion, sujeto){
-    	return game.getObjectsIn(orientacion.rangoDeUno(sujeto.position()))
+    method algoA(orientacion, sujeto){
+    	return game.getObjectsIn(orientacion.proximaPosicion(sujeto.position()))
     }
 }
 
 object izquierda {
-	method proximaPosicion(posicionActual) = posicionActual.left(1) 
-	method rangoDeUno(posicionActual) = posicionActual.left(1)
+	method proximaPosicion(posicionActual) = posicionActual.left(1)
 }
 
 object derecha {
-	method proximaPosicion(posicionActual) = posicionActual.right(1) 
-	method rangoDeUno(posicionActual) = posicionActual.right(1)
+	method proximaPosicion(posicionActual) = posicionActual.right(1)
 }
 
 object arriba {
-	method proximaPosicion(posicionActual) = posicionActual.up(1) 
-	method rangoDeUno(posicionActual) = posicionActual.up(1)
-	
+	method proximaPosicion(posicionActual) = posicionActual.up(1)
 }
 
 object abajo {
-	method proximaPosicion(posicionActual) = posicionActual.down(1) 
-	method rangoDeUno(posicionActual) = posicionActual.down(1)
+	method proximaPosicion(posicionActual) = posicionActual.down(1)
 }
