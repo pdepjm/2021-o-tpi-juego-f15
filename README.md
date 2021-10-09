@@ -22,7 +22,7 @@
 |Agarrar Objeto |     e      |
 |Soltar Objeto  |     q      |
 |Usar Objeto    |     f      |
-|Usar Escotillas|     g      |
+|Usar Escotilla |     g      |
 
 ## Respuestas teóricas
 
