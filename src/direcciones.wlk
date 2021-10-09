@@ -18,11 +18,12 @@ object direcciones {
 	method direccionRandom() {
 		return listaDirecciones.anyOne()
 	}
-	
+    method algoCerca(tipo,persona){
+    	return self.cosasCerca(persona).filter({obj => tipo.es(obj)})
+    }
 	method cosasCerca(sujeto){
     	return self.algoA(arriba, sujeto) + self.algoA(abajo, sujeto) + self.algoA(izquierda, sujeto) + self.algoA(derecha, sujeto) + game.colliders(sujeto)
     }
-    
     method algoA(orientacion, sujeto){
     	return game.getObjectsIn(orientacion.proximaPosicion(sujeto.position()))
     }

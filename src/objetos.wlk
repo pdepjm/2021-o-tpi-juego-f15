@@ -37,9 +37,13 @@ object pizza inherits Objeto {
 }
 
 class Bomba inherits Objeto {
-	method image() = ".png"
+	method image() = "bomb.png"
 	method usar(personaje) {
-
+		position = personaje.position()
+		game.addVisual(self)
+		self.explotar(personaje.position())
+	}
+	method explotar(posicion){
 	}
 }
 

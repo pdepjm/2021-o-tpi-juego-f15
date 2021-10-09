@@ -7,15 +7,19 @@ import nivel.*
 import interactuables.*
 import metodosGenericos.*
 
-class Civil {
+class SerVivo{
+	const property estaVivo = true
+	const property objetoAtravesable = true
+	const property esObjeto = false
+	const property esInteractuable = false
+}
+class NPC inherits SerVivo{
 	var property position = null
-	var property estaVivo = true
-	var property objetoAtravesable = true
+	const property esNPC = true
+}
+
+class Civil inherits NPC {
 	var property image = "npc_abajo.png"
-	
-	method esObjeto() = false
-	method esInteractuable() = false
-	method esNPC() = true
 	
 	// method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
 	
@@ -64,10 +68,7 @@ class Civil {
 
 }
 
-object policia {
-	var property position = null
-	const property estaVivo = true
-	
+object policia inherits NPC {
 	method image() = "police.png"
 	
 	method buscarCadaver(cadaver){
