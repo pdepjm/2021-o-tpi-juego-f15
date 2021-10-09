@@ -1,21 +1,28 @@
 # Fiesta Dura
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
-
+- Basile, Bautista - 
+- Buffoni, Julian - @JulianBuffoni
+- Demattei, Santiago - @SantiagoDemattei
+- Ingratta, Daniela - @daniingratta
+- Solari Parravicini, Joaquin - 
+- Torales, Pedro Imanol - @PedroTorales
 ## Capturas
 
-(agregar)
+- Pantalla de Carga
+![pantallaDeCarga](https://imgur.com/RbzasyD.png)
 
 ## Reglas de Juego / Instrucciones
 
 (Escribirlas)
-Movimiento: w, a, s, d
-Usar Cuchillo: r
-Agarrar Objeto: e
-Soltar Objeto: q
+|               |            |
+|---------------|------------|
+|Movimiento     | w, a, s, d |
+|Usar Cuchillo  |     r      |
+|Agarrar Objeto |     e      |
+|Soltar Objeto  |     q      |
+|Usar Objeto    |     f      |
+|Usar Escotillas|     g      |
 
 ## Respuestas teóricas
 
@@ -29,7 +36,8 @@ Soltar Objeto: q
 
 3. ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
 
-
+    Definimos la clase "Objeto" para poder codear una unica vez los atributos que definen a un objeto, en vez de hacerlo para cada "objeto" en particular.
+    Los objetos se instancian en la configuracion inicial del nivel, luego de salir de la pantalla de carga
 
 4. ¿Entre quiénes y por qué? ¿Qué comportamiento es común y cuál distinto?
 
