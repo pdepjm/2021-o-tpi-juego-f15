@@ -45,12 +45,14 @@ Para *silenciar* a los jóvenes el jugador podra utilizar un cuchillo (que siemp
 
 3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
 
-    Definimos la clase "*Objeto*" para poder codear una unica vez los atributos que definen a un "*objeto*", en vez de hacerlo para cada "*objeto*" en particular.
-    Los "*objetos*" se instancian en la configuracion inicial del nivel, luego de salir de la pantalla de carga
+    Definimos la clase "*Civil*", que se instancia en "*nivel*" en la configuracion inicial del nivel para agregar multiples objetivos que tenemos que asesinar.
 
 4. **Herencia**: ¿Entre quiénes y por qué? ¿Qué comportamiento es común y cuál distinto?
 
+    Definimos la clase "*Objeto*" para poder codear una unica vez los atributos que definen a un "*objeto*", en vez de hacerlo para cada "*objeto*" en particular.
+    Los "*objetos*" se instancian en la configuracion inicial del nivel, luego de salir de la pantalla de carga.
 
+    **TERMINAR**
 
 5. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
 
