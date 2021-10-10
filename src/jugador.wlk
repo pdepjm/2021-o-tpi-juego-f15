@@ -9,7 +9,8 @@ import tipos.*
 object jugador inherits SerVivo{
 	var property position = game.at(6,2)
 	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
-	var property image = "player_derecha_default.png"
+	var property sentido = derecha
+	var property image = "player_" + sentido + "_default.png"
 	var imageAux = "default"
 	var property carga = vacio
 
@@ -23,11 +24,12 @@ object jugador inherits SerVivo{
 	}
 
 	method interactuar(){
-		direcciones.algoCerca(tipoInteractuable,self).forEach({int=>int.interactuar()})
+		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interactuar()})
 	}
 	
 	method moverPara(direccion) {
 		position = mover.mov(direccion,self)
+		sentido = direccion
 	}
 	
 	method imageFlip(direccion){
@@ -46,7 +48,7 @@ object jugador inherits SerVivo{
 		 }
     
     method soltarObjeto(){
-    	if( objeto.equals(null).negate()){
+    	if(objeto.equals(vacio).negate() && imageAux == "default"){
         	objeto.position(position)
         	game.addVisual(objeto)
         	objeto = vacio
@@ -58,12 +60,14 @@ object jugador inherits SerVivo{
     }
     
     method cambiarRopa() {
-    	if(image == "player_izquierda_default.png"){
-    		image = "player_izquierda_vestido.png"
-    		imageAux = "vestido"
-    	}else{
-    		image = "player_derecha_vestido.png"
+    	if(image == "player_" + sentido + "_default.png"){
+    		image = "player_" + sentido + "_vestido.png"
     		imageAux = "vestido"
     	}
+    	else if (image == "player_" + sentido + "_vestido.png"){
+    		image = "player_" + sentido + "_default.png"
+    		imageAux = "default"
+    	}
     }
+   
 }

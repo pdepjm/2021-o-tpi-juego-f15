@@ -7,8 +7,12 @@ import radios.*
 object mover{
 	method mov(sentido,player){
 		player.imageFlip(sentido)
-		if (self.condicionMovimiento(sentido,player)) return sentido.proximaPosicion(player.position()) else return player.position()
+		if (self.condicionMovimiento(sentido,player)) 
+			return sentido.proximaPosicion(player.position()) 
+		else 
+			return player.position()
 	}
+	
 	method condicionMovimiento(sentido,player) = game.getObjectsIn(sentido.proximaPosicion(player.position())).all({objeto=>objeto.objetoAtravesable()})
 }
 
