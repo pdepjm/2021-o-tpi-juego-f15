@@ -8,10 +8,10 @@ import tipos.*
 
 object jugador inherits SerVivo{
 	var property position = game.at(6,2)
-	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
+	var property objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property sentido = derecha
 	var property image = "player_" + sentido + "_default.png"
-	var imageAux = "default"
+	var property imageAux = "default"
 	var property carga = vacio
 
 

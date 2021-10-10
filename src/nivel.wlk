@@ -17,7 +17,6 @@ object nivel{
 	const veneno1 = new Veneno(position = game.at(10,10))
 	const escotillaBanio = new Trampa(position = game.at(3,23),image="pared.png")
 	const escotillaEstudio = new Trampa(position = game.at(44,5),destino = escotillaBanio,image="trapdoor.png")
-	//const cadaverFicticio = new Cadaver(position = game.at(40,40)) // lo agrego para que listaMuertos no sea vacia (tira error el anyOne sino)
 	const listaMuertos = []
 	
 	
@@ -66,8 +65,6 @@ object nivel{
 	method agregarMuerto(unMuerto) {
 	 return listaMuertos.add(unMuerto)
 	 }
-	
-	// method existeMuerto(unMuerto) = listaMuertos.contains(unMuerto) && unMuerto.esCadaver()
 	
 	method listaMuertos() = listaMuertos
 }

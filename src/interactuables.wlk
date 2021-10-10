@@ -16,7 +16,7 @@ class Interactuable{
 class Trampa inherits Interactuable{
 	var property image = "pared.png"
 	var property destino = null
-	method interactuar(){
+	method interactuar(pers){
 		jugador.position(destino.position())
 	}
 }

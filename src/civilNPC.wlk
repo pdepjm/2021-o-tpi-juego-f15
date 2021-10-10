@@ -21,17 +21,6 @@ class NPC inherits SerVivo{
 class Civil inherits NPC {
 	var property image = "npc_abajo.png"
 	
-	// method muertoCerca() = game.colliders(self).filter({cadaver => cadaver.esCadaver()})
-	
-	/*	method estaCercaDe(unMuerto){
-		if(nivel.existeMuerto(unMuerto) && (self.position().distance(unMuerto.position()) < 5))
-		{
-			self.position().say(self, "hay un asesino entre nosotros")
-		}
-	} */
-
-	//method estaCercaDeUnMuerto() = self.position().distance(nivel.listaMuertos().anyOne().position()) < 5
-	
 	method cadaverCercano() {
 		return nivel.listaMuertos().filter({cadaver => self.position().distance(cadaver.position()) < 5 })
 	}
@@ -54,7 +43,7 @@ class Civil inherits NPC {
 		game.addVisual(sangre)
 		game.removeVisual(self) 
 		soundProducer.sound("sounds/Death Sound.mp3").play()
-		nivel.agregarMuerto(sangre)
+		return nivel.agregarMuerto(sangre)
 	}
 	
 	
@@ -84,7 +73,8 @@ object policia inherits NPC {
 		
 	}
 	
-	method buscarAsesino(){ // Falta codear el caso de que el jugador este usando el vestido (en ese caso, no lo encuentra)
+	method buscarAsesino(){ 
+		if(jugador.imageAux() == "vestido"){self.error("")} //si tiene la remera puesta, el policia no lo encuentra aunque este cerca del cadaver
 		position = jugador.position()
 		game.addVisual(self)
 		game.say(self, "Te hemos encontrado, has perdido!!")
