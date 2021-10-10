@@ -40,8 +40,7 @@ class Bomba inherits Objeto {
 	method image() = "bomb.png"
 	method usar(personaje) {
 		position = personaje.position()
-		game.addVisual(self)
-		self.explotar(personaje.position())
+	//	game.schedule(2000, self.explotar(personaje.position()) )
 	}
 	method explotar(posicion){
 	}

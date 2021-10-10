@@ -48,7 +48,7 @@ class Civil inherits NPC {
 	
 	
 	method moverse(){
-		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20) , {position = mover.mov(direcciones.direccionRandom(),self)})
+		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20) , {position = movimiento.mover(direcciones.direccionRandom(),self)})
 	}
 	method imageFlip(direccion){
 		image = "npc_" + direccion + ".png"

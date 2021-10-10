@@ -15,6 +15,7 @@ object nivel{
 	const npc4 = new Civil(position = game.at(2,7))
 	const remera1 = new Remera(position = game.at(7,7))
 	const veneno1 = new Veneno(position = game.at(10,10))
+	const bomba1 = new Bomba(position = game.at(12,16))
 	const escotillaBanio = new Trampa(position = game.at(3,23),image="pared.png")
 	const escotillaEstudio = new Trampa(position = game.at(44,5),destino = escotillaBanio,image="trapdoor.png")
 	const listaMuertos = []
@@ -35,6 +36,7 @@ object nivel{
 		game.addVisual(npc2)
 		game.addVisual(npc3)
 		game.addVisual(npc4)
+		game.addVisual(bomba1)
 		game.addVisual(jugador)
 		game.onTick(5000.randomUpTo(20000), "movimiento" , {npc1.moverse()})
 		game.onTick(5000.randomUpTo(20000), "movimiento", {npc2.moverse()})

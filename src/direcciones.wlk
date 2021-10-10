@@ -4,8 +4,8 @@ import jugador.*
 import civilNPC.*
 import radios.*
 
-object mover{
-	method mov(sentido,player){
+object movimiento{
+	method mover(sentido,player){
 		player.imageFlip(sentido)
 		if (self.condicionMovimiento(sentido,player)) 
 			return sentido.proximaPosicion(player.position()) 

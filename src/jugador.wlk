@@ -28,7 +28,7 @@ object jugador inherits SerVivo{
 	}
 	
 	method moverPara(direccion) {
-		position = mover.mov(direccion,self)
+		position = movimiento.mover(direccion,self)
 		sentido = direccion
 	}
 	
