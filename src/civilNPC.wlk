@@ -54,8 +54,7 @@ class Civil inherits NPC {
 		game.addVisual(sangre)
 		game.removeVisual(self) 
 		soundProducer.sound("sounds/Death Sound.mp3").play()
-		estaVivo = false
-		return nivel.agregarMuerto(sangre)
+		nivel.agregarMuerto(sangre)
 	}
 	
 	

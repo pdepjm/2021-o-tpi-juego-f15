@@ -1,6 +1,7 @@
 import wollok.game.*
 import jugador.*
 import metodosGenericos.*
+import objetos.*
 
 
 class Interactuable{
@@ -23,7 +24,18 @@ class Trampa inherits Interactuable{
 
 class Cadaver inherits Interactuable{
 	var property image = "cadaver.png"
-	
-	method interactuar(){
+	method interactuar(pers){
+		pers.carga(self)
+		game.removeVisual(self)
 	}
 }
+
+class Escondite inherits Interactuable{
+	var property image = "tacho.png"
+	method interactuar(pers){
+		if(pers.carga().equals(vacio).negate()){
+			pers.carga(vacio)
+		}
+	}
+}
+

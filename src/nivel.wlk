@@ -59,6 +59,8 @@ object nivel{
 		keyboard.q().onPressDo({ jugador.soltarObjeto() })
 		keyboard.f().onPressDo({ jugador.usarObjeto() })
 		keyboard.g().onPressDo({ jugador.interactuar() })
+		keyboard.h().onPressDo({ jugador.soltarCarga() })
+		
 	}
 	
 	method agregarMuerto(unMuerto) {

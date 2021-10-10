@@ -11,6 +11,16 @@ object jugador inherits SerVivo{
 	var objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property image = "player_derecha_default.png"
 	var imageAux = "default"
+	var property carga = vacio
+
+
+	method soltarCarga(){
+		if(self.carga().equals(vacio).negate()){
+			carga.position(position)
+			game.addVisual(carga)
+			carga = vacio
+		}
+	}
 
 	method interactuar(){
 		direcciones.algoCerca(tipoInteractuable,self).forEach({int=>int.interactuar()})
