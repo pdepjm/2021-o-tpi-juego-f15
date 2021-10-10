@@ -1,11 +1,39 @@
 import soundProducer.*
+import civilNPC.*
+import jugador.*
+import nivel.*
+import wollok.game.*
+import objetos.*
+import direcciones.*
 
 describe "Inserte descripción" {
 	method initialize() {
-		soundProducer.provider(soundProviderMock)		
+		jugador.position(game.at(5,5))
+		const npc = new Civil(position = game.at(5,5))
+		const listaMuertos = []
+		
+		const remera = new Remera(position = game.at(5,5))
+		
+		//Visuales
+		game.addVisual(jugador)
+		game.addVisual(npc)
+		game.addVisual(remera)
 	}
-	
-	test "testX" {
-		assert.that(true)
-	}	
+	test "movimiento jugador" {
+		jugador.moverPara(izquierda)
+		assert.equals(game.at(4,5), jugador.position())
+	}
+	test "matar NPC" {
+		jugador.usarCuchillo()
+		assert.equals([npc], listaMuertos)
+	}
+	test "agarrar remera" {
+		jugador.agarrarObjeto()
+		assert.equals(remera, jugador.objeto())
+	}
+	test "usar remera" {
+		jugador.agarrarObjeto()
+		jugador.usarObjeto()
+		assert.equals("player_derecha_vestido.png", jugador.image())
+	}
 }

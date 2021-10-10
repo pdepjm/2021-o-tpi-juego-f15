@@ -20,7 +20,6 @@ object nivel{
 	const escotillaEstudio = new Trampa(position = game.at(44,5),destino = escotillaBanio,image="trapdoor.png")
 	const listaMuertos = []
 	
-	
 	method configuracionInicial(){
 		game.clear()
 		game.addVisual(contador)
@@ -61,12 +60,11 @@ object nivel{
 		keyboard.f().onPressDo({ jugador.usarObjeto() })
 		keyboard.g().onPressDo({ jugador.interactuar() })
 		keyboard.h().onPressDo({ jugador.soltarCarga() })
-		
 	}
 	
 	method agregarMuerto(unMuerto) {
-	 return listaMuertos.add(unMuerto)
-	 }
+		return listaMuertos.add(unMuerto)
+	}
 	
 	method listaMuertos() = listaMuertos
 }
