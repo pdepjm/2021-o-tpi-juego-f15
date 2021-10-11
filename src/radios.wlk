@@ -2,7 +2,7 @@ import wollok.game.*
 import direcciones.*
 import objetos.*
 import nivel.*
-import civilNPC.*
+import NPCs.*
 import metodosGenericos.*
 import tipos.*
 

@@ -18,21 +18,22 @@ object soundProducer {
 	
 	method playMusic() {
 		if (0.randomUpTo(2).roundUp() == 1){
-			self.sound("sounds/She Meditates (mp3cut.net).mp3").play()	
+			self.sound("sounds/She Meditates.mp3").play()	
 		}else{
 			self.sound("sounds/Blizzard.mp3").play()	
 		}
 	}
+	
+	method playVictory() {
+		self.sound("sounds/Yeah Boii.mp3").play()
+	}
 }
 
 object soundProviderMock {
-	
 	method sound(audioFile) = soundMock
-	
 }
 
 object soundMock {
-	
 	method pause(){}
 	
 	method paused() = true

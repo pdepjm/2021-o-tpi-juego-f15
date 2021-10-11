@@ -3,7 +3,6 @@ import jugador.*
 import metodosGenericos.*
 import objetos.*
 
-
 class Interactuable{
 	const property objetoAtravesable = true
 	var property position = null
@@ -20,7 +19,6 @@ class Trampa inherits Interactuable{
 		jugador.position(destino.position())
 	}
 }
-
 
 class Cadaver inherits Interactuable{
 	var property image = "cadaver.png"

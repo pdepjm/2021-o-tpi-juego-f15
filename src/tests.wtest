@@ -1,16 +1,15 @@
 import soundProducer.*
-import civilNPC.*
+import NPCs.*
 import jugador.*
 import nivel.*
 import wollok.game.*
 import objetos.*
 import direcciones.*
 import paredes.*
-import objetosNiveles.*
 import contador.*
 import interactuables.*
 
-describe "Inserte descripción" {
+describe "testsUwU" {
 	
 	const npc = new Civil(position = game.at(5,5))
 	const remera = new Remera(position = game.at(5,5))

@@ -1,7 +1,7 @@
 import wollok.game.*
 import paredes.*
 import jugador.*
-import civilNPC.*
+import NPCs.*
 import radios.*
 import objetos.*
 

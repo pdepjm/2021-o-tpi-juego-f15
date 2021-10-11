@@ -1,6 +1,6 @@
 import wollok.game.*
 import jugador.*
-import civilNPC.*
+import NPCs.*
 import metodosGenericos.*
 
 class Objeto {

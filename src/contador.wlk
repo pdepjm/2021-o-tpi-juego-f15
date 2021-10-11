@@ -1,4 +1,6 @@
 import wollok.game.*
+import nivel.*
+import pantallas.*
 
 // ¡Los visuales también pueden ser texto!
 // Hay que definir la posición en la que debe aparecer
@@ -11,13 +13,34 @@ import wollok.game.*
 // Les dejamos algunos ejemplos
 // ¡También se puede combinar con las imágenes!
 
-object marcoContador {
+object marcoContadorKills {
 	method image() = "contador.png"
-	method position() = game.at(40,1)
-	
+	method position() = game.at(42,1)
 }
 
-object contador {
+object contadorKills {
+	const limite = 4
+	var property kills = 0
+	const property textColor = paletaDeColores.blanco()
+	
+	method position() = game.at(44,1)
+	
+	method text() {
+		if( kills.equals(limite) ){
+			/*game.clear()
+			pantallaDeVictoria.ganar()*/
+		}
+		return kills.toString() + " / " + limite.toString()
+	}
+    
+}
+
+object marcoContadorTiempo {
+	method image() = "contador.png"
+	method position() = game.at(40,1)
+}
+
+object contadorTiempo {
     var property segundos = 0
     var property minutos = 0
     var property acumuladorTiempo = 0

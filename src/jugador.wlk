@@ -2,7 +2,7 @@ import wollok.game.*
 import direcciones.*
 import objetos.*
 import nivel.*
-import civilNPC.*
+import NPCs.*
 import metodosGenericos.*
 import tipos.*
 
@@ -10,7 +10,7 @@ object jugador inherits SerVivo{
 	var property position = game.at(6,2)
 	var property objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property sentido = derecha
-	var property image = "player_" + sentido + "_default.png"
+	var property image = "player_" + sentido.toString() + "_default.png"
 	var property imageAux = "default"
 	var property carga = vacio
 	const property esNPC = false
@@ -64,12 +64,12 @@ object jugador inherits SerVivo{
     }
     
     method cambiarRopa() {
-    	if(image == "player_" + sentido + "_default.png"){
-    		image = "player_" + sentido + "_vestido.png"
+    	if(image == "player_" + sentido.toString() + "_default.png"){
+    		image = "player_" + sentido.toString() + "_vestido.png"
     		imageAux = "vestido"
     	}
-    	else if (image == "player_" + sentido + "_vestido.png"){
-    		image = "player_" + sentido + "_default.png"
+    	else if (image == "player_" + sentido.toString() + "_vestido.png"){
+    		image = "player_" + sentido.toString() + "_default.png"
     		imageAux = "default"
     	}
     }

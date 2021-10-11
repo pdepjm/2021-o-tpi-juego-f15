@@ -3,7 +3,6 @@ import interactuables.*
 import jugador.*
 import objetos.*
 import paredes.*
-import policiaNPC.*
 
 object vivo{
 	method es(vivo) = vivo.estaVivo()

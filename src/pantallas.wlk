@@ -1,5 +1,4 @@
 import wollok.game.*
-import objetosNiveles.*
 import nivel.*
 import soundProducer.*
 
@@ -18,5 +17,25 @@ object pantallaDeCarga {
             	nivel.configuracionInicial()
         	}
         })
+	}
+}
+
+object backroundCarga {
+	method image() = "backround.png"
+	method position() = game.origin()
+}
+
+object mensajeCarga {
+	method image() = "message.png"
+	method position() = game.at(10,2)
+}
+
+object pantallaDeVictoria {
+	method image() = "pantallaVictoria.jpg"
+	method position() = game.origin()
+	
+	method ganar(){
+		//game.addVisual(self)
+		//soundProducer.playVictory()
 	}
 }
