@@ -5,33 +5,42 @@ import nivel.*
 import wollok.game.*
 import objetos.*
 import direcciones.*
+import paredes.*
+import objetosNiveles.*
+import contador.*
+import interactuables.*
 
 describe "Inserte descripción" {
+	
+	const npc = new Civil(position = game.at(5,5))
+	const remera = new Remera(position = game.at(5,5))
+	
 	method initialize() {
 		jugador.position(game.at(5,5))
-		const npc = new Civil(position = game.at(5,5))
-		const listaMuertos = []
-		
-		const remera = new Remera(position = game.at(5,5))
-		
+		todasLasParedes.cargar()
 		//Visuales
 		game.addVisual(jugador)
 		game.addVisual(npc)
 		game.addVisual(remera)
 	}
+	
 	test "movimiento jugador" {
 		jugador.moverPara(izquierda)
 		assert.equals(game.at(4,5), jugador.position())
 	}
+	
+	test "pared" {
+		jugador.position(game.at(1,1))
+		jugador.moverPara(izquierda)
+		assert.equals(game.at(1,1), jugador.position())
+	}
+	
 	test "matar NPC" {
 		jugador.usarCuchillo()
-		assert.equals([npc], listaMuertos)
+		assert.that(game.hasVisual(npc).negate())
 	}
-	test "agarrar remera" {
-		jugador.agarrarObjeto()
-		assert.equals(remera, jugador.objeto())
-	}
-	test "usar remera" {
+	
+	test "agarrar y usar remera" {
 		jugador.agarrarObjeto()
 		jugador.usarObjeto()
 		assert.equals("player_derecha_vestido.png", jugador.image())

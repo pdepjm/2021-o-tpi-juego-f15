@@ -15,9 +15,9 @@ object nivel{
 	const npc4 = new Civil(position = game.at(2,7))
 	const remera1 = new Remera(position = game.at(7,7))
 	const veneno1 = new Veneno(position = game.at(10,10))
-	const bomba1 = new Bomba(position = game.at(12,16))
-	const escotillaBanio = new Trampa(position = game.at(3,23),image="pared.png")
-	const escotillaEstudio = new Trampa(position = game.at(44,5),destino = escotillaBanio,image="trapdoor.png")
+	const bomba1 = new Bomba(position = game.at(11,16))
+	const escotillaBanio = new Trampa(position = game.at(3,23), image = "pared.png")
+	const escotillaEstudio = new Trampa(position = game.at(44,5), destino = escotillaBanio, image = "trapdoor.png")
 	const listaMuertos = []
 	
 	method configuracionInicial(){
@@ -41,10 +41,10 @@ object nivel{
 		game.onTick(5000.randomUpTo(20000), "movimiento", {npc2.moverse()})
 		game.onTick(5000.randomUpTo(20000), "movimiento", {npc3.moverse()})
 		game.onTick(5000.randomUpTo(20000), "movimiento", {npc4.moverse()})
-		game.onTick(100,"delatarAsesino",{if(npc1.estaVivo()) {npc1.delatarAsesino()}})
-		game.onTick(100,"delatarAsesino",{if(npc2.estaVivo()) {npc2.delatarAsesino()}})
-		game.onTick(100,"delatarAsesino",{if(npc3.estaVivo()) {npc3.delatarAsesino()}})
-		game.onTick(100,"delatarAsesino",{if(npc4.estaVivo()) {npc4.delatarAsesino()}})
+		game.onTick(100,"delatarAsesino", {if(npc1.estaVivo()) {npc1.delatarAsesino()}})
+		game.onTick(100,"delatarAsesino", {if(npc2.estaVivo()) {npc2.delatarAsesino()}})
+		game.onTick(100,"delatarAsesino", {if(npc3.estaVivo()) {npc3.delatarAsesino()}})
+		game.onTick(100,"delatarAsesino", {if(npc4.estaVivo()) {npc4.delatarAsesino()}})
 	//	game.onTick(100,"cosasCerca",{jugador.hayAlgoCerca()})
 		self.configurarTeclas()
 	}
@@ -62,9 +62,7 @@ object nivel{
 		keyboard.h().onPressDo({ jugador.soltarCarga() })
 	}
 	
-	method agregarMuerto(unMuerto) {
-		return listaMuertos.add(unMuerto)
-	}
+	method agregarMuerto(unMuerto) = listaMuertos.add(unMuerto)
 	
 	method listaMuertos() = listaMuertos
 }

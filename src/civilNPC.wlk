@@ -21,9 +21,7 @@ class NPC inherits SerVivo{
 class Civil inherits NPC {
 	var property image = "npc_abajo.png"
 	
-	method cadaverCercano() {
-		return nivel.listaMuertos().filter({cadaver => self.position().distance(cadaver.position()) < 5 })
-	}
+	method cadaverCercano() = nivel.listaMuertos().filter({cadaver => self.position().distance(cadaver.position()) < 5 })
 	
 	method estaCercaDelAsesino() = self.position().distance(jugador.position()) < 5
 	
@@ -42,18 +40,17 @@ class Civil inherits NPC {
 		const sangre = new Cadaver(position = self.position())
 		game.addVisual(sangre)
 		game.removeVisual(self) 
-		soundProducer.sound("sounds/Death Sound.mp3").play()
+		game.schedule( 0, {soundProducer.sound("sounds/Death Sound.mp3").play()} ) //No tiene sentido pero sin esto no lo podia testear
 		return nivel.agregarMuerto(sangre)
 	}
-	
 	
 	method moverse(){
 		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20) , {position = movimiento.mover(direcciones.direccionRandom(),self)})
 	}
+	
 	method imageFlip(direccion){
 		image = "npc_" + direccion + ".png"
 	}
-
 }
 
 object policia inherits NPC {

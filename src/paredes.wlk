@@ -11,14 +11,10 @@ class Pared{
 }
 
 object x{
-	method crece(x,y){
-		return {i=>game.addVisual(new Pared(position = game.at(x+i,y)))}
-	}
+	method crece(x,y) = {i => game.addVisual(new Pared(position = game.at(x+i,y)))}
 }
 object y{
-	method crece(x,y){
-		return {i=>game.addVisual(new Pared(position = game.at(x,y+i)))}
-	} 
+	method crece(x,y) = {i => game.addVisual(new Pared(position = game.at(x,y+i)))}
 }
 
 object todasLasParedes{
@@ -51,6 +47,7 @@ object todasLasParedes{
 	self.lineaPared(2,24,4,x)
 	self.lineaPared(24,0,0,x)
 	}
+	
 	method lineaPared(cantidad,x,y,en){
 		cantidad.times(en.crece(x,y))
 	}

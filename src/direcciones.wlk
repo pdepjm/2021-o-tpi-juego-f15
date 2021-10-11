@@ -20,12 +20,8 @@ object direcciones {
 	
 	const property listaDirecciones = [izquierda,derecha,arriba,abajo]
 	
-	method direccionRandom() {
-		return listaDirecciones.anyOne()
-	}
-    method algoCerca(tipo,persona){
-    	return radio.radio1(persona).filter({obj => tipo.es(obj)})
-    }
+	method direccionRandom() = listaDirecciones.anyOne()
+    method algoCerca(tipo,persona) = radio.radio1(persona).filter({obj => tipo.es(obj)})
 }
 
 object izquierda {

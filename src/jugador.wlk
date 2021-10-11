@@ -13,6 +13,7 @@ object jugador inherits SerVivo{
 	var property image = "player_" + sentido + "_default.png"
 	var property imageAux = "default"
 	var property carga = vacio
+	const property esNPC = false
 
 
 	method soltarCarga(){
@@ -27,7 +28,7 @@ object jugador inherits SerVivo{
 		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interactuar()})
 	}
 	
-	method moverPara(direccion) {
+	method moverPara(direccion){
 		position = movimiento.mover(direccion,self)
 		sentido = direccion
 	}
