@@ -1,11 +1,11 @@
 # Fiesta Dura
 ## Equipo de desarrollo
 
-- Basile, Bautista - 
+- Basile, Bautista - @bautibasileutn
 - Buffoni, Julian - @JulianBuffoni
 - Demattei, Santiago - @SantiagoDemattei
 - Ingratta, Daniela - @daniingratta
-- Solari Parravicini, Joaquin - 
+- Solari Parravicini, Joaquin - @jsolarip
 - Torales, Pedro Imanol - @PedroTorales
 ## Capturas
 
