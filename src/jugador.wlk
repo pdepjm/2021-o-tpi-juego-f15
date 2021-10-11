@@ -25,7 +25,7 @@ object jugador inherits SerVivo{
 	}
 
 	method interactuar(){
-		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interactuar()})
+		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion(self)})
 	}
 	
 	method moverPara(direccion){
@@ -43,10 +43,13 @@ object jugador inherits SerVivo{
     
 	method agarrarObjeto(){
 		if(objeto.equals(vacio)){
-			objeto = direcciones.algoCerca(tipoObjeto,self).head()
-			game.removeVisual(objeto)
+			const aux = direcciones.algoCerca(tipoObjeto, self)
+			if (aux.equals([]).negate()){
+				objeto = aux.head()
+				game.removeVisual(objeto)
 			}
-		 }
+		}
+	}
     
     method soltarObjeto(){
     	if(objeto.equals(vacio).negate() && imageAux == "default"){

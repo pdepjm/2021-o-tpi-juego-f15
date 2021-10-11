@@ -14,6 +14,8 @@ describe "Inserte descripción" {
 	
 	const npc = new Civil(position = game.at(5,5))
 	const remera = new Remera(position = game.at(5,5))
+	const escotillaBanio = new Trampa(position = game.at(10,10), image = "trapdoor.png")
+	const escotillaEstudio = new Trampa(position = game.at(5,5), destino = escotillaBanio, image = "trapdoor.png")
 	
 	method initialize() {
 		jugador.position(game.at(5,5))
@@ -22,11 +24,18 @@ describe "Inserte descripción" {
 		game.addVisual(jugador)
 		game.addVisual(npc)
 		game.addVisual(remera)
+		game.addVisual(escotillaEstudio)
+		game.addVisual(escotillaBanio)
 	}
 	
 	test "movimiento jugador" {
 		jugador.moverPara(izquierda)
 		assert.equals(game.at(4,5), jugador.position())
+	}
+	
+	test "movimiento escotilla" {
+		jugador.interactuar()
+		assert.equals(game.at(10,10), jugador.position())
 	}
 	
 	test "pared" {

@@ -16,7 +16,7 @@ class Interactuable{
 class Trampa inherits Interactuable{
 	var property image = "pared.png"
 	var property destino = null
-	method interactuar(pers){
+	method interaccion(persona){
 		jugador.position(destino.position())
 	}
 }
@@ -24,17 +24,17 @@ class Trampa inherits Interactuable{
 
 class Cadaver inherits Interactuable{
 	var property image = "cadaver.png"
-	method interactuar(pers){
-		pers.carga(self)
+	method interaccion(persona){
+		persona.carga(self)
 		game.removeVisual(self)
 	}
 }
 
 class Escondite inherits Interactuable{
 	var property image = "tacho.png"
-	method interactuar(pers){
-		if(pers.carga().equals(vacio).negate()){
-			pers.carga(vacio)
+	method interaccion(persona){
+		if(persona.carga().equals(vacio).negate()){
+			persona.carga(vacio)
 		}
 	}
 }
