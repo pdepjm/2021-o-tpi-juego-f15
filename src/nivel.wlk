@@ -10,32 +10,37 @@ import soundProducer.*
 import pantallas.*
 
 object nivel{
+	// Objetos
 	const remera1 = new Remera(position = game.at(7,7))
 	const veneno1 = new Veneno(position = game.at(10,10))
 	const bomba1 = new Bomba(position = game.at(11,16))
+	// Interactuables
 	const escotillaBanio = new Trampa(position = game.at(3,23), image = "pared.png")
 	const escotillaEstudio = new Trampa(position = game.at(44,5), destino = escotillaBanio, image = "trapdoor.png")
-	const listaMuertos = []
+	// NPCs
 	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))
 	const npc3 = new Civil(position = game.at(8,15))
 	const npc4 = new Civil(position = game.at(10,7))
+	const listaMuertos = []
 	
 	method configuracionInicial(){
 		game.clear()
         soundProducer.playMusic()
+        // Inicializaciones
 		jugador.inicializar()
 		npc1.position(game.at(2,2)) 
 	    npc2.position(game.at(15,20))
 	    npc3.position(game.at(8,15))
 	    npc4.position(game.at(10,7))
+	    contadorTiempo.iniciar()
+		todasLasParedes.cargar()
+		escotillaBanio.destino(escotillaEstudio)
+		// Visuales
 		game.addVisual(contadorTiempo)
 		game.addVisual(contadorKills)
 		game.addVisual(marcoContadorTiempo)
 		game.addVisual(marcoContadorKills)
-		contadorTiempo.iniciar()
-		todasLasParedes.cargar()
-		escotillaBanio.destino(escotillaEstudio)
 		game.addVisual(escotillaBanio)
 		game.addVisual(escotillaEstudio)
 		game.addVisual(remera1)
@@ -46,6 +51,7 @@ object nivel{
 		game.addVisual(npc4)
 		game.addVisual(bomba1)
 		game.addVisual(jugador)
+		// NPCs
 		game.onTick(1000.randomUpTo(10000), "movimiento" , {npc1.moverse()})
 		game.onTick(1000.randomUpTo(10000), "movimiento", {npc2.moverse()})
 		game.onTick(1000.randomUpTo(10000), "movimiento", {npc3.moverse()})
@@ -75,5 +81,3 @@ object nivel{
 	
 	method listaMuertos() = listaMuertos
 }
-
-

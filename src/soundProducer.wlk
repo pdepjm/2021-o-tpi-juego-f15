@@ -17,7 +17,7 @@ object soundProducer {
 	method sound(audioFile) = provider.sound(audioFile)
 	
 	method playMusic() {
-		if ( contador == 0 ){
+		if ( contador == 0 ){ // Para que se ponga una cancion 1 sola vez, xq no encontre como parar canciones y si reinicias niveles se superponen las canciones
 			if ( (0..1).anyOne() == 1 ){
 				self.sound("sounds/She Meditates.mp3").play()
 				contador += 1	
@@ -29,7 +29,6 @@ object soundProducer {
 	}
 	
 	method playVictory() { self.sound("sounds/Yeah Boii.mp3").play() }
-	
 }
 
 object soundProviderMock {

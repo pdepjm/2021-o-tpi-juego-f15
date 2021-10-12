@@ -2,6 +2,8 @@ import wollok.game.*
 import nivel.*
 import soundProducer.*
 
+// Carga
+
 object pantallaDeCarga {
 	method image() = "backround.png"
 	method position() = game.origin()
@@ -13,11 +15,7 @@ object pantallaDeCarga {
         self.configurarTeclas()
     }
     method configurarTeclas(){
-        keyboard.enter().onPressDo({
-        	if(game.hasVisual(self)){
-            	nivel.configuracionInicial()
-        	}
-        })
+        keyboard.enter().onPressDo({ if(game.hasVisual(self)) nivel.configuracionInicial() })
 	}
 }
 
@@ -26,15 +24,7 @@ object mensajeCarga {
 	method position() = game.at(10,2)
 }
 
-object mensajeReinicio {
-	method image() = "message2.png"
-	method position() = game.at(10,4)
-}
-
-object mensajeQuit {
-	method image() = "message3.png"
-	method position() = game.at(12,2)
-}
+// Victoria
 
 object pantallaDeVictoria {
 	method image() = "pantallaVictoria.jpg"
@@ -59,4 +49,14 @@ object pantallaDeVictoria {
         	}
         })
 	}
+}
+
+object mensajeReinicio {
+	method image() = "message2.png"
+	method position() = game.at(10,4)
+}
+
+object mensajeQuit {
+	method image() = "message3.png"
+	method position() = game.at(12,2)
 }
