@@ -7,7 +7,7 @@ class Pared{
 	const property esObjeto = false
 	const property esInteractuable = false
 	const property esNPC = false	
-	var property image = "pared.png"
+	var property image = "hud_gui/pared.png"
 }
 
 object x{

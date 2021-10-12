@@ -5,7 +5,7 @@ import soundProducer.*
 // Carga
 
 object pantallaDeCarga {
-	method image() = "backround.png"
+	method image() = "hud_gui/backround.png"
 	method position() = game.origin()
 
     method configuracionInicial(){
@@ -20,14 +20,14 @@ object pantallaDeCarga {
 }
 
 object mensajeCarga {
-	method image() = "message.png"
+	method image() = "hud_gui/message.png"
 	method position() = game.at(10,2)
 }
 
 // Victoria
 
 object pantallaDeVictoria {
-	method image() = "pantallaVictoria.jpg"
+	method image() = "hud_gui/pantallaVictoria.jpg"
 	method position() = game.origin()
 	
 	method ganar(){
@@ -52,11 +52,11 @@ object pantallaDeVictoria {
 }
 
 object mensajeReinicio {
-	method image() = "message2.png"
+	method image() = "hud_gui/message2.png"
 	method position() = game.at(10,4)
 }
 
 object mensajeQuit {
-	method image() = "message3.png"
+	method image() = "hud_gui/message3.png"
 	method position() = game.at(12,2)
 }

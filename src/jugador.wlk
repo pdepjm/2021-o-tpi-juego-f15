@@ -10,13 +10,13 @@ object jugador inherits SerVivo{
 	var property position = game.at(6,2)
 	var property objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property sentido = derecha
-	var property image = "player_derecha_default.png"
+	var property image = "personajes/player_derecha_default.png"
 	var property imageAux = "default"
 	var property carga = vacio
 	const property esNPC = false
 
 	method inicializar() {
-		image = "player_derecha_default.png"
+		image = "personajes/player_derecha_default.png"
 		objeto = vacio
 		position = game.at(6,2)
 	}
@@ -39,7 +39,7 @@ object jugador inherits SerVivo{
 	}
 	
 	method imageFlip(direccion){
-		image = "player_"+ direccion + "_" + imageAux +".png"
+		image = "personajes/player_"+ direccion + "_" + imageAux +".png"
 	}
 	
     method usarCuchillo(){
@@ -69,12 +69,12 @@ object jugador inherits SerVivo{
     }
     
     method cambiarRopa() {
-    	if(image == "player_" + sentido.toString() + "_default.png"){
-    		image = "player_" + sentido.toString() + "_vestido.png"
+    	if(image == "personajes/player_" + sentido.toString() + "_default.png"){
+    		image = "personajes/player_" + sentido.toString() + "_vestido.png"
     		imageAux = "vestido"
     	}
-    	else if (image == "player_" + sentido.toString() + "_vestido.png"){
-    		image = "player_" + sentido.toString() + "_default.png"
+    	else if (image == "personajes/player_" + sentido.toString() + "_vestido.png"){
+    		image = "personajes/player_" + sentido.toString() + "_default.png"
     		imageAux = "default"
     	}
     }

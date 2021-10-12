@@ -9,7 +9,7 @@ program juego {
 	game.height(25)
 	game.width(50)
 	pantallaDeCarga.configuracionInicial()
-	game.boardGround("mapa.png")
+	game.boardGround("hud_gui/mapa.png")
 	//nivel.configuracionInicial()
 	game.start()
 }

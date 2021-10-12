@@ -15,8 +15,8 @@ object nivel{
 	const veneno1 = new Veneno(position = game.at(10,10))
 	const bomba1 = new Bomba(position = game.at(11,16))
 	// Interactuables
-	const escotillaBanio = new Trampa(position = game.at(3,23), image = "pared.png")
-	const escotillaEstudio = new Trampa(position = game.at(44,5), destino = escotillaBanio, image = "trapdoor.png")
+	const escotillaBanio = new Trampa(position = game.at(3,23), image = "hud_gui/pared.png")
+	const escotillaEstudio = new Trampa(position = game.at(44,5), destino = escotillaBanio, image = "interactuables/trapdoor.png")
 	// NPCs
 	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))

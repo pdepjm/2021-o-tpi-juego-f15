@@ -12,7 +12,7 @@ class Objeto {
 }
 
 class Remera inherits Objeto {
-	var property image = "remera.png"
+	var property image = "objetos/remera.png"
 	method usar(personaje) {
 		personaje.cambiarRopa()
 	}
@@ -23,21 +23,21 @@ object vacio inherits Objeto {
 }
 
 class Veneno inherits Objeto {
-	method image() = "veneno.png"
+	method image() = "objetos/veneno.png"
 	method usar(personaje) {
 
 	}
 }
 
 object pizza inherits Objeto {
-	method image() = ".png"
+	method image() = "objetos/.png"
 	method usar(personaje) {
 
 	}
 }
 
 class Bomba inherits Objeto {
-	method image() = "bomb.png"
+	method image() = "objetos/bomb.png"
 	method usar(personaje) {
 		position = personaje.position()
 	//	game.schedule(2000, self.explotar(personaje.position()) )
@@ -47,7 +47,7 @@ class Bomba inherits Objeto {
 }
 
 class BombaDeHumo inherits Objeto {
-	method image() = ".png"
+	method image() = "objetos/.png"
 	method usar(personaje) {
 
 	}

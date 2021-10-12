@@ -14,7 +14,7 @@ import pantallas.*
 // ¡También se puede combinar con las imágenes!
 
 object marcoContadorKills {
-	method image() = "contador.png"
+	method image() = "hud_gui/contador.png"
 	method position() = game.at(42,1)
 }
 
@@ -35,7 +35,7 @@ object contadorKills {
 }
 
 object marcoContadorTiempo {
-	method image() = "contador.png"
+	method image() = "hud_gui/contador.png"
 	method position() = game.at(40,1)
 }
 

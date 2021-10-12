@@ -20,7 +20,7 @@ class NPC inherits SerVivo {
 }
 
 class Civil inherits NPC {
-	var property image = "npc_abajo.png"
+	var property image = "personajes/npc_abajo.png"
 	
 	method cadaverCercano() = ( nivel.listaMuertos() ).filter({ cadaver => self.position().distance(cadaver.position()) < 6 })
 	
@@ -52,12 +52,12 @@ class Civil inherits NPC {
 	}
 	
 	method imageFlip(direccion){
-		image = "npc_" + direccion + ".png"
+		image = "personajes/npc_" + direccion + ".png"
 	}
 }
 
 object policia inherits NPC {
-	method image() = "police.png"
+	method image() = "personajes/police.png"
 	
 	method buscarCadaver(cadaver){
 		cadaver.forEach{ muerto => self.eliminarCadaver(muerto) }		
