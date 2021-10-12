@@ -51,6 +51,6 @@ describe "testsUwU" {
 	test "agarrar y usar remera" {
 		jugador.agarrarObjeto()
 		jugador.usarObjeto()
-		assert.equals("player_derecha_vestido.png", jugador.image())
+		assert.equals("personajes/player_derecha_vestido.png", jugador.image())
 	}
 }
