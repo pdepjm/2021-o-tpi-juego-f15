@@ -16,13 +16,19 @@ object nivel{
 	const escotillaBanio = new Trampa(position = game.at(3,23), image = "pared.png")
 	const escotillaEstudio = new Trampa(position = game.at(44,5), destino = escotillaBanio, image = "trapdoor.png")
 	const listaMuertos = []
-	const npc1 = new Civil(position = game.at(5,5)) 
+	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))
 	const npc3 = new Civil(position = game.at(8,15))
 	const npc4 = new Civil(position = game.at(10,7))
 	
 	method configuracionInicial(){
 		game.clear()
+        soundProducer.playMusic()
+		jugador.inicializar()
+		npc1.position(game.at(2,2)) 
+	    npc2.position(game.at(15,20))
+	    npc3.position(game.at(8,15))
+	    npc4.position(game.at(10,7))
 		game.addVisual(contadorTiempo)
 		game.addVisual(contadorKills)
 		game.addVisual(marcoContadorTiempo)
@@ -68,7 +74,6 @@ object nivel{
 	method agregarMuerto(unMuerto) = listaMuertos.add(unMuerto)
 	
 	method listaMuertos() = listaMuertos
-	
 }
 
 

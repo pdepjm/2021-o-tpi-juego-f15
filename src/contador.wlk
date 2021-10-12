@@ -27,12 +27,11 @@ object contadorKills {
 	
 	method text() {
 		if( kills.equals(limite) ){
-			/*game.clear()
-			pantallaDeVictoria.ganar()*/
+			game.schedule(200, { pantallaDeVictoria.ganar() })
+			kills = 0
 		}
 		return kills.toString() + " / " + limite.toString()
 	}
-    
 }
 
 object marcoContadorTiempo {
@@ -48,9 +47,13 @@ object contadorTiempo {
     
     method text() = minutos.toString() + " : " + segundos.toString()
     method position() = game.at(42,1)
-    //method textColor() = paletaDeColores.blanco()
     
-    method iniciar() { game.onTick(1000, "updateTimer", { => self.update() }) }
+    method iniciar() { 
+		segundos = 0
+		minutos = 0
+		acumuladorTiempo = 0
+		game.onTick(1000, "updateTimer", { => self.update() })
+}
     method update(){
         acumuladorTiempo += 1
         if(acumuladorTiempo<60){

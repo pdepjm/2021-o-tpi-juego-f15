@@ -10,11 +10,16 @@ object jugador inherits SerVivo{
 	var property position = game.at(6,2)
 	var property objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property sentido = derecha
-	var property image = "player_" + sentido.toString() + "_default.png"
+	var property image = "player_derecha_default.png"
 	var property imageAux = "default"
 	var property carga = vacio
 	const property esNPC = false
 
+	method inicializar() {
+		image = "player_derecha_default.png"
+		objeto = vacio
+		position = game.at(6,2)
+	}
 
 	method soltarCarga(){
 		if(self.carga().equals(vacio).negate()){

@@ -7,8 +7,8 @@ import wollok.game.*
 // lo que deben hacer es cambiar el proveedor del soundProducer, asi: soundProducer.provider(soundProviderMock)
 
 object soundProducer {
-	
 	var provider = game
+	var contador = 0
 	
 	method provider(_provider){
 		provider = _provider
@@ -17,16 +17,19 @@ object soundProducer {
 	method sound(audioFile) = provider.sound(audioFile)
 	
 	method playMusic() {
-		if (0.randomUpTo(2).roundUp() == 1){
-			self.sound("sounds/She Meditates.mp3").play()	
-		}else{
-			self.sound("sounds/Blizzard.mp3").play()	
+		if ( contador == 0 ){
+			if ( (0..1).anyOne() == 1 ){
+				self.sound("sounds/She Meditates.mp3").play()
+				contador += 1	
+			}else{
+				self.sound("sounds/Blizzard.mp3").play()
+				contador += 1
+			}
 		}
 	}
 	
-	method playVictory() {
-		self.sound("sounds/Yeah Boii.mp3").play()
-	}
+	method playVictory() { self.sound("sounds/Yeah Boii.mp3").play() }
+	
 }
 
 object soundProviderMock {
@@ -40,7 +43,7 @@ object soundMock {
 	
 	method play(){}
 	
-	method played() = false
+	method played() = true
 	
 	method resume(){}
 	
@@ -52,5 +55,5 @@ object soundMock {
 	
 	method volume(newVolume){}
 	
-	method volume() = 0
+	method volume() = 1
 }
