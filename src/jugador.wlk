@@ -34,7 +34,7 @@ object jugador inherits SerVivo{
 	}
 
 	method interactuar(){
-		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion(self)})
+		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion()})
 	}
 	
 	method moverPara(direccion){
