@@ -21,17 +21,18 @@ class NPC inherits SerVivo {
 
 class Civil inherits NPC {
 	var property image = "personajes/npc_abajo.png"
+	const radioDeVision = 6
 	
-	method cadaverCercano() = ( nivel.listaMuertos() ).filter({ cadaver => self.position().distance(cadaver.position()) < 6 })
+	method cadaverCercano() = ( nivel.listaMuertos() ).filter({ cadaver => position.distance(cadaver.position()) < radioDeVision })
 	
-	method estaCercaDelAsesino() = self.position().distance( jugador.position() ) < 5
+	method estaCercaDelAsesino() = self.position().distance( jugador.position() ) < radioDeVision
 	
 	method delatarAsesino(){
-		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && self.estaVivo()){
+		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && estaVivo){
 			game.say(self, "Hay un asesino entre nosotros")
 			game.schedule( 2000, { policia.buscarCadaver( self.cadaverCercano() ) } )
 		}
-		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && self.estaVivo()){
+		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && estaVivo){
 			game.say(self, "Te descubri!!! Llamare a la policia")
 			game.schedule( 1000, { policia.buscarAsesino() } )
 		}
@@ -40,7 +41,7 @@ class Civil inherits NPC {
 	method morir(){
 		game.schedule( 0, {soundProducer.sound("sounds/Death Sound.mp3").play()} ) //No tiene sentido pero sin esto no lo podia testear
 		game.removeVisual(self)
-		const sangre = new Cadaver(position = self.position())
+		const sangre = new Cadaver(position = position)
 		game.addVisual(sangre)
 		contadorKills.subirKills()
 		self.estaVivo(false)
@@ -64,12 +65,14 @@ object policia inherits NPC {
 	}
 	
 	method eliminarCadaver(muerto){
-		position = muerto.position()
-		game.addVisual(self)
-		game.removeVisual(muerto)
-		nivel.listaMuertos().remove(muerto) 
-		game.schedule(2000, {game.removeVisual(self)})
-		game.say(self, "ALEJAOS! Estamos haciendo la removicion de un cadaver!")
+		if( game.hasVisual(self).negate() ){
+			position = muerto.position()
+			game.addVisual(self)
+			game.removeVisual(muerto)
+			nivel.listaMuertos().remove(muerto) 
+			game.schedule(2000, {game.removeVisual(self)})
+			game.say(self, "ALEJAOS! Estamos haciendo la removicion de un cadaver!")
+		}
 	}
 	
 	method buscarAsesino(){ 
