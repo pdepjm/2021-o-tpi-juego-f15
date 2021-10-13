@@ -30,11 +30,11 @@ class Civil inherits NPC {
 	method delatarAsesino(){
 		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && estaVivo){
 			game.say(self, "Hay un asesino entre nosotros")
-			game.schedule( 2000, { policia.buscarCadaver( self.cadaverCercano() ) } )
+			policia.buscarCadaver( self.cadaverCercano())
 		}
 		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && estaVivo){
 			game.say(self, "Te descubri!!! Llamare a la policia")
-			game.schedule( 1000, { policia.buscarAsesino() } )
+			policia.buscarAsesino()
 		}
 	}
 	
@@ -61,7 +61,7 @@ object policia inherits NPC {
 	var property image = "personajes/police.png"
 	
 	method buscarCadaver(cadaver){
-		cadaver.forEach{ muerto => self.eliminarCadaver(muerto) }		
+		game.schedule(1000, {cadaver.forEach{ muerto => self.eliminarCadaver(muerto) }})		
 	}
 	
 	method eliminarCadaver(muerto){
@@ -75,7 +75,8 @@ object policia inherits NPC {
 		}
 	}
 	
-	method buscarAsesino(){ 
+	method buscarAsesino(){
+		game.schedule(1000,{
 		if(jugador.estaVestido()){ self.error("") } //si tiene la remera puesta, el policia no lo encuentra aunque este cerca del cadaver
 		if( game.hasVisual(self).negate() ){
 			position = jugador.position()
@@ -88,6 +89,7 @@ object policia inherits NPC {
 			})
 			game.schedule(2800, {game.stop()})
 		}
+		})
 	}
 }
 	
