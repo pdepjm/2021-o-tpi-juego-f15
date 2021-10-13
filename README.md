@@ -88,3 +88,6 @@ Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaj
 
 1. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
 
+## Diagrams
+
+![Diagrama](https://imgur.com/MYnJHNH.png)
