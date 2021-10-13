@@ -13,8 +13,8 @@ describe "testsUwU" {
 	
 	const npc = new Civil(position = game.at(5,5))
 	const remera = new Remera(position = game.at(5,5))
-	const escotillaBanio = new Trampa(position = game.at(10,10), image = "trapdoor.png")
-	const escotillaEstudio = new Trampa(position = game.at(5,5), destino = escotillaBanio, image = "trapdoor.png")
+	const escotillaBanio = new Escotilla(position = game.at(10,10), image = "trapdoor.png")
+	const escotillaEstudio = new Escotilla(position = game.at(5,5), destino = escotillaBanio, image = "trapdoor.png")
 	
 	method initialize() {
 		jugador.position(game.at(5,5))
@@ -52,9 +52,5 @@ describe "testsUwU" {
 		jugador.agarrarObjeto()
 		jugador.usarObjeto()
 		assert.equals("personajes/player_derecha_vestido.png", jugador.image())
-	}
-	
-	test "" {
-		
 	}
 }

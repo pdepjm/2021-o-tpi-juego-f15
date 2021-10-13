@@ -32,6 +32,8 @@ object contadorKills {
 		}
 		return kills.toString() + " / " + limite.toString()
 	}
+	
+	method subirKills() { kills += 1 }
 }
 
 object marcoContadorTiempo {

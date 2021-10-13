@@ -42,7 +42,7 @@ class Civil inherits NPC {
 		game.removeVisual(self)
 		const sangre = new Cadaver(position = self.position())
 		game.addVisual(sangre)
-		contadorKills.kills( contadorKills.kills() + 1 )
+		contadorKills.subirKills()
 		self.estaVivo(false)
 		return nivel.agregarMuerto(sangre)
 	}

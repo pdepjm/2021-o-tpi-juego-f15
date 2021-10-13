@@ -12,7 +12,7 @@ class Interactuable{
 	const property esNPC = false
 }
 
-class Trampa inherits Interactuable{
+class Escotilla inherits Interactuable{
 	var property image = "pared.png"
 	var property destino = null
 	method interaccion(persona){
