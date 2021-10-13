@@ -20,20 +20,34 @@ class Escotilla inherits Interactuable{
 	}
 }
 
-class Cadaver inherits Interactuable{
+class Cadaver inherits Interactuable {
 	var property image = "personajes/cadaver.png"
+	var cargado = false
+	var ultimaPos = jugador.position().right(1)
+	
 	method interaccion(){
-		jugador.carga(self)
-		game.removeVisual(self)
+		if(cargado.equals(false)){
+			cargado = true
+		}else{
+			cargado = false
+			ultimaPos = jugador.position().right(1)
+		}
+	}
+	
+	override method position() {
+		if(cargado)
+			return jugador.position().right(1)
+		else
+			return ultimaPos
 	}
 }
 
-class Escondite inherits Interactuable{
+/*class Escondite inherits Interactuable{ cadaveres cerca desaparecen
 	var property image = "objetos/tacho.png"
 	method interaccion(){
 		if(jugador.carga().equals(vacio).negate()){
 			jugador.carga(vacio)
 		}
 	}
-}
+}*/
 

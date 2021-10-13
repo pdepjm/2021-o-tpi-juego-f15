@@ -21,11 +21,11 @@ class NPC inherits SerVivo {
 
 class Civil inherits NPC {
 	var property image = "personajes/npc_abajo.png"
-	const radioDeVision = 6
+	const radioDeVision = 5
 	
-	method cadaverCercano() = ( nivel.listaMuertos() ).filter({ cadaver => position.distance(cadaver.position()) < radioDeVision })
+	method cadaverCercano() = nivel.listaMuertos().filter({ cadaver => position.distance(cadaver.position()) < radioDeVision })
 	
-	method estaCercaDelAsesino() = self.position().distance( jugador.position() ) < radioDeVision
+	method estaCercaDelAsesino() = position.distance( jugador.position() ) < radioDeVision
 	
 	method delatarAsesino(){
 		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && estaVivo){

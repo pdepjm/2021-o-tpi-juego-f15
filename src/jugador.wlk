@@ -12,7 +12,7 @@ object jugador inherits SerVivo{
 	var property sentido = derecha
 	var property image = "personajes/player_derecha_default.png"
 	var property imageAux = "default"
-	var property carga = vacio
+	//var property carga = vacio
 	const property esNPC = false
 	var property miedo = false
 
@@ -25,13 +25,13 @@ object jugador inherits SerVivo{
 		miedo = false
 	}
 
-	method soltarCarga(){
+	/*method soltarCarga(){
 		if(self.carga().equals(vacio).negate()){
 			carga.position(position)
 			game.addVisual(carga)
 			carga = vacio
 		}
-	}
+	}*/
 
 	method interactuar(){
 		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion()})
@@ -86,4 +86,5 @@ object jugador inherits SerVivo{
     }
     
     method estaVestido() = (imageAux == "vestido")
+    
 }
