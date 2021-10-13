@@ -52,24 +52,19 @@ object jugador inherits SerVivo{
     	direcciones.algoCerca(tipoNpc,self).forEach({npc => npc.morir()})
     }
     
-	method agarrarObjeto(){
-		if(objeto.equals(vacio)){
+	method buscarObjeto(){
 			const aux = direcciones.algoCerca(tipoObjeto, self)
-			if (aux.equals([]).negate()){
-				objeto = aux.head()
-				game.removeVisual(objeto)
+			if (objeto.equals(vacio).negate()){
+				objeto.position(position)
+        		game.addVisual(objeto)
+        		objeto = vacio
 			}
-		}
+        	if (aux.equals([]).negate()){
+        		objeto = aux.head()
+        		game.removeVisual(objeto)
+			}
 	}
-    
-    method soltarObjeto(){
-    	if(objeto.equals(vacio).negate() && imageAux == "default"){
-        	objeto.position(position)
-        	game.addVisual(objeto)
-        	objeto = vacio
-        }
-    }
-    
+
     method usarObjeto() {
     	objeto.usar()
     }

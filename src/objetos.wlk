@@ -18,7 +18,7 @@ class Remera inherits Objeto {
 	}
 }
 
-object vacio inherits Objeto {
+object vacio {
 	method usar(){}
 }
 
