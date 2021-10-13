@@ -14,11 +14,15 @@ object jugador inherits SerVivo{
 	var property imageAux = "default"
 	var property carga = vacio
 	const property esNPC = false
+	var property miedo = false
 
 	method inicializar() {
 		image = "personajes/player_derecha_default.png"
 		objeto = vacio
 		position = game.at(6,2)
+		sentido = derecha
+		imageAux = "default"
+		miedo = false
 	}
 
 	method soltarCarga(){
@@ -34,12 +38,14 @@ object jugador inherits SerVivo{
 	}
 	
 	method moverPara(direccion){
+		if(miedo.equals(false)){
 		position = movimiento.mover(direccion,self)
 		sentido = direccion
+		}
 	}
 	
 	method imageFlip(direccion){
-		image = "personajes/player_"+ direccion + "_" + imageAux +".png"
+		image = "personajes/player_" + direccion + "_" + imageAux +".png"
 	}
 	
     method usarCuchillo(){
@@ -65,7 +71,7 @@ object jugador inherits SerVivo{
     }
     
     method usarObjeto() {
-    	objeto.usar(self)
+    	objeto.usar()
     }
     
     method cambiarRopa() {
@@ -78,5 +84,6 @@ object jugador inherits SerVivo{
     		imageAux = "default"
     	}
     }
-   
+    
+    method estaVestido() = (imageAux == "vestido")
 }

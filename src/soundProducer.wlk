@@ -29,6 +29,8 @@ object soundProducer {
 	}
 	
 	method playVictory() { self.sound("sounds/Yeah Boii.mp3").play() }
+	
+	method horror() { self.sound("sounds/omae wa mou.mp3").play() }
 }
 
 object soundProviderMock {

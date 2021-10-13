@@ -10,6 +10,5 @@ program juego {
 	game.width(50)
 	pantallaDeCarga.configuracionInicial()
 	game.boardGround("hud_gui/mapa.png")
-	//nivel.configuracionInicial()
 	game.start()
 }

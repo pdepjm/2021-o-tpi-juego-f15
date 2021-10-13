@@ -32,12 +32,12 @@ describe "testsUwU" {
 		assert.equals(game.at(4,5), jugador.position())
 	}
 	
-	test "movimiento escotilla" {
+	test "movimiento por escotilla" {
 		jugador.interactuar()
 		assert.equals(game.at(10,10), jugador.position())
 	}
 	
-	test "pared" {
+	test "obstaculo pared" {
 		jugador.position(game.at(1,1))
 		jugador.moverPara(izquierda)
 		assert.equals(game.at(1,1), jugador.position())
@@ -48,9 +48,13 @@ describe "testsUwU" {
 		assert.that(game.hasVisual(npc).negate())
 	}
 	
-	test "agarrar y usar remera" {
+	test "agarrar y usar objeto" {
 		jugador.agarrarObjeto()
 		jugador.usarObjeto()
 		assert.equals("personajes/player_derecha_vestido.png", jugador.image())
+	}
+	
+	test "" {
+		
 	}
 }

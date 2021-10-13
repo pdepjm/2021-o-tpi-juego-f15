@@ -14,7 +14,7 @@ object movimiento{
 			return player.position()
 	}
 	
-	method condicionMovimiento(sentido, player) = game.getObjectsIn(sentido.proximaPosicion(player.position())).all({objeto => objeto.objetoAtravesable()})
+	method condicionMovimiento(sentido, player) = game.getObjectsIn(sentido.proximaPosicion(player.position())).all({auxiliar => auxiliar.objetoAtravesable()})
 }
 
 object direcciones {
@@ -22,7 +22,7 @@ object direcciones {
 	
 	method direccionRandom() = listaDirecciones.anyOne()
 	
-    method algoCerca(tipo, persona) = radio.radio1(persona).filter({objeto => tipo.es(objeto)})
+    method algoCerca(tipo, persona) = radio.radio1(persona).filter({auxiliar => tipo.es(auxiliar)})
 }
 
 object izquierda {

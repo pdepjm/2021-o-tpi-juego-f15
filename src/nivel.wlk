@@ -10,6 +10,7 @@ import soundProducer.*
 import pantallas.*
 
 object nivel{
+	
 	// Objetos
 	const remera1 = new Remera(position = game.at(7,7))
 	const veneno1 = new Veneno(position = game.at(10,10))
@@ -20,7 +21,7 @@ object nivel{
 	// NPCs
 	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))
-	const npc3 = new Civil(position = game.at(8,15))
+	const npc3 = new Civil(position = game.at(10,4))
 	const npc4 = new Civil(position = game.at(10,7))
 	const listaMuertos = []
 	
@@ -31,7 +32,7 @@ object nivel{
 		jugador.inicializar()
 		npc1.position(game.at(2,2)) 
 	    npc2.position(game.at(15,20))
-	    npc3.position(game.at(8,15))
+	    npc3.position(game.at(10,4))
 	    npc4.position(game.at(10,7))
 	    contadorTiempo.iniciar()
 		todasLasParedes.cargar()
@@ -41,16 +42,19 @@ object nivel{
 		game.addVisual(contadorKills)
 		game.addVisual(marcoContadorTiempo)
 		game.addVisual(marcoContadorKills)
+		game.addVisual(jugador)
+			// Interactuables
 		game.addVisual(escotillaBanio)
 		game.addVisual(escotillaEstudio)
+			//Objetos
 		game.addVisual(remera1)
 		game.addVisual(veneno1)
+		game.addVisual(bomba1)
+			// NPCs
 		game.addVisual(npc1)
 		game.addVisual(npc2)
 		game.addVisual(npc3)
 		game.addVisual(npc4)
-		game.addVisual(bomba1)
-		game.addVisual(jugador)
 		// NPCs
 		game.onTick(1000.randomUpTo(10000), "movimiento" , {npc1.moverse()})
 		game.onTick(1000.randomUpTo(10000), "movimiento", {npc2.moverse()})
@@ -65,19 +69,20 @@ object nivel{
 	}
 	
 	method configurarTeclas(){
-		keyboard.w().onPressDo({ jugador.moverPara(arriba) })
-		keyboard.a().onPressDo({ jugador.moverPara(izquierda) })
-		keyboard.s().onPressDo({ jugador.moverPara(abajo) })
-		keyboard.d().onPressDo({ jugador.moverPara(derecha) })
-		keyboard.r().onPressDo({ jugador.usarCuchillo() })
-		keyboard.e().onPressDo({ jugador.agarrarObjeto() })
-		keyboard.q().onPressDo({ jugador.soltarObjeto() })
-		keyboard.f().onPressDo({ jugador.usarObjeto() })
-		keyboard.g().onPressDo({ jugador.interactuar() })
-		keyboard.h().onPressDo({ jugador.soltarCarga() })
+			keyboard.w().onPressDo({ jugador.moverPara(arriba) })
+			keyboard.a().onPressDo({ jugador.moverPara(izquierda) })
+			keyboard.s().onPressDo({ jugador.moverPara(abajo) })
+			keyboard.d().onPressDo({ jugador.moverPara(derecha) })
+			keyboard.r().onPressDo({ jugador.usarCuchillo() })
+			keyboard.e().onPressDo({ jugador.agarrarObjeto() })
+			keyboard.q().onPressDo({ jugador.soltarObjeto() })
+			keyboard.f().onPressDo({ jugador.usarObjeto() })
+			keyboard.g().onPressDo({ jugador.interactuar() })
+			keyboard.h().onPressDo({ jugador.soltarCarga() })
 	}
 	
 	method agregarMuerto(unMuerto) = listaMuertos.add(unMuerto)
 	
 	method listaMuertos() = listaMuertos
+	
 }

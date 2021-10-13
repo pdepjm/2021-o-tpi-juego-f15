@@ -27,11 +27,11 @@ class Civil inherits NPC {
 	method estaCercaDelAsesino() = self.position().distance( jugador.position() ) < 5
 	
 	method delatarAsesino(){
-		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && self.estaVivo() ){
+		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && self.estaVivo()){
 			game.say(self, "Hay un asesino entre nosotros")
 			game.schedule( 2000, { policia.buscarCadaver( self.cadaverCercano() ) } )
 		}
-		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && self.estaVivo() ){
+		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && self.estaVivo()){
 			game.say(self, "Te descubri!!! Llamare a la policia")
 			game.schedule( 1000, { policia.buscarAsesino() } )
 		}
@@ -57,7 +57,7 @@ class Civil inherits NPC {
 }
 
 object policia inherits NPC {
-	method image() = "personajes/police.png"
+	var property image = "personajes/police.png"
 	
 	method buscarCadaver(cadaver){
 		cadaver.forEach{ muerto => self.eliminarCadaver(muerto) }		
@@ -69,15 +69,22 @@ object policia inherits NPC {
 		game.removeVisual(muerto)
 		nivel.listaMuertos().remove(muerto) 
 		game.schedule(2000, {game.removeVisual(self)})
-		game.say(self, "ALEJENSE! Estamos quitando un cadaver!")
+		game.say(self, "ALEJAOS! Estamos haciendo la removicion de un cadaver!")
 	}
 	
 	method buscarAsesino(){ 
-		if(jugador.imageAux() == "vestido"){self.error("")} //si tiene la remera puesta, el policia no lo encuentra aunque este cerca del cadaver
-		position = jugador.position()
-		game.addVisual(self)
-		game.say(self, "Te hemos encontrado, has perdido!!")
-		game.onTick(2000, "encontrarAsesino", {game.stop()})	
+		if(jugador.estaVestido()){ self.error("") } //si tiene la remera puesta, el policia no lo encuentra aunque este cerca del cadaver
+		if( game.hasVisual(self).negate() ){
+			position = jugador.position()
+			game.addVisual(self)
+			game.say(self, "Te encontramos pa, perdiste!!")
+			game.schedule(200, {
+				image = "personajes/police2.png"
+				jugador.miedo(true)
+				soundProducer.horror()
+			})
+			game.schedule(2800, {game.stop()})
+		}
 	}
 }
 	
