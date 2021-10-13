@@ -15,24 +15,24 @@ class Interactuable{
 class Escotilla inherits Interactuable{
 	var property image = "pared.png"
 	var property destino = null
-	method interaccion(persona){
+	method interaccion(){
 		jugador.position(destino.position())
 	}
 }
 
 class Cadaver inherits Interactuable{
 	var property image = "personajes/cadaver.png"
-	method interaccion(persona){
-		persona.carga(self)
+	method interaccion(){
+		jugador.carga(self)
 		game.removeVisual(self)
 	}
 }
 
 class Escondite inherits Interactuable{
 	var property image = "objetos/tacho.png"
-	method interaccion(persona){
-		if(persona.carga().equals(vacio).negate()){
-			persona.carga(vacio)
+	method interaccion(){
+		if(jugador.carga().equals(vacio).negate()){
+			jugador.carga(vacio)
 		}
 	}
 }
