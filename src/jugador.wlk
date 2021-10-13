@@ -19,7 +19,7 @@ object jugador inherits SerVivo{
 	method inicializar() {
 		image = "personajes/player_derecha_default.png"
 		objeto = vacio
-		position = game.at(6,2)
+		position = game.at(28,2)
 		sentido = derecha
 		imageAux = "default"
 		miedo = false

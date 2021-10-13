@@ -39,7 +39,7 @@ class Civil inherits NPC {
 	}
 	
 	method morir(){
-		game.schedule( 0, {soundProducer.sound("sounds/Death Sound.mp3").play()} ) //No tiene sentido pero sin esto no lo podia testear
+		game.schedule( 0, {soundProducer.muerte()} ) //No tiene sentido pero sin esto no lo podia testear
 		game.removeVisual(self)
 		const sangre = new Cadaver(position = position)
 		game.addVisual(sangre)

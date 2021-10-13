@@ -1,5 +1,6 @@
 # Fiesta Dura
 ## Equipo de desarrollo
+---
 
 - Basile, Bautista - @bautibasileutn
 - Buffoni, Julian - @JulianBuffoni
@@ -8,11 +9,19 @@
 - Solari Parravicini, Joaquin - @jsolarip
 - Torales, Pedro Imanol - @PedroTorales
 ## Capturas
+---
 
 - Pantalla de Carga
 ![pantallaDeCarga](https://imgur.com/RbzasyD.png)
 
+- Gameplay 4K HDR
+![gameplay](https://imgur.com/R9yyIs1.png)
+
+- Pantalla de Victoria
+![pantallaDeVictoria](https://imgur.com/umRjuwJ.png)
+
 ## Reglas de Juego / Instrucciones
+---
 
 |INSTRUCCIONES               |            |
 |---------------|------------|
@@ -22,6 +31,7 @@
 |Soltar Objeto  |     q      |
 |Usar Objeto    |     f      |
 |Usar Escotilla |     g      |
+|               |            |
 
 **REGLAS**
 
@@ -32,15 +42,29 @@ El objetivo del jugador es intentar matar a todas las personas de la fiesta con 
 
 Para *silenciar* a los jóvenes el jugador podra utilizar un cuchillo (que siempre tiene a disposicion) u otros objetos que encuentre en el lugar. Ademas, para desplazarse con mayor rapidez puede hacer uso de escotillas, que le permiten moverse intantanseamente entre 2 posiciones del mapa.
 ## Respuestas teóricas
+---
 
 1. **Polimorfismo**: ¿Cuál es el mensaje polimórfico? ¿Qué objetos lo implementan? ¿Qué objeto se aprovecha de ello?
 
 ```wollok
-
+objeto.usar()
 ```
 
+Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaje, y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual de ellos se trate.
+
+---
 2. **Colecciones**: ¿Qué operaciones de colecciones se utilizan? ¿Usaron mensajes con y sin efecto? ¿Para qué?
 
+|Operaciones|Efecto/Consulta|
+|-----------|---------------|
+|forEach    |Efecto         |
+|anyOne     |Consulta       |
+|filter     |Consulta       |
+|add        |Efecto         |
+|remove     |Efecto         |
+|size       |Consulta       |
+|head       |Consulta       |
+|           |               |
 
 
 3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
@@ -52,7 +76,15 @@ Para *silenciar* a los jóvenes el jugador podra utilizar un cuchillo (que siemp
     Definimos la clase "*Objeto*" para poder codear una unica vez los atributos que definen a un "*objeto*", en vez de hacerlo para cada "*objeto*" en particular.
     Los "*objetos*" se instancian en la configuracion inicial del nivel, luego de salir de la pantalla de carga.
 
-    **TERMINAR**
+    Los "*objetos*" pertenecientes a la clase comparten los siguientes atributos / metodos:
+    ```wollok
+    property esObjeto
+    property esInteractuable
+    property esNPC
+    property objetoAtravesable
+    property position
+    ```
+    Sin embargo, cada "*objeto*" posee un metodo "*usar()*" propio, ya que cada uno de ellos debe reaccionar de manera diferente.
 
-5. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
+1. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
 
