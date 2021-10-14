@@ -11,11 +11,13 @@ class Objeto {
 	const property esNPC = false
 	const property objetoAtravesable = true
 	const property esCadaver = false
-	var property position = game.at(10,10) 
+	var property position = game.at(10,10)
+	const imageAux
+	
+	method image() = "objetos/" + imageAux + ".png"
 }
 
-class Remera inherits Objeto {
-	var property image = "objetos/remera.png"
+class Remera inherits Objeto (imageAux = "remera"){
 	method usar() {
 		jugador.cambiarRopa()
 		jugador.objeto(vacio)
@@ -26,9 +28,8 @@ object vacio {
 	method usar(){}
 }
 
-class Veneno inherits Objeto {
+class Veneno inherits Objeto (imageAux = "veneno"){
 	var usos = 3
-	method image() = "objetos/veneno.png"
 	method usar() {
 		const aux = direcciones.algoCerca(tipoNpc,jugador)
 		if(aux.equals([]).negate()){
@@ -42,15 +43,13 @@ class Veneno inherits Objeto {
 	}
 }
 
-object pizza inherits Objeto {
-	method image() = "objetos/.png"
+object pizza inherits Objeto (imageAux = "pizza"){
 	method usar() {
 
 	}
 }
 
-class Bomba inherits Objeto {
-	method image() = "objetos/bomb.png"
+class Bomba inherits Objeto (imageAux = "bomb"){
 	method usar() {
 		position = jugador.position()
 	//	game.schedule(2000, self.explotar(personaje.position()) )
@@ -59,8 +58,7 @@ class Bomba inherits Objeto {
 	}
 }
 
-class BombaDeHumo inherits Objeto {
-	method image() = "objetos/.png"
+class BombaDeHumo inherits Objeto (imageAux = ""){
 	method usar() {
 
 	}

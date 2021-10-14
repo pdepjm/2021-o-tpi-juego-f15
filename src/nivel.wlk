@@ -26,8 +26,12 @@ object nivel{
 	const npc4 = new Civil(position = game.at(10,7))
 	const listaMuertos = []
 	
+	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador, remera1, veneno1, bomba1, escondite1, escotillaBanio, escotillaEstudio, npc1, npc2, npc3, npc4]
+	const npcs = [npc1, npc2, npc3, npc4]
+	
 	method configuracionInicial(){
 		game.clear()
+		jugador.inicializar()
         soundProducer.playMusic()
         // Inicializaciones
 		npc1.position(game.at(2,2)) 
@@ -37,35 +41,13 @@ object nivel{
 	    contadorTiempo.iniciar()
 		todasLasParedes.cargar()
 		escotillaBanio.destino(escotillaEstudio)
-		// Visuales - Lista y forEach
-		game.addVisual(contadorTiempo)
-		game.addVisual(contadorKills)
-		game.addVisual(marcoContadorTiempo)
-		game.addVisual(marcoContadorKills)
-		game.addVisual(jugador)
-			// Interactuables
-		game.addVisual(escondite1)
-		game.addVisual(escotillaBanio)
-		game.addVisual(escotillaEstudio)
-			//Objetos
-		game.addVisual(remera1)
-		game.addVisual(veneno1)
-		game.addVisual(bomba1)
-			// NPCs
-		game.addVisual(npc1)
-		game.addVisual(npc2)
-		game.addVisual(npc3)
-		game.addVisual(npc4)
+		// Visuales
+		objetos.forEach({ objeto => game.addVisual(objeto)})
 		// NPCs - listas
-		game.onTick(1000.randomUpTo(10000), "movimiento" , {npc1.moverse()})
-		game.onTick(1000.randomUpTo(10000), "movimiento", {npc2.moverse()})
-		game.onTick(1000.randomUpTo(10000), "movimiento", {npc3.moverse()})
-		game.onTick(1000.randomUpTo(10000), "movimiento", {npc4.moverse()})
-		game.onTick(400,"delatarAsesino", {npc1.delatarAsesino()} )
-		game.onTick(400,"delatarAsesino", {npc2.delatarAsesino()} )
-		game.onTick(400,"delatarAsesino", {npc3.delatarAsesino()} )
-		game.onTick(400,"delatarAsesino", {npc4.delatarAsesino()} )
-	//	game.onTick(100,"cosasCerca",{jugador.hayAlgoCerca()})
+		npcs.forEach({ npc =>
+			game.onTick(1000.randomUpTo(10000), "movimiento" , {npc.moverse()} )
+			game.onTick(400,"delatarAsesino", {npc.delatarAsesino()} )
+		})
 		self.configurarTeclas()
 	}
 	
@@ -78,11 +60,11 @@ object nivel{
 			keyboard.e().onPressDo({ jugador.agarrarObjeto() })
 			keyboard.f().onPressDo({ jugador.usarObjeto() })
 			keyboard.g().onPressDo({ jugador.interactuar() })
-			//keyboard.h().onPressDo({ jugador.soltarCarga() })
 	}
 	
 	method agregarMuerto(unMuerto) = listaMuertos.add(unMuerto)
 	
 	method listaMuertos() = listaMuertos
 	
+	method removerMuerto(muerto) { listaMuertos.remove(muerto) }
 }

@@ -51,6 +51,6 @@ describe "testsUwU" {
 	test "Agarrar y usar objeto" {
 		jugador.agarrarObjeto()
 		jugador.usarObjeto()
-		assert.equals("personajes/player_derecha_vestido.png", jugador.image())
+		assert.equals("personajes/player_abajo_vestido.png", jugador.image())
 	}
 }

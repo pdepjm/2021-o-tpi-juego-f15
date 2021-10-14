@@ -14,6 +14,11 @@ class SerVivo {
 	const property esObjeto = false
 	const property esInteractuable = false
 	const property esCadaver = false
+	var property sentido = abajo
+	var property imageAux = "default"
+	const identidad = "npc"
+	
+	method image() = "personajes/" + identidad + "_" + sentido + "_" + imageAux + ".png"
 }
 class NPC inherits SerVivo {
 	var property position = null
@@ -21,7 +26,6 @@ class NPC inherits SerVivo {
 }
 
 class Civil inherits NPC { // cambiar lo de cadaver
-	var property image = "personajes/npc_abajo.png"
 	const radioDeVision = 5
 	
 	method cadaverCercano() = nivel.listaMuertos().filter({ cadaver => position.distance(cadaver.position()) < radioDeVision })
@@ -50,16 +54,14 @@ class Civil inherits NPC { // cambiar lo de cadaver
 	}
 	
 	method moverse(){
-		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { position = movimiento.mover(direcciones.direccionRandom(), self) } )
+		sentido = direcciones.direccionRandom()
+		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { position = movimiento.mover(sentido, self) } )
 	}
 	
-	method imageFlip(direccion){ // revisar
-		image = "personajes/npc_" + direccion + ".png"
-	}
 }
 
 object policia inherits NPC {
-	var property image = "personajes/police.png"
+	override method image() = "personajes/police_" + imageAux + ".png"
 	
 	method buscarCadaver(cadaver){
 		game.schedule(1000, {cadaver.forEach{ muerto => self.eliminarCadaver(muerto) }})		
@@ -70,7 +72,7 @@ object policia inherits NPC {
 			position = muerto.position()
 			game.addVisual(self)
 			game.removeVisual(muerto)
-			nivel.listaMuertos().remove(muerto) // revisar no toketear a nivel
+			nivel.removerMuerto(muerto) // revisar no toketear a nivel
 			game.schedule(2000, {game.removeVisual(self)})
 			game.say(self, "ALEJAOS! Estamos haciendo la removicion de un cadaver!")
 		}
@@ -84,8 +86,7 @@ object policia inherits NPC {
 			game.addVisual(self)
 			game.say(self, "Te encontramos pa, perdiste!!")
 			game.schedule(200, {
-				image = "personajes/police2.png"
-				jugador.miedo(true)
+				imageAux = "enojado"
 				soundProducer.horror()
 			})
 			game.schedule(3000, {game.stop()})
