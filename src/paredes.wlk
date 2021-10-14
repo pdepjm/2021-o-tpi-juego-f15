@@ -10,14 +10,14 @@ class Pared{
 	var property image = "hud_gui/pared.png"
 }
 
-object x{
-	method crece(x,y) = {i => game.addVisual(new Pared(position = game.at(x+i,y)))}
+object x{ // cambiar nombre de crece - construir pared y objetos x e y
+	method crece(x,y) = { i => game.addVisual(new Pared(position = game.at(x+i,y))) }
 }
 object y{
-	method crece(x,y) = {i => game.addVisual(new Pared(position = game.at(x,y+i)))}
+	method crece(x,y) = { i => game.addVisual(new Pared(position = game.at(x,y+i))) }
 }
 
-object todasLasParedes{
+object todasLasParedes{ // RECTANGULOS
 	method cargar(){
 	self.lineaPared(16,0,-1,y)
 	self.lineaPared(9,2,15,y)
@@ -48,7 +48,7 @@ object todasLasParedes{
 	self.lineaPared(24,0,0,x)
 	}
 	
-	method lineaPared(cantidad,x,y,en){
+	method lineaPared(cantidad,x,y,en){ // cambiar "en"
 		cantidad.times(en.crece(x,y))
 	}
 }

@@ -51,6 +51,7 @@ objeto.usar()
 ```
 
 Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaje, y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual de ellos se trate.
+**COMPLETAR**
 
 ---
 2. **Colecciones**: ¿Qué operaciones de colecciones se utilizan? ¿Usaron mensajes con y sin efecto? ¿Para qué?
@@ -65,6 +66,8 @@ Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaj
 |size       |Consulta       |
 |head       |Consulta       |
 |           |               |
+
+**COMPLETAR**
 
 
 3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
@@ -89,5 +92,7 @@ Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaj
 1. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
 
 ## Diagrams
+
+**PEDRO ESTABA EQUIVOCADO**
 
 ![Diagrama](https://imgur.com/MYnJHNH.png)

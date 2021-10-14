@@ -37,7 +37,7 @@ object nivel{
 	    contadorTiempo.iniciar()
 		todasLasParedes.cargar()
 		escotillaBanio.destino(escotillaEstudio)
-		// Visuales
+		// Visuales - Lista y forEach
 		game.addVisual(contadorTiempo)
 		game.addVisual(contadorKills)
 		game.addVisual(marcoContadorTiempo)
@@ -56,7 +56,7 @@ object nivel{
 		game.addVisual(npc2)
 		game.addVisual(npc3)
 		game.addVisual(npc4)
-		// NPCs
+		// NPCs - listas
 		game.onTick(1000.randomUpTo(10000), "movimiento" , {npc1.moverse()})
 		game.onTick(1000.randomUpTo(10000), "movimiento", {npc2.moverse()})
 		game.onTick(1000.randomUpTo(10000), "movimiento", {npc3.moverse()})

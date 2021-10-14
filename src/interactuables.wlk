@@ -26,11 +26,11 @@ class Escotilla inherits Interactuable{
 class Cadaver inherits Interactuable {
 	const property esCadaver = true
 	var property image = "personajes/cadaver.png"
-	var cargado = false
+	var cargado = false // delegar a obj
 	var property ultimaPos = jugador.position().right(1)
 	
 	method interaccion(){
-		if(cargado.equals(false)){
+		if(cargado.negate()){
 			cargado = true
 		}else{
 			cargado = false

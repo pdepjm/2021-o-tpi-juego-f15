@@ -9,13 +9,13 @@ object movimiento{
 	method mover(sentido,player){
 		player.imageFlip(sentido)
 		if (self.condicionMovimiento(sentido,player)) 
-			return sentido.proximaPosicion(player.position()) 
+			return sentido.proximaPosicion(player.position())
 		else 
 			return player.position()
 	}
 	
 	method condicionMovimiento(sentido, player) = game.getObjectsIn(sentido.proximaPosicion(player.position())).all({auxiliar => auxiliar.objetoAtravesable()})
-}
+}	// MAL NOMBRE - EXPRESIVIDAD | posible cambio de nombre de: objetoAtravesable a esAtravesable
 
 object direcciones {
 	const property listaDirecciones = [izquierda,derecha,arriba,abajo]

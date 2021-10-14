@@ -18,7 +18,7 @@ object jugador inherits SerVivo{
 
 	method interactuar(){
 		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion()})
-	}
+	} // cambiar nombre de: algoCerca
 	
 	method moverPara(direccion){
 		if(miedo.equals(false)){
@@ -37,7 +37,7 @@ object jugador inherits SerVivo{
     
 	method agarrarObjeto(){
 			const aux = direcciones.algoCerca(tipoObjeto, self)
-			if (objeto.equals(vacio).negate()){
+			if (objeto.equals(vacio).negate()){ // sacar if, POLIMORFISMO
 				objeto.position(position)
         		game.addVisual(objeto)
         		objeto = vacio
@@ -52,7 +52,7 @@ object jugador inherits SerVivo{
     	objeto.usar()
     }
     
-    method cambiarRopa() {
+    method cambiarRopa() { // imagen no se guarda
     	if(image == "personajes/player_" + sentido.toString() + "_default.png"){
     		image = "personajes/player_" + sentido.toString() + "_vestido.png"
     		imageAux = "vestido"

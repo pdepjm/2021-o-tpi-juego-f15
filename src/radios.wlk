@@ -6,7 +6,7 @@ import NPCs.*
 import metodosGenericos.*
 import tipos.*
 
-object radio {
+object radio { // cambio de nombre - revisar
 	var position = game.at(0,0)
 	method radio1(objeto){
 		position = objeto.position()

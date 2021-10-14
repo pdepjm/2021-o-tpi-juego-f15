@@ -20,7 +20,7 @@ class NPC inherits SerVivo {
 	const property esNPC = true
 }
 
-class Civil inherits NPC {
+class Civil inherits NPC { // cambiar lo de cadaver
 	var property image = "personajes/npc_abajo.png"
 	const radioDeVision = 5
 	
@@ -28,19 +28,19 @@ class Civil inherits NPC {
 	
 	method estaCercaDelAsesino() = position.distance( jugador.position() ) < radioDeVision
 	
-	method delatarAsesino(){
+	method delatarAsesino(){ // declaratividad en ifs | ver si delegar a poli
 		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && estaVivo){
 			game.say(self, "Hay un asesino entre nosotros")
 			policia.buscarCadaver( self.cadaverCercano())
 		}
 		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && estaVivo){
-			game.say(self, "Te descubri!!! Llamare a la policia")
+			game.say(self, "Te descubri!!! Llame a la cana")
 			policia.buscarAsesino()
 		}
 	}
 	
 	method morir(){
-		game.schedule( 0, {soundProducer.muerte()} ) //No tiene sentido pero sin esto no lo podia testear
+		game.schedule( 0, {soundProducer.muerte()} ) // No tiene sentido pero sin esto no lo podia testear
 		const sangre = new Cadaver(ultimaPos = position)
 		game.removeVisual(self)
 		self.estaVivo(false)
@@ -53,7 +53,7 @@ class Civil inherits NPC {
 		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { position = movimiento.mover(direcciones.direccionRandom(), self) } )
 	}
 	
-	method imageFlip(direccion){
+	method imageFlip(direccion){ // revisar
 		image = "personajes/npc_" + direccion + ".png"
 	}
 }
@@ -70,7 +70,7 @@ object policia inherits NPC {
 			position = muerto.position()
 			game.addVisual(self)
 			game.removeVisual(muerto)
-			nivel.listaMuertos().remove(muerto) 
+			nivel.listaMuertos().remove(muerto) // revisar no toketear a nivel
 			game.schedule(2000, {game.removeVisual(self)})
 			game.say(self, "ALEJAOS! Estamos haciendo la removicion de un cadaver!")
 		}
