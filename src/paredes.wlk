@@ -8,6 +8,7 @@ class Pared{
 	const property esInteractuable = false
 	const property esNPC = false	
 	var property image = "hud_gui/pared.png"
+	method interaccion() {}
 }
 
 object x{ // cambiar nombre de crece - construir pared y objetos x e y

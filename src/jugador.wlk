@@ -20,20 +20,20 @@ object jugador inherits SerVivo (identidad = "player"){
 	}
 
 	method interactuar(){
-		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion()})
+		direcciones.algoCerca(self).forEach({int => int.interaccion()})
 	} // cambiar nombre de: algoCerca
 	
 	method moverPara(direccion){
 			position = movimiento.mover(direccion,self)
-			sentido = direccion
+			self.sentido(direccion)
 	}
 	
     method usarCuchillo(){
-    	direcciones.algoCerca(tipoNpc,self).forEach({npc => npc.morir()})
+    	direcciones.algoCerca(self).forEach({npc => npc.morir()})
     }
     
 	method agarrarObjeto(){
-			const aux = direcciones.algoCerca(tipoObjeto, self)
+			const aux = direcciones.algoCerca(self)
 			if (objeto.equals(vacio).negate()){ // sacar if, POLIMORFISMO
 				objeto.position(position)
         		game.addVisual(objeto)

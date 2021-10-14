@@ -57,7 +57,7 @@ class Civil inherits NPC { // cambiar lo de cadaver
 		sentido = direcciones.direccionRandom()
 		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { position = movimiento.mover(sentido, self) } )
 	}
-	
+	method interaccion() {}
 }
 
 object policia inherits NPC {

@@ -12,20 +12,21 @@ class Interactuable{
 	const property estaVivo = false
 	const property esObjeto = false
 	const property esNPC = false
+	const property esCadaver = false
+	const imageAux = ""
+	
+	method image() = "interactuables/" + imageAux + ".png"
 }
 
-class Escotilla inherits Interactuable{
-	const property esCadaver = false
-	var property image = "pared.png"
+class Escotilla inherits Interactuable(imageAux = "trapdoor"){
 	var property destino = null
 	method interaccion(){
 		jugador.position(destino.position())
 	}
+	
 }
 
-class Cadaver inherits Interactuable {
-	const property esCadaver = true
-	var property image = "personajes/cadaver.png"
+class Cadaver inherits Interactuable (esCadaver = true, imageAux = "cadaver"){
 	var cargado = false // delegar a obj
 	var property ultimaPos = jugador.position().right(1)
 	
@@ -46,12 +47,10 @@ class Cadaver inherits Interactuable {
 	}
 }
 
-class Escondite inherits Interactuable{
-	const property esCadaver = false
-	var property image = "interactuables/tacho.png"
+class Escondite inherits Interactuable(imageAux = "tacho"){
 	
 	method interaccion(){
-		direcciones.algoCerca(tipoCadaver,jugador).forEach({cadaver => game.removeVisual(cadaver)})
+		direcciones.algoCerca(jugador).forEach({cadaver => game.removeVisual(cadaver)})
 		}
 }
 

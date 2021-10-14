@@ -16,9 +16,8 @@ object nivel{
 	const veneno1 = new Veneno(position = game.at(10,10))
 	const bomba1 = new Bomba(position = game.at(11,16))
 	// Interactuables
-	const escotillaBanio = new Escotilla(position = game.at(3,23), image = "hud_gui/pared.png")
-	const escotillaEstudio = new Escotilla(position = game.at(44,5), destino = escotillaBanio, image = "interactuables/trapdoor.png")
-	const escondite1 = new Escondite(position = game.at(17,23))
+	const escotillaBanio = new Escotilla(position = game.at(3,23), imageAux = "pared")
+	const escotillaEstudio = new Escotilla(position = game.at(27,2), destino = escotillaBanio)
 	// NPCs
 	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))
@@ -26,7 +25,7 @@ object nivel{
 	const npc4 = new Civil(position = game.at(10,7))
 	const listaMuertos = []
 	
-	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador, escondite1, escotillaBanio, escotillaEstudio]
+	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador, escotillaBanio, escotillaEstudio]
 	const property objetos2 = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1]
 	const npcs = [npc1, npc2, npc3, npc4]
 	

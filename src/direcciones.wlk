@@ -23,10 +23,9 @@ object direcciones {
 	method direccionRandom() = listaDirecciones.anyOne()
 	
     //method algoCerca(tipo, persona) = radio.radio1(persona).filter({auxiliar => tipo.es(auxiliar)})
-	method algoCerca(tipo, persona) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
-		const position = persona.position()
-		return nivel.objetos2().filter({ aux => position.distance(aux.position()) < 2 })
-		}
+	method algoCerca(persona) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
+		return nivel.objetos2().filter({ aux => persona.position().distance(aux.position()) <= 1 })
+	}
 }
 
 object izquierda {

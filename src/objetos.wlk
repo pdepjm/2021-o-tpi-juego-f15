@@ -15,6 +15,8 @@ class Objeto {
 	const imageAux
 	
 	method image() = "objetos/" + imageAux + ".png"
+
+	method interaccion() {}
 }
 
 class Remera inherits Objeto (imageAux = "remera"){
@@ -29,13 +31,14 @@ object vacio {
 }
 
 class Veneno inherits Objeto (imageAux = "veneno"){
-	var usos = 3
+	var usos = 1
+	
 	method usar() {
-		const aux = direcciones.algoCerca(tipoNpc,jugador)
+		const aux = direcciones.algoCerca(jugador)
 		if(aux.equals([]).negate()){
 			self.envenenar(aux.head())
 		}
-		usos = usos - 1
+		usos -= 1
 		if(usos.equals(0)) jugador.objeto(vacio)
 	}
 	method envenenar(npc){
