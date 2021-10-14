@@ -26,7 +26,8 @@ object nivel{
 	const npc4 = new Civil(position = game.at(10,7))
 	const listaMuertos = []
 	
-	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador, remera1, veneno1, bomba1, escondite1, escotillaBanio, escotillaEstudio, npc1, npc2, npc3, npc4]
+	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador, escondite1, escotillaBanio, escotillaEstudio]
+	const property objetos2 = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
@@ -43,6 +44,7 @@ object nivel{
 		escotillaBanio.destino(escotillaEstudio)
 		// Visuales
 		objetos.forEach({ objeto => game.addVisual(objeto)})
+		objetos2.forEach({ objeto => game.addVisual(objeto)})
 		// NPCs - listas
 		npcs.forEach({ npc =>
 			game.onTick(1000.randomUpTo(10000), "movimiento" , {npc.moverse()} )

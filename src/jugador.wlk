@@ -28,10 +28,6 @@ object jugador inherits SerVivo (identidad = "player"){
 			sentido = direccion
 	}
 	
-	/*method imageFlip(direccion){
-		image = "personajes/player_" + direccion + "_" + imageAux +".png"
-	}*/
-	
     method usarCuchillo(){
     	direcciones.algoCerca(tipoNpc,self).forEach({npc => npc.morir()})
     }

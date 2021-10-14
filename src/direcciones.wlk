@@ -4,6 +4,7 @@ import jugador.*
 import NPCs.*
 import radios.*
 import objetos.*
+import nivel.*
 
 object movimiento{
 	method mover(sentido,player){
@@ -21,7 +22,11 @@ object direcciones {
 	
 	method direccionRandom() = listaDirecciones.anyOne()
 	
-    method algoCerca(tipo, persona) = radio.radio1(persona).filter({auxiliar => tipo.es(auxiliar)})
+    //method algoCerca(tipo, persona) = radio.radio1(persona).filter({auxiliar => tipo.es(auxiliar)})
+	method algoCerca(tipo, persona) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
+		const position = persona.position()
+		return nivel.objetos2().filter({ aux => position.distance(aux.position()) < 2 })
+		}
 }
 
 object izquierda {

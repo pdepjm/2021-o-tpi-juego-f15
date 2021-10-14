@@ -20,11 +20,8 @@ describe "testsUwU" {
 		jugador.position(game.at(5,5))
 		todasLasParedes.cargar()
 		//Visuales
-		game.addVisual(jugador)
-		game.addVisual(npc)
-		game.addVisual(remera)
-		game.addVisual(escotillaEstudio)
-		game.addVisual(escotillaBanio)
+		const objetos = [jugador, npc, remera, escotillaEstudio, escotillaBanio]
+		objetos.forEach({ aux => game.addVisual(aux) })
 	}
 	
 	test "Movimiento jugador" {
