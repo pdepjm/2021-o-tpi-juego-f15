@@ -2,6 +2,8 @@ import wollok.game.*
 import jugador.*
 import metodosGenericos.*
 import objetos.*
+import direcciones.*
+import tipos.*
 
 class Interactuable{
 	const property objetoAtravesable = true
@@ -13,6 +15,7 @@ class Interactuable{
 }
 
 class Escotilla inherits Interactuable{
+	const property esCadaver = false
 	var property image = "pared.png"
 	var property destino = null
 	method interaccion(){
@@ -21,9 +24,10 @@ class Escotilla inherits Interactuable{
 }
 
 class Cadaver inherits Interactuable {
+	const property esCadaver = true
 	var property image = "personajes/cadaver.png"
 	var cargado = false
-	var ultimaPos = jugador.position().right(1)
+	var property ultimaPos = jugador.position().right(1)
 	
 	method interaccion(){
 		if(cargado.equals(false)){
@@ -42,12 +46,12 @@ class Cadaver inherits Interactuable {
 	}
 }
 
-/*class Escondite inherits Interactuable{ cadaveres cerca desaparecen
-	var property image = "objetos/tacho.png"
+class Escondite inherits Interactuable{
+	const property esCadaver = false
+	var property image = "interactuables/tacho.png"
 	method interaccion(){
-		if(jugador.carga().equals(vacio).negate()){
-			jugador.carga(vacio)
+		direcciones.algoCerca(tipoCadaver,jugador).forEach({cadaver => game.removeVisual(cadaver)})
 		}
 	}
-}*/
+}
 

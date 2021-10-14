@@ -18,6 +18,7 @@ object nivel{
 	// Interactuables
 	const escotillaBanio = new Escotilla(position = game.at(3,23), image = "hud_gui/pared.png")
 	const escotillaEstudio = new Escotilla(position = game.at(44,5), destino = escotillaBanio, image = "interactuables/trapdoor.png")
+	const escondite1 = new Escondite(position = game.at(17,23))
 	// NPCs
 	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))
@@ -29,7 +30,6 @@ object nivel{
 		game.clear()
         soundProducer.playMusic()
         // Inicializaciones
-		jugador.inicializar()
 		npc1.position(game.at(2,2)) 
 	    npc2.position(game.at(15,20))
 	    npc3.position(game.at(10,4))
@@ -44,6 +44,7 @@ object nivel{
 		game.addVisual(marcoContadorKills)
 		game.addVisual(jugador)
 			// Interactuables
+		game.addVisual(escondite1)
 		game.addVisual(escotillaBanio)
 		game.addVisual(escotillaEstudio)
 			//Objetos

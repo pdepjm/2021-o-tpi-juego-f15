@@ -23,3 +23,7 @@ object tipoAtravesable{
 object tipoObjeto{
 	method es(objeto) = objeto.esObjeto()
 }
+
+object tipoCadaver{
+	method es(cadaver) = cadaver.esCadaver()
+}

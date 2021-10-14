@@ -13,6 +13,7 @@ class SerVivo {
 	const property objetoAtravesable = true
 	const property esObjeto = false
 	const property esInteractuable = false
+	const property esCadaver = false
 }
 class NPC inherits SerVivo {
 	var property position = null
@@ -40,11 +41,11 @@ class Civil inherits NPC {
 	
 	method morir(){
 		game.schedule( 0, {soundProducer.muerte()} ) //No tiene sentido pero sin esto no lo podia testear
+		const sangre = new Cadaver(ultimaPos = position)
 		game.removeVisual(self)
-		const sangre = new Cadaver(position = position)
+		self.estaVivo(false)
 		game.addVisual(sangre)
 		contadorKills.subirKills()
-		self.estaVivo(false)
 		return nivel.agregarMuerto(sangre)
 	}
 	

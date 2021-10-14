@@ -7,7 +7,7 @@ import metodosGenericos.*
 import tipos.*
 
 object jugador inherits SerVivo{
-	var property position = game.at(6,2)
+	var property position = game.at(28,2)
 	var property objeto = vacio //cada jugador tiene un objeto, arranca con vacio
 	var property sentido = derecha
 	var property image = "personajes/player_derecha_default.png"
@@ -15,23 +15,6 @@ object jugador inherits SerVivo{
 	//var property carga = vacio
 	const property esNPC = false
 	var property miedo = false
-
-	method inicializar() {
-		image = "personajes/player_derecha_default.png"
-		objeto = vacio
-		position = game.at(28,2)
-		sentido = derecha
-		imageAux = "default"
-		miedo = false
-	}
-
-	/*method soltarCarga(){
-		if(self.carga().equals(vacio).negate()){
-			carga.position(position)
-			game.addVisual(carga)
-			carga = vacio
-		}
-	}*/
 
 	method interactuar(){
 		direcciones.algoCerca(tipoInteractuable,self).forEach({int => int.interaccion()})
