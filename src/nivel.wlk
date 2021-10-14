@@ -17,7 +17,7 @@ object nivel{
 	const bomba1 = new Bomba(position = game.at(11,16))
 	// Interactuables
 	const escotillaBanio = new Escotilla(position = game.at(3,23), imageAux = "pared")
-	const escotillaEstudio = new Escotilla(position = game.at(27,2), destino = escotillaBanio)
+	const escotillaEstudio = new Escotilla(position = game.at(44,5), destino = escotillaBanio)
 	// NPCs
 	const npc1 = new Civil(position = game.at(2,2)) 
 	const npc2 = new Civil(position = game.at(15,20))
@@ -25,8 +25,8 @@ object nivel{
 	const npc4 = new Civil(position = game.at(10,7))
 	const listaMuertos = []
 	
-	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador, escotillaBanio, escotillaEstudio]
-	const property objetos2 = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1]
+	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador]
+	const property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
@@ -43,7 +43,7 @@ object nivel{
 		escotillaBanio.destino(escotillaEstudio)
 		// Visuales
 		objetos.forEach({ objeto => game.addVisual(objeto)})
-		objetos2.forEach({ objeto => game.addVisual(objeto)})
+		interactuables.forEach({ objeto => game.addVisual(objeto)})
 		// NPCs - listas
 		npcs.forEach({ npc =>
 			game.onTick(1000.randomUpTo(10000), "movimiento" , {npc.moverse()} )

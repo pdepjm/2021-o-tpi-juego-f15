@@ -2,7 +2,6 @@ import wollok.game.*
 import paredes.*
 import jugador.*
 import NPCs.*
-import radios.*
 import objetos.*
 import nivel.*
 
@@ -22,9 +21,8 @@ object direcciones {
 	
 	method direccionRandom() = listaDirecciones.anyOne()
 	
-    //method algoCerca(tipo, persona) = radio.radio1(persona).filter({auxiliar => tipo.es(auxiliar)})
 	method algoCerca(persona) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
-		return nivel.objetos2().filter({ aux => persona.position().distance(aux.position()) <= 1 })
+		return nivel.interactuables().filter({ aux => persona.position().distance(aux.position()) <= 1 })
 	}
 }
 

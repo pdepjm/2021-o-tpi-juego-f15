@@ -7,7 +7,7 @@ import tipos.*
 
 class Interactuable{
 	const property objetoAtravesable = true
-	var property position = null
+	var property position = game.at(0,0)
 	const property esInteractuable = true
 	const property estaVivo = false
 	const property esObjeto = false
