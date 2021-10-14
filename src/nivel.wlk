@@ -75,7 +75,7 @@ object nivel{
 			keyboard.s().onPressDo({ jugador.moverPara(abajo) })
 			keyboard.d().onPressDo({ jugador.moverPara(derecha) })
 			keyboard.r().onPressDo({ jugador.usarCuchillo() })
-			keyboard.e().onPressDo({ jugador.buscarObjeto() })
+			keyboard.e().onPressDo({ jugador.agarrarObjeto() })
 			keyboard.f().onPressDo({ jugador.usarObjeto() })
 			keyboard.g().onPressDo({ jugador.interactuar() })
 			//keyboard.h().onPressDo({ jugador.soltarCarga() })

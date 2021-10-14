@@ -35,7 +35,7 @@ object jugador inherits SerVivo{
     	direcciones.algoCerca(tipoNpc,self).forEach({npc => npc.morir()})
     }
     
-	method buscarObjeto(){
+	method agarrarObjeto(){
 			const aux = direcciones.algoCerca(tipoObjeto, self)
 			if (objeto.equals(vacio).negate()){
 				objeto.position(position)

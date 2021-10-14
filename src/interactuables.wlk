@@ -49,9 +49,9 @@ class Cadaver inherits Interactuable {
 class Escondite inherits Interactuable{
 	const property esCadaver = false
 	var property image = "interactuables/tacho.png"
+	
 	method interaccion(){
 		direcciones.algoCerca(tipoCadaver,jugador).forEach({cadaver => game.removeVisual(cadaver)})
 		}
-	}
 }
 

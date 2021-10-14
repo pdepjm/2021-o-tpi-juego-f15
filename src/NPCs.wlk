@@ -88,7 +88,7 @@ object policia inherits NPC {
 				jugador.miedo(true)
 				soundProducer.horror()
 			})
-			game.schedule(2800, {game.stop()})
+			game.schedule(3000, {game.stop()})
 		}
 		})
 	}
