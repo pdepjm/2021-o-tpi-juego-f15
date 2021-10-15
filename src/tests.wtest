@@ -13,7 +13,7 @@ describe "testsUwU" {
 	
 	const npc = new Civil(position = game.at(5,5))
 	const remera = new Remera(position = game.at(5,5))
-	const escotillaBanio = new Escotilla(position = game.at(10,10), imageAux = "pared")
+	const escotillaBanio = new Escotilla(position = game.at(10,10), identidad = "pared")
 	const escotillaEstudio = new Escotilla(position = game.at(5,5), destino = escotillaBanio)
 	const objetos = [jugador, npc, remera, escotillaEstudio, escotillaBanio]
 	

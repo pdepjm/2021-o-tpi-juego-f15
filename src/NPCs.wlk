@@ -11,18 +11,16 @@ import contador.*
 class SerVivo {
 	var property estaVivo = true
 	const property objetoAtravesable = true
-	const property esObjeto = false
-	const property esInteractuable = false
-	const property esCadaver = false
 	var property sentido = abajo
 	var property imageAux = "default"
 	const identidad = "npc"
 	
 	method image() = "personajes/" + identidad + "_" + sentido + "_" + imageAux + ".png"
+	
+	method serAgarrado() {}
 }
 class NPC inherits SerVivo {
 	var property position = null
-	const property esNPC = true
 }
 
 class Civil inherits NPC { // cambiar lo de cadaver
@@ -33,31 +31,38 @@ class Civil inherits NPC { // cambiar lo de cadaver
 	method estaCercaDelAsesino() = position.distance( jugador.position() ) < radioDeVision
 	
 	method delatarAsesino(){ // declaratividad en ifs | ver si delegar a poli
-		if( self.cadaverCercano().size() != 0 && self.estaCercaDelAsesino().negate() && estaVivo){
-			game.say(self, "Hay un asesino entre nosotros")
-			policia.buscarCadaver( self.cadaverCercano())
-		}
-		else if( self.estaCercaDelAsesino() && self.cadaverCercano().size() != 0 && estaVivo){
-			game.say(self, "Te descubri!!! Llame a la cana")
-			policia.buscarAsesino()
+		if( self.cadaverCercano().size() != 0 && estaVivo){
+			if( self.estaCercaDelAsesino().negate()){
+				game.say(self, "Hay un asesino entre nosotros")
+				policia.buscarCadaver( self.cadaverCercano() )
+			}
+			else{
+				game.say(self, "Te descubri!!! Llame a la cana")
+				policia.buscarAsesino()
+			}
 		}
 	}
 	
 	method morir(){
 		game.schedule( 0, {soundProducer.muerte()} ) // No tiene sentido pero sin esto no lo podia testear
-		const sangre = new Cadaver(ultimaPos = position)
 		game.removeVisual(self)
 		self.estaVivo(false)
-		game.addVisual(sangre)
+		const cadaver = new Cadaver( ultimaPos = position )
+		position = game.origin() // es un parche, deberia solucioanrse de otra manera mepa
+		game.addVisual(cadaver)
 		contadorKills.subirKills()
-		return nivel.agregarMuerto(sangre)
+		return nivel.agregarMuerto(cadaver)
 	}
 	
 	method moverse(){
 		sentido = direcciones.direccionRandom()
 		metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { position = movimiento.mover(sentido, self) } )
 	}
-	method interaccion() {}
+	
+	method interaccion() {
+		
+	}
+	
 }
 
 object policia inherits NPC {

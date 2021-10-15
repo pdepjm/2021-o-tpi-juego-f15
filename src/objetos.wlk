@@ -3,12 +3,8 @@ import jugador.*
 import NPCs.*
 import metodosGenericos.*
 import direcciones.*
-import tipos.*
 
 class Objeto {
-	const property esObjeto = true
-	const property esInteractuable = false
-	const property esNPC = false
 	const property objetoAtravesable = true
 	const property esCadaver = false
 	var property position = game.at(10,10)
@@ -17,6 +13,14 @@ class Objeto {
 	method image() = "objetos/" + imageAux + ".png"
 
 	method interaccion() {}
+	
+	method morir() {}
+	
+	method serAgarrado() {
+		jugador.objeto(self)
+    	game.removeVisual(self)
+    	position = game.origin()
+    }
 }
 
 class Remera inherits Objeto (imageAux = "remera"){
@@ -34,7 +38,7 @@ class Veneno inherits Objeto (imageAux = "veneno"){
 	var usos = 1
 	
 	method usar() {
-		const aux = direcciones.algoCerca(jugador)
+		const aux = direcciones.cercanosA(jugador)
 		if(aux.equals([]).negate()){
 			self.envenenar(aux.head())
 		}

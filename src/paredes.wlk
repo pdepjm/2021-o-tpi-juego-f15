@@ -4,9 +4,6 @@ import metodosGenericos.*
 class Pared{
 	const property position = null
 	const property objetoAtravesable = false
-	const property esObjeto = false
-	const property esInteractuable = false
-	const property esNPC = false	
 	var property image = "hud_gui/pared.png"
 	method interaccion() {}
 }

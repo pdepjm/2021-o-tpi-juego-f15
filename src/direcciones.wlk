@@ -17,11 +17,11 @@ object movimiento{
 }	// MAL NOMBRE - EXPRESIVIDAD | posible cambio de nombre de: objetoAtravesable a esAtravesable
 
 object direcciones {
-	const property listaDirecciones = [izquierda,derecha,arriba,abajo]
+	const listaDirecciones = [izquierda,derecha,arriba,abajo]
 	
 	method direccionRandom() = listaDirecciones.anyOne()
 	
-	method algoCerca(persona) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
+	method cercanosA(persona) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
 		return nivel.interactuables().filter({ aux => persona.position().distance(aux.position()) <= 1 })
 	}
 }

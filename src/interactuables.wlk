@@ -3,22 +3,18 @@ import jugador.*
 import metodosGenericos.*
 import objetos.*
 import direcciones.*
-import tipos.*
 
 class Interactuable{
 	const property objetoAtravesable = true
 	var property position = game.at(0,0)
-	const property esInteractuable = true
-	const property estaVivo = false
-	const property esObjeto = false
-	const property esNPC = false
-	const property esCadaver = false
-	const imageAux = ""
+	const identidad = ""
 	
-	method image() = "interactuables/" + imageAux + ".png"
+	method image() = "interactuables/" + identidad + ".png"
+	method morir() {}
+	method serAgarrado(){}
 }
 
-class Escotilla inherits Interactuable(imageAux = "trapdoor"){
+class Escotilla inherits Interactuable(identidad = "trapdoor"){
 	var property destino = null
 	method interaccion(){
 		jugador.position(destino.position())
@@ -26,7 +22,7 @@ class Escotilla inherits Interactuable(imageAux = "trapdoor"){
 	
 }
 
-class Cadaver inherits Interactuable (esCadaver = true, imageAux = "cadaver"){
+class Cadaver inherits Interactuable (identidad = "cadaver"){
 	var cargado = false // delegar a obj
 	var property ultimaPos = jugador.position().right(1)
 	
@@ -47,10 +43,11 @@ class Cadaver inherits Interactuable (esCadaver = true, imageAux = "cadaver"){
 	}
 }
 
-class Escondite inherits Interactuable(imageAux = "tacho"){
+class Escondite inherits Interactuable(identidad = "tacho"){
 	
 	method interaccion(){
-		direcciones.algoCerca(jugador).forEach({cadaver => game.removeVisual(cadaver)})
+		direcciones.cercanosA(jugador).forEach({cadaver => game.removeVisual(cadaver)})
+		game.addVisual(self)
 		}
 }
 
