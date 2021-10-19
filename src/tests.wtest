@@ -41,12 +41,12 @@ describe "testsUwU" {
 	}
 	
 	test "Matar NPC" {
-		jugador.usarCuchillo()
+		jugador.interactuar()
 		assert.that(game.hasVisual(npc).negate())
 	}
 	
 	test "Agarrar y usar objeto" {
-		jugador.agarrarObjeto()
+		jugador.interactuar()
 		jugador.usarObjeto()
 		assert.equals("vestido", jugador.imageAux())
 	}
