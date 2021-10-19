@@ -70,7 +70,8 @@ object nivel{
 			keyboard.a().onPressDo({ jugador.moverPara(izquierda) })
 			keyboard.s().onPressDo({ jugador.moverPara(abajo) })
 			keyboard.d().onPressDo({ jugador.moverPara(derecha) })
-			keyboard.e().onPressDo({ jugador.interactuar() })
+			keyboard.e().onPressDo({ jugador.usarObjeto() })
+			keyboard.f().onPressDo({ jugador.interactuar() })
 	}
 	
 	method agregarMuerto(muerto) {
