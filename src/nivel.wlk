@@ -29,9 +29,18 @@ object nivel{
 	
 	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador]
 	
-	
-	const property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, escondite1, knife]
+	var property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, escondite1, knife]
 	const npcs = [npc1, npc2, npc3, npc4]
+	
+	method agregar(cosa){
+		game.addVisual(cosa)
+		interactuables = interactuables.add(cosa)
+	}
+	
+	method quitar(cosa){
+		interactuables = interactuables.remove(cosa)
+		game.removeVisual(cosa)
+	}
 	
 	method configuracionInicial(){
 		game.clear()
@@ -87,4 +96,3 @@ object todosLosObjetos{
 	}
 }
  */
-*/
