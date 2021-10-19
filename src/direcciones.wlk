@@ -7,14 +7,14 @@ import nivel.*
 
 object movimiento{
 	method mover(sentido,player){
-		if (self.condicionMovimiento(sentido,player)) 
+		if (self.proxEsAtravesable(sentido,player)) 
 			return sentido.proximaPosicion(player.position())
 		else 
 			return player.position()
 	}
 	
-	method condicionMovimiento(sentido, player) = game.getObjectsIn(sentido.proximaPosicion(player.position())).all({auxiliar => auxiliar.objetoAtravesable()})
-}	// MAL NOMBRE - EXPRESIVIDAD | posible cambio de nombre de: objetoAtravesable a esAtravesable
+	method proxEsAtravesable(sentido, player) = game.getObjectsIn(sentido.proximaPosicion(player.position())).all({auxiliar => auxiliar.esAtravesable()})
+}	
 
 object direcciones {
 	const listaDirecciones = [izquierda,derecha,arriba,abajo]

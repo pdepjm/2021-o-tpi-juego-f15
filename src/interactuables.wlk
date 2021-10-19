@@ -5,7 +5,7 @@ import objetos.*
 import direcciones.*
 
 class Interactuable{
-	const property objetoAtravesable = true
+	const property esAtravesable = true
 	var property position = game.at(0,0)
 	const identidad = ""
 	

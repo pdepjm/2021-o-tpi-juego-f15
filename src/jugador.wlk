@@ -7,7 +7,7 @@ import metodosGenericos.*
 
 object jugador inherits SerVivo (identidad = "player"){
 	var property position = game.at(28,2)
-	var property objeto = vacio //cada jugador tiene un objeto, arranca con vacio
+	var property objeto = vacio
 	const property esNPC = false
 
 	method inicializar() {
@@ -20,11 +20,6 @@ object jugador inherits SerVivo (identidad = "player"){
 	method interactuar(){
 		(direcciones.cercanosA(self)+[vacio]).head().interaccion()
 	}
-	
-	 method usarCuchillo(){
-    	direcciones.cercanosA(self).forEach({npc => npc.morir()})
-    }
-	
 	method moverPara(direccion){
 			position = movimiento.mover(direccion,self)
 			self.sentido(direccion)

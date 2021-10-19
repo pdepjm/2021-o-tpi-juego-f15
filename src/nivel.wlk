@@ -15,6 +15,7 @@ object nivel{
 	const remera1 = new Remera(position = game.at(7,7))
 	const veneno1 = new Veneno(position = game.at(10,10))
 	const bomba1 = new Bomba(position = game.at(11,16))
+	const knife = new Cuchillo(position = game.at(9,7))
 	// Interactuables
 	const escotillaBanio = new Escotilla(position = game.at(3,23), identidad = "pared")
 	const escotillaEstudio = new Escotilla(position = game.at(44,5), destino = escotillaBanio)
@@ -29,7 +30,7 @@ object nivel{
 	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador]
 	
 	
-	const property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, escondite1]
+	const property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, escondite1, knife]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
@@ -60,8 +61,6 @@ object nivel{
 			keyboard.a().onPressDo({ jugador.moverPara(izquierda) })
 			keyboard.s().onPressDo({ jugador.moverPara(abajo) })
 			keyboard.d().onPressDo({ jugador.moverPara(derecha) })
-			keyboard.r().onPressDo({ jugador.usarCuchillo() })
-			//keyboard.e().onPressDo({ jugador.agarrarObjeto() })
 			keyboard.f().onPressDo({ jugador.usarObjeto() })
 			keyboard.g().onPressDo({ jugador.interactuar() })
 	}

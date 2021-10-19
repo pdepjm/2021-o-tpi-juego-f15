@@ -5,7 +5,7 @@ import metodosGenericos.*
 import direcciones.*
 
 class Objeto {
-	const property objetoAtravesable = true
+	const property esAtravesable = true
 	const property esCadaver = false
 	var property position = game.at(10,10)
 	const imageAux
@@ -35,6 +35,12 @@ class Remera inherits Objeto (imageAux = "remera"){
 	method usar() {
 		jugador.cambiarRopa()
 		jugador.objeto(vacio)
+	}
+}
+
+class Cuchillo inherits Objeto (imageAux = "cuchi"){
+	method usar() {
+		direcciones.cercanosA(jugador).forEach({npc => npc.morir()})
 	}
 }
 

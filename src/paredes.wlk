@@ -3,7 +3,7 @@ import metodosGenericos.*
 
 class Pared{
 	const property position = null
-	const property objetoAtravesable = false
+	const property esAtravesable = false
 	var property image = "hud_gui/pared.png"
 	method interaccion() {}
 }
