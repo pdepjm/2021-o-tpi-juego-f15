@@ -8,7 +8,6 @@ import metodosGenericos.*
 object jugador inherits SerVivo (identidad = "player"){
 	var property position = game.at(28,2)
 	var property objeto = vacio
-	const property esNPC = false
 
 	method inicializar() {
 		objeto = vacio

@@ -4,7 +4,6 @@ import pantallas.*
 import nivel.*
 import soundProducer.*
 
-
 program juego {
 	game.cellSize(40)
 	game.height(25)

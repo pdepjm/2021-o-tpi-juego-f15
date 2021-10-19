@@ -64,6 +64,8 @@ class Civil inherits NPC { // cambiar lo de cadaver
 }
 
 object policia inherits NPC {
+	var property busco = false
+	
 	override method image() = "personajes/police_" + imageAux + ".png"
 	
 	method buscarCadaver(cadaver){
@@ -82,8 +84,8 @@ object policia inherits NPC {
 	}
 	
 	method buscarAsesino(){
-		game.schedule(1000,{
-		if(jugador.estaVestido()){ self.error("") } //si tiene la remera puesta, el policia no lo encuentra aunque este cerca del cadaver
+		game.schedule(1000,{ // probar si funca
+		if(jugador.estaVestido() or self.busco()){ self.error("") self.busco(true) } //si tiene la remera puesta, el policia no lo encuentra aunque este cerca del cadaver
 		if( game.hasVisual(self).negate() ){
 			position = jugador.position()
 			game.addVisual(self)
