@@ -27,7 +27,7 @@ object nivel{
 	const npc4 = new Civil(position = game.at(10,7))
 	const listaMuertos = []
 	
-	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador]
+	const objetos = [jugador, contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills]
 	
 	var property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, escondite1, knife]
 	const npcs = [npc1, npc2, npc3, npc4]

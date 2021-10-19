@@ -39,8 +39,4 @@ object jugador inherits SerVivo (identidad = "player"){
     }
     
     method estaVestido() = self.imageAux() == "vestido"
-    
 }
-
-
-

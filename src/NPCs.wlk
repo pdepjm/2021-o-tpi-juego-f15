@@ -97,4 +97,3 @@ object policia inherits NPC {
 		})
 	}
 }
-	

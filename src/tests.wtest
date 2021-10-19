@@ -41,7 +41,7 @@ describe "testsUwU" {
 	}
 	
 	test "Matar NPC" {
-		jugador.interactuar()
+		jugador.usarObjeto()
 		assert.that(game.hasVisual(npc).negate())
 	}
 	
