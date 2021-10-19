@@ -27,6 +27,8 @@ object nivel{
 	const listaMuertos = []
 	
 	const objetos = [contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills, jugador]
+	
+	
 	const property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, escondite1]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
@@ -59,7 +61,7 @@ object nivel{
 			keyboard.s().onPressDo({ jugador.moverPara(abajo) })
 			keyboard.d().onPressDo({ jugador.moverPara(derecha) })
 			keyboard.r().onPressDo({ jugador.usarCuchillo() })
-			keyboard.e().onPressDo({ jugador.agarrarObjeto() })
+			//keyboard.e().onPressDo({ jugador.agarrarObjeto() })
 			keyboard.f().onPressDo({ jugador.usarObjeto() })
 			keyboard.g().onPressDo({ jugador.interactuar() })
 	}
@@ -76,3 +78,14 @@ object nivel{
 		interactuables.add(muerto)
 	}
 }
+
+/*
+object todosLosObjetos{
+	var property listaObjetos = []
+	method inicializar(referencia,objeto){
+		const referencia = new objeto
+		referencia.add(listaObjetos)
+	}
+}
+ */
+*/

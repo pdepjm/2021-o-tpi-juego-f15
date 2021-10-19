@@ -12,7 +12,15 @@ class Objeto {
 	
 	method image() = "objetos/" + imageAux + ".png"
 
-	method interaccion() {}
+	method interaccion() {
+		jugador.reemplazarObjeto(self)
+	}
+	
+	method soltar(){
+		position = jugador.position()
+		game.addVisual(self)
+		jugador.objeto(vacio)
+	}
 	
 	method morir() {}
 	
@@ -31,7 +39,14 @@ class Remera inherits Objeto (imageAux = "remera"){
 }
 
 object vacio {
+	method interaccion() {
+		jugador.reemplazarObjeto(self)
+	}
 	method usar(){}
+	method soltar(){}
+	method serAgarrado() {
+		jugador.objeto(self)
+    }
 }
 
 class Veneno inherits Objeto (imageAux = "veneno"){

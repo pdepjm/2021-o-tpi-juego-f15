@@ -18,7 +18,7 @@ object jugador inherits SerVivo (identidad = "player"){
 	}
 
 	method interactuar(){
-		direcciones.cercanosA(self).forEach({int => int.interaccion()})
+		(direcciones.cercanosA(self)+[vacio]).head().interaccion()
 	}
 	
 	 method usarCuchillo(){
@@ -30,16 +30,9 @@ object jugador inherits SerVivo (identidad = "player"){
 			self.sentido(direccion)
 	}
     
-	method agarrarObjeto(){
-		const aux = direcciones.cercanosA(self)
-		if (objeto.equals(vacio).negate()){ // sacar if, POLIMORFISMO
-			objeto.position(position)
-    		game.addVisual(objeto)
-    		objeto = vacio
-		}
-    	if (aux.equals([]).negate()){
-    		aux.head().serAgarrado()
-		}
+	method reemplazarObjeto(ob){
+		objeto.soltar()
+		ob.serAgarrado()
 	}
 
     method usarObjeto() {
@@ -53,3 +46,6 @@ object jugador inherits SerVivo (identidad = "player"){
     method estaVestido() = self.imageAux() == "vestido"
     
 }
+
+
+
