@@ -12,9 +12,7 @@ class Objeto {
 	
 	method image() = "objetos/" + imageAux + ".png"
 
-	method interaccion() {
-		jugador.reemplazarObjeto(self)
-	}
+	method interaccion() { jugador.reemplazarObjeto(self) }
 	
 	method soltar(){
 		position = jugador.position()

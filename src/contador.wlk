@@ -20,8 +20,9 @@ object marcoContadorKills {
 
 object contadorKills {
 	const limite = 4
-	var property kills = 0
-	const property textColor = paletaDeColores.blanco()
+	var kills = 0
+	
+	method textColor() = paletaDeColores.blanco()
 	
 	method position() = game.at(44,1)
 	
@@ -42,9 +43,9 @@ object marcoContadorTiempo {
 }
 
 object contadorTiempo {
-    var property segundos = 0
-    var property minutos = 0
-    var property acumuladorTiempo = 0
+    var segundos = 0
+    var minutos = 0
+    var acumuladorTiempo = 0
     var property textColor = paletaDeColores.blanco()
     
     method text() = minutos.toString() + " : " + segundos.toString()
@@ -77,6 +78,6 @@ object contadorTiempo {
  }
  
  object paletaDeColores {
- 	const property blanco = "FFFFFF"
- 	const property rojo = "FF00FF"
+ 	method blanco() = "FFFFFF"
+ 	method rojo() = "FF00FF"
  }

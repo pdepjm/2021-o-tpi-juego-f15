@@ -7,7 +7,7 @@ import nivel.*
 
 object movimiento{
 	method mover(sentido,player){
-		if (self.proxEsAtravesable(sentido,player)) 
+		if (self.proxEsAtravesable(sentido, player)) 
 			return sentido.proximaPosicion(player.position())
 		else 
 			return player.position()

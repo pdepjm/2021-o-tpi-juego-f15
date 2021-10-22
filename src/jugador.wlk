@@ -5,8 +5,7 @@ import nivel.*
 import NPCs.*
 import metodosGenericos.*
 
-object jugador inherits SerVivo (identidad = "player"){
-	var property position = game.at(28,2)
+object jugador inherits SerVivo (identidad = "player", position = game.at(28,2)){
 	var property objeto = vacio
 
 	method inicializar() {
@@ -17,8 +16,9 @@ object jugador inherits SerVivo (identidad = "player"){
 	}
 
 	method interactuar(){
-		(direcciones.cercanosA(self)+[vacio]).head().interaccion()
+		game.schedule(0, {(direcciones.cercanosA(self) + [vacio]).head().interaccion()}) //no tiene sentido pero sino da error los test
 	}
+	
 	method moverPara(direccion){
 			position = movimiento.mover(direccion,self)
 			self.sentido(direccion)
@@ -29,13 +29,9 @@ object jugador inherits SerVivo (identidad = "player"){
 		ob.serAgarrado()
 	}
 
-    method usarObjeto() {
-    	objeto.usar()
-    }
+    method usarObjeto() { objeto.usar() }
     
-    method cambiarRopa() {
-    		self.imageAux("vestido")
-    }
+    method cambiarRopa() { self.imageAux("vestido") }
     
     method estaVestido() = self.imageAux() == "vestido"
 }
