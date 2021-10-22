@@ -27,6 +27,8 @@ class Civil inherits SerVivo { // cambiar lo de cadaver
 	
 	method morir() { estado.morir(self) }
 	
+	method tirar(){estado.tirar(self)}
+	
 	method estaCercaDelAsesino() = estado.estaCercaDelAsesino(self)
 	
 	method cadaverCercano() = estado.cadaverCercano(self)
@@ -38,7 +40,8 @@ class Civil inherits SerVivo { // cambiar lo de cadaver
     method interaccion() { estado.interaccion(self) }
     
     override method position() {
-    	if (cargado) return jugador.position().right(1) else return ultimaPos
+    	if (cargado) ultimaPos = jugador.position().right(2) 
+		return ultimaPos
     }
  
 }
@@ -54,11 +57,10 @@ object vivo {
         game.schedule( 0, {soundProducer.muerte()} ) // no tiene sentido pero es para tests
         contadorKills.subirKills()
         npc.imageAux("muerto")
-        npc.ultimaPos(npc.position())
         npc.estado(muerto)
-        nivel.agregar(npc)
-        nivel.agregarMuerto(npc)
     }
+    
+    method tirar(npc){game.say(jugador, "Primero debo matarlo")}
     
     method moverse(npc){
         npc.sentido(direcciones.direccionRandom())
@@ -81,6 +83,8 @@ object muerto{
 	method morir(npc){}
     
     method moverse(npc){}
+    
+    method tirar(npc){nivel.quitar(npc)}
     
     method interaccion(npc){
     	npc.cargado(npc.cargado().negate())

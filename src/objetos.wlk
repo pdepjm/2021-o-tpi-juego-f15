@@ -3,6 +3,7 @@ import jugador.*
 import NPCs.*
 import metodosGenericos.*
 import direcciones.*
+import nivel.*
 
 class Objeto {
 	const property esAtravesable = true
@@ -16,7 +17,7 @@ class Objeto {
 	
 	method soltar(){
 		position = jugador.position()
-		game.addVisual(self)
+		nivel.agregar(self)
 		jugador.objeto(vacio)
 	}
 	
@@ -24,9 +25,11 @@ class Objeto {
 	
 	method serAgarrado() {
 		jugador.objeto(self)
-    	game.removeVisual(self)
-    	position = game.origin()
+		nivel.quitar(self)
     }
+    
+    method tirar(){game.say(jugador, "Podria servirme en un futuro el objeto " + self.toString())}
+    
 }
 
 class Remera inherits Objeto (imageAux = "remera"){
@@ -38,7 +41,7 @@ class Remera inherits Objeto (imageAux = "remera"){
 
 class Cuchillo inherits Objeto (imageAux = "cuchi"){
 	method usar() {
-		direcciones.cercanosA(jugador).forEach({npc => npc.morir()})
+		direcciones.cercanosA(jugador,1).forEach({npc => npc.morir()})
 	}
 }
 

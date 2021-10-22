@@ -44,8 +44,9 @@ object nivel{
 		todasLasParedes.cargar()
 		escotillaBanio.destino(escotillaEstudio)
 		// Visuales
-		objetos.forEach({ objeto => game.addVisual(objeto)})
+		
 		interactuables.forEach({ objeto => game.addVisual(objeto)})
+		objetos.forEach({ objeto => game.addVisual(objeto)})
 		// NPCs - listas
 		npcs.forEach({ npc =>
 			game.onTick(1000.randomUpTo(10000), "movimiento", {npc.moverse()} )
@@ -64,9 +65,16 @@ object nivel{
 			keyboard.f().onPressDo({ jugador.interactuar() })
 	}
 	
-	method agregar(cosa){ interactuables.add(cosa) }
+	method agregar(cosa){ 
+		interactuables.add(cosa)
+		game.addVisual(cosa)
+	}
 	
-	method quitar(cosa){ interactuables.remove(cosa) }
+	method quitar(cosa){ 
+		interactuables.remove(cosa)
+		game.removeVisual(cosa)
+		cosa.position(null)
+	}
 	
 	method listaMuertos() = listaMuertos
 	

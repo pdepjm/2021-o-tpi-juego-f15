@@ -4,6 +4,7 @@ import metodosGenericos.*
 import objetos.*
 import direcciones.*
 import nivel.*
+import NPCs.*
 
 class Interactuable{
 	const property esAtravesable = true
@@ -13,6 +14,7 @@ class Interactuable{
 	method image() = "interactuables/" + identidad + ".png"
 	method morir(){}
 	method serAgarrado(){}
+	method tirar(){}
 }
 
 class Escotilla inherits Interactuable (identidad = "trapdoor"){
@@ -20,35 +22,12 @@ class Escotilla inherits Interactuable (identidad = "trapdoor"){
 	method interaccion(){ jugador.position(destino.position()) }
 }
 
-class Cadaver inherits Interactuable (identidad = "cadaver"){
-	var cargado = false // delegar a obj
-	var property ultimaPos = jugador.position().right(1)
-	
-	method interaccion(){
-		if(cargado.negate()){
-			cargado = true
-		}else{
-			cargado = false
-			ultimaPos = jugador.position().right(1)
-		}
-	}
-	
-	override method position() {
-		if(cargado)
-			return jugador.position().right(1)
-		else
-			return ultimaPos
-	}
-}
-
 class Escondite inherits Interactuable(identidad = "tacho"){
 	
 	method interaccion(){
-		direcciones.cercanosA(jugador).forEach({cadaver =>
-			nivel.quitar(cadaver)
-			nivel.removerMuerto(cadaver)
+		direcciones.cercanosA(jugador,2).forEach({cadaver =>
+			cadaver.tirar()
 		})
-		game.addVisual(self)
 	}
 }
 
