@@ -60,7 +60,7 @@ class Veneno inherits Objeto (imageAux = "veneno"){
 	var usos = 1
 	
 	method usar() {
-		const aux = direcciones.cercanosA(jugador)
+		const aux = direcciones.cercanosA(jugador, 1)
 		if(aux.equals([]).negate()){
 			self.envenenar(aux.head())
 		}
