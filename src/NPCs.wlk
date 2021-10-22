@@ -38,10 +38,8 @@ class Civil inherits SerVivo { // cambiar lo de cadaver
     method interaccion() { estado.interaccion(self) }
     
     override method position() {
-		if(cargado) return jugador.position().right(1)
-		else if (estado.equals(muerto)) return ultimaPos
-		else return position
-	}
+    	if (cargado) return jugador.position().right(1) else return ultimaPos
+    }
  
 }
 
@@ -64,7 +62,7 @@ object vivo {
     
     method moverse(npc){
         npc.sentido(direcciones.direccionRandom())
-        metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { npc.position(movimiento.mover(npc.sentido(), npc)) } )
+        metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { npc.ultimaPos(movimiento.mover(npc.sentido(), npc)) } )
     }
     
     method interaccion(npc){}
@@ -86,7 +84,6 @@ object muerto{
     
     method interaccion(npc){
     	npc.cargado(npc.cargado().negate())
-    	npc.ultimaPos(jugador.position().right(1))
     }
 	
     method delatarAsesino(npc){}
