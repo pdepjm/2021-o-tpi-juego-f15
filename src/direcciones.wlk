@@ -21,9 +21,7 @@ object direcciones {
 	
 	method direccionRandom() = listaDirecciones.anyOne()
 	
-	method cercanosA(persona, dist) { // esto funca y no necesitamos usar radio, pero algunos objetos no entienden el objeto morir, hay que ver como hacerlo mas polimorfico
-		return nivel.interactuables().filter({ aux => persona.position().distance(aux.position()) <= dist })
-	}
+	method cercanosA(persona, dist) = nivel.interactuables().filter({ aux => persona.position().distance(aux.position()) <= dist })
 }
 
 object izquierda {

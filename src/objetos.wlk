@@ -32,7 +32,7 @@ class Objeto {
 		nivel.quitar(self)
     }
     
-    method tirar(){game.say(jugador, "Podria servirme en un futuro el objeto " + self.toString())}
+    method tirar(){ game.say(jugador, "Podria servirme en un futuro el objeto " + self.toString()) }
     
 }
 
@@ -44,20 +44,17 @@ class Remera inherits Objeto (imageAux = "remera"){
 }
 
 class Cuchillo inherits Objeto (imageAux = "cuchi"){
-	method usar() {
-		direcciones.cercanosA(jugador,1).forEach({npc => npc.morir()})
-	}
+	method usar() { direcciones.cercanosA(jugador,1).forEach({npc => npc.morir()}) }
 }
 
 object vacio {
-	method interaccion() {
-		jugador.reemplazarObjeto(self)
-	}
+	method interaccion() { jugador.reemplazarObjeto(self) }
+	
 	method usar(){}
+	
 	method soltar(){}
-	method serAgarrado() {
-		jugador.objeto(self)
-    }
+	
+	method serAgarrado() { jugador.objeto(self) }
 }
 
 class Veneno inherits Objeto (imageAux = "veneno"){
@@ -65,21 +62,17 @@ class Veneno inherits Objeto (imageAux = "veneno"){
 	
 	method usar() {
 		const aux = direcciones.cercanosA(jugador, 1)
-		if(aux.equals([]).negate()){
+		if( aux.equals([]).negate() )
 			self.envenenar(aux.head())
-		}
 		usos -= 1
 		if(usos.equals(0)) jugador.objeto(vacio)
 	}
-	method envenenar(npc){
-		game.schedule(5000, {npc.morir()})
-	}
+	
+	method envenenar(npc){ game.schedule(5000, {npc.morir()}) }
 }
 
 object pizza inherits Objeto (imageAux = "pizza"){
-	method usar() {
-
-	}
+	method usar() { }
 }
 
 class Bomba inherits Objeto (imageAux = "bomb"){
@@ -87,12 +80,10 @@ class Bomba inherits Objeto (imageAux = "bomb"){
 		position = jugador.position()
 	//	game.schedule(2000, self.explotar(personaje.position()) )
 	}
-	method explotar(posicion){
-	}
+	
+	method explotar(posicion){ }
 }
 
 class BombaDeHumo inherits Objeto (imageAux = ""){
-	method usar() {
-
-	}
+	method usar() { }
 }
