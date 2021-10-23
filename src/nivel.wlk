@@ -15,7 +15,7 @@ object nivel{
 	const remera1 = new Remera (position = game.at(7,7))
 	const veneno1 = new Veneno (position = game.at(10,10))
 	const bomba1 = new Bomba (position = game.at(11,16))
-	const knife = new Cuchillo (position = game.at(9,7))
+	const knife = new Cuchillo (position = game.at(28,2))
 	// Interactuables
 	const escotillaBanio = new Escotilla (position = game.at(3,23), identidad = "pared")
 	const escotillaEstudio = new Escotilla (position = game.at(44,5), destino = escotillaBanio)
@@ -28,7 +28,7 @@ object nivel{
 	const listaMuertos = []
 	
 	const objetos = [jugador, contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills]
-	var property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, tacho, knife]
+	var property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, tacho,knife]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
@@ -50,9 +50,9 @@ object nivel{
 		// NPCs - listas
 		npcs.forEach({ npc =>
 			game.onTick(1000.randomUpTo(10000), "movimiento", {npc.moverse()} )
-			game.onTick(400,"delatarAsesino", {npc.delatarAsesino()} )
+			//game.onTick(400,"delatarAsesino", {npc.delatarAsesino()} )
 		})
-		
+		game.onTick(400,"verificarCadaveres",{policia.vioMuerto()})
 		self.configurarTeclas()
 	}
 	

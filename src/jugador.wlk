@@ -7,6 +7,8 @@ import metodosGenericos.*
 
 object jugador inherits SerVivo (identidad = "player", position = game.at(28,2)){
 	var property objeto = vacio
+	
+	method estaMuerto() = false
 
 	method inicializar() {
 		objeto = vacio
@@ -14,6 +16,8 @@ object jugador inherits SerVivo (identidad = "player", position = game.at(28,2))
 		sentido = abajo
 		self.imageAux("default")
 	}
+	
+	method vioMuerto(){}
 
 	method interactuar(){
 		game.schedule(0, {(direcciones.cercanosA(self,1) + [vacio]).head().interaccion()}) //no tiene sentido pero sino da error los test

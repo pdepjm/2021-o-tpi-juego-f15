@@ -12,8 +12,12 @@ class Objeto {
 	const imageAux
 	
 	method image() = "objetos/" + imageAux + ".png"
+	
+	method estaMuerto() = false
 
 	method interaccion() { jugador.reemplazarObjeto(self) }
+	
+	method vioMuerto(){}
 	
 	method soltar(){
 		position = jugador.position()
