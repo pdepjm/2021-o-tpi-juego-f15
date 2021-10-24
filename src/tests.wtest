@@ -19,7 +19,7 @@ describe "testsUwU" {
 	
 	const objetos = [npcTest, knifeTest, remeraTest, escotillaEstudioTest, escotillaBanioTest]
 	
-	method initialize() { // test de polimorfismo
+	method initialize() { // Testear de polimorfismo
 		//Visuales
 		objetos.forEach({ aux => nivel.agregar(aux) })
 		//Inicializaciones

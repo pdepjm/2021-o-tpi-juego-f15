@@ -15,7 +15,7 @@ object vertical{
 	method construirPared(x,y) = { i => game.addVisual(new Pared(position = game.at(x,y+i))) }
 }
 
-object todasLasParedes{ // RECTANGULOS
+object todasLasParedes{
 	method cargar(){
 	self.lineaPared(16,0,-1,vertical)
 	self.lineaPared(9,2,15,vertical)
@@ -46,7 +46,5 @@ object todasLasParedes{ // RECTANGULOS
 	self.lineaPared(24,0,0,horizontal)
 	}
 	
-	method lineaPared(cantidad,x,y,sentido){
-		cantidad.times(sentido.construirPared(x,y))
-	}
+	method lineaPared(cantidad, x, y, sentido){ cantidad.times(sentido.construirPared(x,y)) }
 }
