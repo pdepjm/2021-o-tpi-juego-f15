@@ -5,7 +5,7 @@ import nivel.*
 import NPCs.*
 import metodosGenericos.*
 
-object jugador inherits SerVivo (identidad = "player", position = game.at(28,2)){
+object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2) ){
 	var property objeto = vacio
 	
 	method estaMuerto() = false
@@ -20,11 +20,11 @@ object jugador inherits SerVivo (identidad = "player", position = game.at(28,2))
 	method vioMuerto(){}
 
 	method interactuar(){
-		game.schedule(0, {(direcciones.cercanosA(self,1) + [vacio]).head().interaccion()}) //no tiene sentido pero sino da error los test
+		game.schedule(0, { (direcciones.cercanosA(self, 1) + [vacio]).head().interaccion() }) //no tiene sentido pero sino da error los test
 	}
 	
 	method moverPara(direccion){
-			position = movimiento.mover(direccion,self)
+			position = movimiento.mover(direccion, self)
 			self.sentido(direccion)
 	}
     

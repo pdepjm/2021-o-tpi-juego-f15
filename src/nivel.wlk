@@ -44,13 +44,13 @@ object nivel{
 		todasLasParedes.cargar()
 		escotillaBanio.destino(escotillaEstudio)
 		// Visuales
-		interactuables.forEach({ objeto => game.addVisual(objeto)})
-		objetos.forEach({ objeto => game.addVisual(objeto)})
+		interactuables.forEach({ objeto => game.addVisual(objeto) })
+		objetos.forEach({ objeto => game.addVisual(objeto) })
 		// NPCs - listas
 		npcs.forEach({ npc =>
-			game.onTick(1000.randomUpTo(10000), "movimiento", {npc.moverse()} )
+			game.onTick(1000.randomUpTo(10000), "movimiento", { npc.moverse() })
 		})
-		game.onTick(400, "verificarCadaveres", { policia.vioMuerto() })
+		game.onTick(500, "verificarCadaveres", { policia.vioMuerto() })
 		self.configurarTeclas()
 	}
 	
