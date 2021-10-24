@@ -28,7 +28,7 @@ object nivel{
 	const listaMuertos = []
 	
 	const objetos = [jugador, contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills]
-	var property interactuables = [npc1, npc2, npc3, npc4, remera1, veneno1, bomba1, escotillaBanio, escotillaEstudio, tacho,knife]
+	var property interactuables = [ remera1, veneno1, bomba1, knife,escotillaBanio, escotillaEstudio,tacho,npc1, npc2, npc3, npc4]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
@@ -72,15 +72,6 @@ object nivel{
 		interactuables.remove(cosa)
 		game.removeVisual(cosa)
 		cosa.position(null)
-	}
-	
-	method listaMuertos() = listaMuertos
-	
-	method agregarMuerto(muertito) { listaMuertos.add(muertito) }
-	
-	method removerMuerto(muertito) {
-		listaMuertos.remove(muertito)
-		game.removeVisual(muertito)
 	}
 }
 
