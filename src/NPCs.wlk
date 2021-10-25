@@ -30,6 +30,7 @@ class Civil inherits SerVivo {
 	var property estado = vivo
 	var property ultimaPos = position
 	var property cargado = false
+	var property asustado = false
 	
 	method estaMuerto() = estado == muerto
 	
@@ -47,12 +48,20 @@ class Civil inherits SerVivo {
     
     method interaccion() { estado.interaccion(self) }
     
+    method asustar(){
+    	asustado = true
+    }
+    
+    method desasustar(){
+    	asustado = false
+    }
+    
     override method position() {
     	if (cargado){
 	    	ultimaPos = jugador.position().right(1)
 	    	return ultimaPos
     	}
-    	else if ( estado.equals(muerto) ) return ultimaPos
+    	else if ( estado.equals(muerto)) return ultimaPos
     	else return position
     }
     
@@ -84,8 +93,15 @@ object vivo {
     }
      
     method vioMuerto(npc){
-    	if( npc.muertosCercanos().isEmpty().negate() )
-    		policia.delatar(npc.muertosCercanos(), npc.delatar())
+    	if( npc.muertosCercanos().isEmpty().negate() ){
+    		npc.asustar()
+    		const loVio =  npc.delatar()
+    		game.say(npc, "Esta muertooooo police!!!!")
+    		game.schedule( 1000, { 
+    			if(loVio) game.say(npc, "LO MATASTE TU")
+    			policia.delatar(npc.muertosCercanos(), loVio)
+    		})
+    		}else npc.desasustar()
     }
     
     method cadaveresCerca(npc) = direcciones.cercanosA(npc, radioDeVision).filter({ cad => cad.estaMuerto() })
@@ -122,34 +138,58 @@ object muerto{
     method delatarAsesino(npc){}
 }
 
+
+
 object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de los schedule para que no salga el error de que ya esta el visual
 	//var busco = false
+	var ocupado = false
+	var sospechoso = null
 	
 	override method image() = "personajes/police_" + imageAux + ".png"
 
 	method vioMuerto(){ nivel.interactuables().forEach({ ob => ob.vioMuerto() }) }
 	
+	
+	
+	
 	method delatar(muertos, culpable){
-		const identidad = jugador.imageAux()
-		
-		if( game.hasVisual(self).negate()){
-			game.schedule(2000, {
-				if(culpable){
-					if(jugador.imageAux() == identidad)
-						self.eliminarJugador()
-				}
-				else
-					self.buscarCadaver(muertos)
-			})
+		if( ocupado.negate()){
+			ocupado = true
+			sospechoso = jugador.imageAux()
+			self.buscarCadaver(muertos,culpable)
 		}
 	}
 	
-	method buscarCadaver(muertos){
-		position = muertos.head().position()
+	method encargarseDeJugador(culpable){
 		game.addVisual(self)
-		muertos.forEach{ muerto => nivel.quitar(muerto) }
-		game.schedule( 2000, { game.removeVisual(self) } )
+			game.say(self, "VOY A BUSCAR AL CANALLA")
+			game.schedule(2000, {
+				game.removeVisual(self)
+				if(culpable and jugador.imageAux() == sospechoso) self.eliminarJugador() else self.noLoEncontre()
+				ocupado = false
+			})
 	}
+	
+	
+	
+	method noLoEncontre(){
+		position = game.at(28,2)
+		game.addVisual(self)
+		game.say(self, "Se escapo de nuevo")
+		game.schedule( 2000, { game.removeVisual(self) } )	
+	}
+	
+	method buscarCadaver(morts,culpable){
+		position = morts.head().position()
+		game.addVisual(self)
+		game.say(self,"me los llevo de aqui")
+		game.schedule( 2000, { 
+			morts.forEach({mort=>nivel.quitar(mort)}) 
+			game.removeVisual(self)
+			self.encargarseDeJugador(culpable)
+		} )
+	}
+	
 	
 	method eliminarJugador(){ //ARREGLAR
 		position = jugador.position()
