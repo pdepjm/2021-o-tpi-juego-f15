@@ -7,6 +7,22 @@ import metodosGenericos.*
 
 object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2) ){
 	var property objeto = vacio
+	var vision = true
+	
+	method noVe(){
+		vision = false
+	}
+	
+	method ve(){
+		vision = true
+	}
+	
+	method estaMuerto() = false
+
+	method explotar(){
+		game.removeVisual(self)
+		//terminar juego
+	}
 	
 	method estaMuerto() = false
 
