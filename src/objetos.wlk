@@ -13,6 +13,8 @@ class Objeto {
 	
 	method image() = "objetos/" + imageAux + ".png"
 	
+	method efectoHumo(){}
+	
 	method estaMuerto() = false
 
 	method interaccion() { jugador.reemplazarObjeto(self) }
@@ -79,7 +81,7 @@ object pizza inherits Objeto (imageAux = "pizza"){
 	method usar() { }
 }
 
-class Bomba inherits Objeto{
+class Bomba inherits Objeto (imageAux = "bomb"){
 	method explosion(){
 		nivel.quitar(self)
 	}
@@ -91,21 +93,15 @@ class Bomba inherits Objeto{
 }
 
 
-class BombaExplosiva inherits Bomba (imageAux = "bomb"){
+class BombaExplosiva inherits Bomba {
 	override method explosion(){ 
-		direcciones.cercanosA(self, 5,nivel.interactuables()+jugador).forEach({npc=>npc.explotar()})
+		direcciones.cercanosA(self, 10,nivel.interactuables().add(jugador)).forEach({npc=>npc.explotar()})
 		super()
 	}
 }
 
-class BombaDeHumo inherits Bomba (imageAux = ""){
+class BombaDeHumo inherits Bomba{
 	override method explosion(){
-		const afectados = direcciones.cercanosA(self, 5,nivel.interactuables()+jugador)
-		afectados.forEach({npc=>npc.noVe()})
-		game.schedule(5000, {
-		super()
-		afectados.forEach({npc=>npc.ve()})
-} )
-		
-	}
-}
+		direcciones.cercanosA(self, 5,nivel.interactuables().add(jugador)).forEach({npc=>npc.efectoHumo()})
+		super()}
+		 	}

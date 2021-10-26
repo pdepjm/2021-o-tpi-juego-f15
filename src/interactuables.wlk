@@ -18,6 +18,7 @@ class Interactuable{
 	method vioMuerto(){}
 	method estaMuerto() = false
 	method explotar(){}
+	method efectoHumo(){}
 }
 
 class Escotilla inherits Interactuable (identidad = "trapdoor"){
@@ -28,7 +29,7 @@ class Escotilla inherits Interactuable (identidad = "trapdoor"){
 class Escondite inherits Interactuable(identidad = "tacho"){
 	
 	method interaccion(){
-		direcciones.cercanosA(jugador,2).forEach({cadaver =>
+		direcciones.cercanosA(jugador,2,nivel.interactuables()).forEach({cadaver =>
 			cadaver.tirar()
 		})
 	}

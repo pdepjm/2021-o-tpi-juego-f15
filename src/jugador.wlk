@@ -9,13 +9,12 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 	var property objeto = vacio
 	var vision = true
 	
-	method noVe(){
+	method efectoHumo(){
 		vision = false
+		game.say(self,"No veoooo")
+		game.schedule(7000,{vision= true})
 	}
 	
-	method ve(){
-		vision = true
-	}
 	
 	method estaMuerto() = false
 
@@ -23,8 +22,6 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 		game.removeVisual(self)
 		//terminar juego
 	}
-	
-	method estaMuerto() = false
 
 	method inicializar() {
 		objeto = vacio

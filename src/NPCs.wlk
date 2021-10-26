@@ -32,9 +32,11 @@ class Civil inherits SerVivo {
 		self.morir()
 	}
 	
-	method noVe(){estado.noVe(self)}
-	
-	method ve(){estado.ve(self)}
+	method efectoHumo(){
+		self.radioDeVision(0)
+		game.say(self,"No veoooo")
+		game.schedule(7000,{self.radioDeVision(7)})
+	}
 	
 	method estaMuerto() = estado == muerto
 	
