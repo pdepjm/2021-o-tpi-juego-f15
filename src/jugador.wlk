@@ -46,7 +46,7 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
     
 	method reemplazarObjeto(ob){
 		objeto.soltar()
-		ob.serAgarrado()
+		if(vision){ob.serAgarrado()}
 	}
 
     method usarObjeto() { objeto.usar() }
