@@ -8,12 +8,6 @@ import interactuables.*
 import metodosGenericos.*
 import contador.*
 
-/*class Culpable{
-	var property quien = null
-	var property que = null
-	var property culpable = null
-}*/
-
 class SerVivo {
 	var property estaVivo = true
 	const property esAtravesable = true
@@ -21,6 +15,7 @@ class SerVivo {
 	var property imageAux = "default"
 	const identidad = "npc"
 	var property position = game.origin()
+	
 	method image() = "personajes/" + identidad + "_" + sentido + "_" + imageAux + ".png"
 	
 	method serAgarrado() {}
@@ -48,13 +43,9 @@ class Civil inherits SerVivo {
     
     method interaccion() { estado.interaccion(self) }
     
-    method asustar(){
-    	asustado = true
-    }
+    method asustar(){ asustado = true }
     
-    method desasustar(){
-    	asustado = false
-    }
+    method desasustar(){ asustado = false }
     
     override method position() {
     	if (cargado){
@@ -107,17 +98,6 @@ object vivo {
     method cadaveresCerca(npc) = direcciones.cercanosA(npc, radioDeVision).filter({ cad => cad.estaMuerto() })
     
     method interaccion(npc){}
-    
-    /*
-    method delatarAsesino(npc){
-    	//game.say(npc, "Llamen a la policia. Acaso no piensan en los niños?")
-    	policia.recibirLlamado(npc)
-    }
-     */
-     
-     // method estaCercaDelAsesino(npc) = npc.position().distance( jugador.position() ) < radioDeVision
-	
-	// method cadaverCercano(npc) = nivel.listaMuertos().filter({ cadaver => npc.ultimaPos().distance(cadaver.position()) < radioDeVision })
 }
 
 object muerto{
@@ -138,19 +118,13 @@ object muerto{
     method delatarAsesino(npc){}
 }
 
-
-
 object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de los schedule para que no salga el error de que ya esta el visual
-	//var busco = false
 	var ocupado = false
 	var sospechoso = null
 	
 	override method image() = "personajes/police_" + imageAux + ".png"
 
 	method vioMuerto(){ nivel.interactuables().forEach({ ob => ob.vioMuerto() }) }
-	
-	
-	
 	
 	method delatar(muertos, culpable){
 		if( ocupado.negate()){
@@ -170,8 +144,6 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 			})
 	}
 	
-	
-	
 	method noLoEncontre(){
 		position = game.at(28,2)
 		game.addVisual(self)
@@ -190,7 +162,6 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 		} )
 	}
 	
-	
 	method eliminarJugador(){ //ARREGLAR
 		position = jugador.position()
 		game.addVisual(self)
@@ -203,42 +174,4 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 		imageAux = "enojado"
 		soundProducer.horror()
 	}
-	
-	/* 
-	
-	method buscarCadaver(cadaver){
-		game.schedule( 1000, { cadaver.forEach{ muerto => self.eliminarCadaver(muerto) }} )		
-	}
-	
-	method eliminarCadaver(muerto){
-		if( game.hasVisual(self).negate() ){
-			position = muerto.position()
-			game.addVisual(self)
-			nivel.quitar(muerto)
-			nivel.removerMuerto(muerto)
-			//nivel.removerMuerto(muerto)
-			game.schedule( 2000, { game.removeVisual(self) } )
-			game.say(self, "ALEJAOS! Estamos haciendo la removicion de un cadaver!")
-		}
-	}
-	*/
-	
-	/*
-	method buscarAsesino(){
-		if(jugador.estaVestido().negate() or busco)
-			self.eliminarJugador()
-		game.schedule( 500, { busco = true } )
-	}
-	 */
 }
-
-	/*
-	method recibirLlamado(personaQueLLama){
-		if( personaQueLLama.cadaverCercano().size() != 0 and game.hasVisual(self).negate() ){
-            if( personaQueLLama.estaCercaDelAsesino().negate() ){
-                self.buscarCadaver( personaQueLLama.cadaverCercano() )
-            }
-            else self.buscarAsesino()
-        }
-	}
-	*/

@@ -30,7 +30,6 @@ object nivel{
 	var property interactuables = [remera1, veneno1, bomba1, knife,escotillaBanio, escotillaEstudio,tacho,npc1, npc2, npc3, npc4]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
-	
 	method configuracionInicial(){
 		game.clear()
 		jugador.inicializar()
@@ -74,13 +73,3 @@ object nivel{
 		cosa.position(null)
 	}
 }
-
-/*
-object todosLosObjetos{
-	var property listaObjetos = []
-	method inicializar(referencia,objeto){
-		const referencia = new objeto
-		referencia.add(listaObjetos)
-	}
-}
- */
