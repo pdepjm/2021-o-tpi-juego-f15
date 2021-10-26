@@ -19,8 +19,7 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 	method estaMuerto() = false
 
 	method explotar(){
-		game.removeVisual(self)
-		//terminar juego
+		game.schedule(3300, { game.stop() })
 	}
 
 	method inicializar() {
