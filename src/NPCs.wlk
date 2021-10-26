@@ -9,7 +9,6 @@ import metodosGenericos.*
 import contador.*
 
 class SerVivo {
-	var property estaVivo = true
 	const property esAtravesable = true
 	var property sentido = abajo
 	var property imageAux = "default"

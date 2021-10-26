@@ -7,7 +7,6 @@ import nivel.*
 
 class Objeto {
 	const property esAtravesable = true
-	const property esCadaver = false
 	var property position = game.at(10,10)
 	const imageAux
 	
