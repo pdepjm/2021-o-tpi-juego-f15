@@ -17,6 +17,7 @@ class Interactuable{
 	method tirar(){}
 	method vioMuerto(){}
 	method estaMuerto() = false
+	method explotar(){}
 }
 
 class Escotilla inherits Interactuable (identidad = "trapdoor"){
