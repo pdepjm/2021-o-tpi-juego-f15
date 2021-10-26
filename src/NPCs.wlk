@@ -28,6 +28,10 @@ class Civil inherits SerVivo {
 	var property cargado = false
 	var property asustado = false
 	
+	method explotar(){
+		self.morir()
+	}
+	
 	method noVe(){estado.noVe(self)}
 	
 	method ve(){estado.ve(self)}
