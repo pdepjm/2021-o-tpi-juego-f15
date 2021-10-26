@@ -22,10 +22,15 @@ class SerVivo {
 }
 
 class Civil inherits SerVivo {
+	var property radioDeVision = 7
 	var property estado = vivo
 	var property ultimaPos = position
 	var property cargado = false
 	var property asustado = false
+	
+	method noVe(){estado.noVe(self)}
+	
+	method ve(){estado.ve(self)}
 	
 	method estaMuerto() = estado == muerto
 	
@@ -66,9 +71,11 @@ class Civil inherits SerVivo {
 }
 
 object vivo {
-	const radioDeVision = 7
+	method noVe(npc){npc.radioDeVision(0)}
 	
-    method morir(npc){
+	method ve(npc){npc.radioDeVision(7)}
+	
+	method morir(npc){
     	npc.ultimaPos( npc.position() )
         game.schedule( 0, { soundProducer.muerte() } ) // no tiene sentido pero es para tests
         contadorKills.subirKills()
@@ -95,12 +102,17 @@ object vivo {
     		}else npc.desasustar()
     }
     
-    method cadaveresCerca(npc) = direcciones.cercanosA(npc, radioDeVision,nivel.interactuables()).filter({ cad => cad.estaMuerto() })
+    method cadaveresCerca(npc) = direcciones.cercanosA(npc, npc.radioDeVision(),nivel.interactuables()).filter({ cad => cad.estaMuerto() })
     
     method interaccion(npc){}
 }
 
 object muerto{
+	
+	method noVe(npc){}
+	
+	method ve(npc){}
+	
 	method vioMuerto(npc){}
 	
 	method estaCercaDelAsesino(npc){}
