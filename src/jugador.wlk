@@ -36,7 +36,7 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 	method vioMuerto(){}
 
 	method interactuar(){
-		game.schedule(0, { (direcciones.cercanosA(self, 1) + [vacio]).head().interaccion() }) //no tiene sentido pero sino da error los test
+		game.schedule(0, { (direcciones.cercanosA(self, 1,nivel.interactuables()) + [vacio]).head().interaccion() }) //no tiene sentido pero sino da error los test
 	}
 	
 	method moverPara(direccion){
