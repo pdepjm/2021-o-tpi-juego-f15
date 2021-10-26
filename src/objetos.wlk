@@ -19,6 +19,10 @@ class Objeto {
 	
 	method vioMuerto(){}
 	
+	method explotar(){
+		nivel.quitar(self)
+	}
+	
 	method soltar(){
 		position = jugador.position()
 		nivel.agregar(self)
@@ -44,7 +48,7 @@ class Remera inherits Objeto (imageAux = "remera"){
 }
 
 class Cuchillo inherits Objeto (imageAux = "cuchi"){
-	method usar() { direcciones.cercanosA(jugador,1).forEach({npc => npc.morir()}) }
+	method usar() { direcciones.cercanosA(jugador,1,nivel.interactuables()).forEach({npc => npc.morir()}) }
 }
 
 object vacio {
@@ -58,10 +62,10 @@ object vacio {
 }
 
 class Veneno inherits Objeto (imageAux = "veneno"){
-	var usos = 1
+	var usos = 3
 	
 	method usar() {
-		const aux = direcciones.cercanosA(jugador, 1)
+		const aux = direcciones.cercanosA(jugador, 1,nivel.interactuables())
 		if( aux.equals([]).negate() )
 			self.envenenar(aux.head())
 		usos -= 1
@@ -75,15 +79,33 @@ object pizza inherits Objeto (imageAux = "pizza"){
 	method usar() { }
 }
 
-class Bomba inherits Objeto (imageAux = "bomb"){
-	method usar() {
-		position = jugador.position()
-	//	game.schedule(2000, self.explotar(personaje.position()) )
+class Bomba inherits Objeto{
+	method explosion(){
+		nivel.quitar(self)
 	}
-	
-	method explotar(posicion){ }
+	method usar() {
+		self.soltar()
+		// sonido y cambio de imagen pls, que sea un method para ambos asi podemos darle una imagen y sonido especial a cada tipo de bomba
+		game.schedule(2000, {self.explotar()} )
+	}
 }
 
-class BombaDeHumo inherits Objeto (imageAux = ""){
-	method usar() { }
+
+class BombaExplosiva inherits Bomba (imageAux = "bomb"){
+	override method explosion(){ 
+		direcciones.cercanosA(self, 5,nivel.interactuables()+jugador).forEach({npc=>npc.explotar()})
+		super()
+	}
+}
+
+class BombaDeHumo inherits Bomba (imageAux = ""){
+	override method explosion(){
+		const afectados = direcciones.cercanosA(self, 5,nivel.interactuables()+jugador)
+		afectados.forEach({npc=>npc.noVe()})
+		game.schedule(5000, {
+		super()
+		afectados.forEach({npc=>npc.ve()})
+} )
+		
+	}
 }
