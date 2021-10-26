@@ -6,8 +6,6 @@ object metodos{
   		game.onTick(intervalo, nombreAleatorio, accion)
   		game.schedule(intervalo * cantidad, { game.removeTickEvent(nombreAleatorio) })
 	}
-	method numeroEntre(num,num2){
-		return (num..num2).anyOne()
-	}
 	
+	method numeroEntre(num,num2) = (num..num2).anyOne()
 }

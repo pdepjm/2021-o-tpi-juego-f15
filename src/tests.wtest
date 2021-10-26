@@ -8,6 +8,7 @@ import direcciones.*
 import paredes.*
 import contador.*
 import interactuables.*
+import metodosGenericos.*
 
 describe "testsUwU" {
 	
@@ -57,5 +58,19 @@ describe "testsUwU" {
 		assert.equals( remeraTest, jugador.objeto() )
 		jugador.usarObjeto()
 		assert.that( jugador.estaVestido() )
+	}
+}
+
+describe "Metodos Genericos" {
+	
+	test "repetirNVeces"{
+		var contador = 0
+		metodos.repetirNVeces(1, 5, {contador += 1})
+		assert.equals(5, contador)
+	}
+	
+	test "Numero Entre" {
+		const auxiliar = metodos.numeroEntre(0,10)
+		assert.that(auxiliar >= 0 and auxiliar <= 10)
 	}
 }
