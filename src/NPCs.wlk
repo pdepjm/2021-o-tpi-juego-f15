@@ -60,7 +60,7 @@ class Civil inherits SerVivo {
     
     method delatar(mort, suspect){}
     
-    method muertosCercanos() = direcciones.cercanosA(self, 6).filter({ ob => ob.estaMuerto() })
+    method muertosCercanos() = direcciones.cercanosA(self, 6,nivel.interactuables()).filter({ ob => ob.estaMuerto() })
     
     method delatar() = self.muertosCercanos().any({ ob => ob.position().distance(jugador.position()) <= 4 })
 }
@@ -95,7 +95,7 @@ object vivo {
     		}else npc.desasustar()
     }
     
-    method cadaveresCerca(npc) = direcciones.cercanosA(npc, radioDeVision).filter({ cad => cad.estaMuerto() })
+    method cadaveresCerca(npc) = direcciones.cercanosA(npc, radioDeVision,nivel.interactuables()).filter({ cad => cad.estaMuerto() })
     
     method interaccion(npc){}
 }
