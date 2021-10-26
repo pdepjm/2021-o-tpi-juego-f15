@@ -88,20 +88,20 @@ class Bomba inherits Objeto (imageAux = "bomb"){
 	method usar() {
 		self.soltar()
 		// sonido y cambio de imagen pls, que sea un method para ambos asi podemos darle una imagen y sonido especial a cada tipo de bomba
-		game.schedule(2000, {self.explotar()} )
+		game.schedule(2000, {self.explosion()} )
 	}
 }
 
 
 class BombaExplosiva inherits Bomba {
 	override method explosion(){ 
-		direcciones.cercanosA(self, 10,nivel.interactuables().add(jugador)).forEach({npc=>npc.explotar()})
+		direcciones.cercanosA(self, 5,nivel.interactuables()+[jugador]).forEach({npc=>npc.explotar()})
 		super()
 	}
 }
 
 class BombaDeHumo inherits Bomba{
 	override method explosion(){
-		direcciones.cercanosA(self, 5,nivel.interactuables().add(jugador)).forEach({npc=>npc.efectoHumo()})
+		direcciones.cercanosA(self, 5,nivel.interactuables()+[jugador]).forEach({npc=>npc.efectoHumo()})
 		super()}
 		 	}

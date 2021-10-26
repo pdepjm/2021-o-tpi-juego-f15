@@ -14,7 +14,8 @@ object nivel{
 	// Objetos
 	const remera1 = new Remera (position = game.at(7,7))
 	const veneno1 = new Veneno (position = game.at(10,10))
-	const bomba1 = new Bomba (position = game.at(11,16))
+	const bomba1 = new BombaExplosiva (position = game.at(11,16))
+	const bomba2 = new BombaDeHumo (position = game.at(17,20))
 	const knife = new Cuchillo (position = game.at(28,2))
 	// Interactuables
 	const escotillaBanio = new Escotilla (position = game.at(3,23), identidad = "pared")
@@ -27,7 +28,7 @@ object nivel{
 	const npc4 = new Civil(position = game.at(10,7))
 	
 	const objetos = [jugador, contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills]
-	var property interactuables = [remera1, veneno1, bomba1, knife,escotillaBanio, escotillaEstudio,tacho,npc1, npc2, npc3, npc4]
+	var property interactuables = [bomba2,remera1, veneno1, bomba1, knife,escotillaBanio, escotillaEstudio,tacho,npc1, npc2, npc3, npc4]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
