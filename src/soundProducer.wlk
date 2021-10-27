@@ -32,7 +32,11 @@ object soundProducer {
 	
 	method horror() { self.sound("sounds/omae wa mou.mp3").play() }
 
-	method muerte() {self.sound("sounds/Death Sound.mp3").play()}
+	method muerte() { self.sound("sounds/Death Sound.mp3").play() }
+	
+	method smokeExplosion() { self.sound("sounds/smokeExplosion.mp3").play() }
+	
+	method explosionExplosion() { self.sound("sounds/explosiveExplosion.mp3").play() }
 }
 
 object soundProviderMock {

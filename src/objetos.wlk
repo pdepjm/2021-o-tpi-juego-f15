@@ -4,11 +4,12 @@ import NPCs.*
 import metodosGenericos.*
 import direcciones.*
 import nivel.*
+import soundProducer.*
 
 class Objeto {
 	const property esAtravesable = true
 	var property position = game.at(10,10)
-	const imageAux
+	var imageAux
 	
 	method image() = "objetos/" + imageAux + ".png"
 	
@@ -20,9 +21,7 @@ class Objeto {
 	
 	method vioMuerto(){}
 	
-	method explotar(){
-		nivel.quitar(self)
-	}
+	method explotar(){ nivel.quitar(self) }
 	
 	method soltar(){
 		position = jugador.position()
@@ -76,31 +75,50 @@ class Veneno inherits Objeto (imageAux = "veneno"){
 	method envenenar(npc){ game.schedule(5000, {npc.morir()}) }
 }
 
-object pizza inherits Objeto (imageAux = "pizza"){
-	method usar() { }
-}
-
-class Bomba inherits Objeto (imageAux = "bomb"){
-	method explosion(){
-		nivel.quitar(self)
+class Bomba inherits Objeto{
+	method sonidoExplosion()
+	
+	method preExplosion(){
+		game.onTick(250, "explosion", { imageAux = "preExplosion"  })
+		game.onTick(300, "explosion", { imageAux = "bomb" })
+  		game.schedule(900, {
+  			game.removeTickEvent("explosion")
+  		})
 	}
+	
+	method explosion(){ game.schedule(1000, { nivel.quitar(self) }) }
+	
 	method usar() {
 		self.soltar()
 		// sonido y cambio de imagen pls, que sea un method para ambos asi podemos darle una imagen y sonido especial a cada tipo de bomba
-		game.schedule(2000, {self.explosion()} )
+		self.preExplosion()
+		game.schedule(2000, { self.explosion() } )
 	}
 }
 
 
-class BombaExplosiva inherits Bomba {
+class BombaExplosiva inherits Bomba (imageAux = "bomb") {
 	override method explosion(){ 
-		direcciones.cercanosA(self, 5,nivel.interactuables()+[jugador]).forEach({npc=>npc.explotar()})
 		super()
+		direcciones.cercanosA(self, 5, nivel.interactuables()+[jugador]).forEach({npc=>npc.explotar()})
+  		self.sonidoExplosion()
+  		self.explotar()
 	}
+	
+	override method sonidoExplosion(){ soundProducer.explosionExplosion() }
+	
+	override method explotar(){ imageAux = "explosion" }
 }
 
-class BombaDeHumo inherits Bomba{
+class BombaDeHumo inherits Bomba (imageAux = "Smokebomb"){
 	override method explosion(){
-		direcciones.cercanosA(self, 5,nivel.interactuables()+[jugador]).forEach({npc=>npc.efectoHumo()})
-		super()}
-		 	}
+		super()
+		direcciones.cercanosA(self, 5, nivel.interactuables()+[jugador]).forEach({npc=>npc.efectoHumo()})
+  		self.sonidoExplosion()
+  		self.explotar()
+	}
+		
+	override method sonidoExplosion(){ soundProducer.smokeExplosion() }
+	
+	override method explotar(){ imageAux = "smoke" }
+}
