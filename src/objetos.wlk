@@ -11,6 +11,8 @@ class Objeto {
 	var property position = game.at(10,10)
 	var imageAux
 	
+	method imageAux(auxiliar) { imageAux = auxiliar } 
+	
 	method image() = "objetos/" + imageAux + ".png"
 	
 	method efectoHumo(){}
@@ -36,19 +38,19 @@ class Objeto {
 		nivel.quitar(self)
     }
     
-    method tirar(){ game.say(jugador, "Podria servirme en un futuro el objeto " + self.toString()) }
+    method tirar(){ game.say( jugador, "Podria servirme en un futuro el objeto " + self.toString() ) }
     
 }
 
-class Remera inherits Objeto (imageAux = "remera"){
+class Remera inherits Objeto ( imageAux = "remera" ){
 	method usar() {
 		jugador.cambiarRopa()
 		jugador.objeto(vacio)
 	}
 }
 
-class Cuchillo inherits Objeto (imageAux = "cuchi"){
-	method usar() { direcciones.cercanosA(jugador,1,nivel.interactuables()).forEach({npc => npc.morir()}) }
+class Cuchillo inherits Objeto ( imageAux = "cuchi" ){
+	method usar() { direcciones.cercanosA( jugador, 1, nivel.interactuables() ).forEach({ npc => npc.morir() }) }
 }
 
 object vacio {
@@ -61,21 +63,62 @@ object vacio {
 	method serAgarrado() { jugador.objeto(self) }
 }
 
-class Veneno inherits Objeto (imageAux = "veneno"){
+class Veneno inherits Objeto ( imageAux = "veneno" ){
 	var usos = 3
 	
 	method usar() {
-		const aux = direcciones.cercanosA(jugador, 1,nivel.interactuables())
+		const aux = direcciones.cercanosA( jugador, 1, nivel.interactuables() )
 		if( aux.equals([]).negate() )
-			self.envenenar(aux.head())
+			self.envenenar( aux.head() )
 		usos -= 1
-		if(usos.equals(0)) jugador.objeto(vacio)
+		if( usos.equals(0) ) jugador.objeto(vacio)
 	}
 	
 	method envenenar(npc){ game.schedule(5000, {npc.morir()}) }
 }
 
-class Bomba inherits Objeto{
+class Bomba inherits Objeto { // habria que modificar radios de explosion o agrandar imagen
+	var estado
+	
+	override method explotar(){}
+	
+	method explotarse(){ nivel.quitar(self) }
+	
+	method preExplosion(){
+		game.onTick(250, "explosion1", { imageAux = "preExplosion1"  })
+		game.onTick(500, "explosion2", { imageAux = "preExplosion2" })
+  		game.schedule(2000, {
+  			game.removeTickEvent("explosion1")
+  			game.removeTickEvent("explosion2")
+  			estado.explosion(self)
+  		})
+	}
+	
+	method usar() {
+		self.soltar()
+		self.preExplosion()
+	}
+}
+
+object explosiva {
+	method explosion(bomba){
+		soundProducer.explosionExplosion()
+		bomba.imageAux("explosion")
+		direcciones.cercanosA( bomba, 5, nivel.interactuables() + [jugador] ).forEach({ npc => npc.explotar() })
+		game.schedule(1000, { bomba.explotarse() })
+	}
+}
+
+object humo {
+	method explosion(bomba){
+		soundProducer.smokeExplosion()
+		bomba.imageAux("smoke")
+		direcciones.cercanosA( bomba, 5, nivel.interactuables() + [jugador] ).forEach({ npc => npc.efectoHumo() })
+		game.schedule(1000, { bomba.explotarse() })
+	}
+}
+
+/*class Bomba inherits Objeto{
 	method sonidoExplosion()
 	
 	method preExplosion(){
@@ -121,4 +164,4 @@ class BombaDeHumo inherits Bomba (imageAux = "Smokebomb"){
 	override method sonidoExplosion(){ soundProducer.smokeExplosion() }
 	
 	override method explotar(){ imageAux = "smoke" }
-}
+}*/

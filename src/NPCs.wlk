@@ -27,9 +27,7 @@ class Civil inherits SerVivo {
 	var property cargado = false
 	var property asustado = false
 	
-	method explotar(){
-		self.morir()
-	}
+	method explotar(){ self.morir() }
 	
 	method efectoHumo(){
 		self.radioDeVision(0)

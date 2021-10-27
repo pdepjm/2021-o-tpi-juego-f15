@@ -15,12 +15,9 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 		game.schedule(7000,{vision= true})
 	}
 	
-	
 	method estaMuerto() = false
 
-	method explotar(){
-		game.schedule(3300, { game.stop() })
-	}
+	method explotar(){ game.schedule(3300, { game.stop() }) }
 
 	method inicializar() {
 		objeto = vacio
@@ -36,8 +33,8 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 	}
 	
 	method moverPara(direccion){
-			position = movimiento.mover(direccion, self)
-			self.sentido(direccion)
+		position = movimiento.mover(direccion, self)
+		self.sentido(direccion)
 	}
     
 	method reemplazarObjeto(ob){
