@@ -104,7 +104,7 @@ object explosiva {
 	method explosion(bomba){
 		soundProducer.explosionExplosion()
 		bomba.imageAux("explosion")
-		direcciones.cercanosA( bomba, 5, nivel.interactuables() + [jugador] ).forEach({ npc => npc.explotar() })
+		direcciones.cercanosA( bomba, 4, nivel.interactuables() + [jugador] ).forEach({ npc => npc.explotar() })
 		game.schedule(1000, { bomba.explotarse() })
 	}
 }
@@ -113,7 +113,7 @@ object humo {
 	method explosion(bomba){
 		soundProducer.smokeExplosion()
 		bomba.imageAux("smoke")
-		direcciones.cercanosA( bomba, 5, nivel.interactuables() + [jugador] ).forEach({ npc => npc.efectoHumo() })
+		direcciones.cercanosA( bomba, 4, nivel.interactuables() + [jugador] ).forEach({ npc => npc.efectoHumo() })
 		game.schedule(1000, { bomba.explotarse() })
 	}
 }
