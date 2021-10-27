@@ -14,8 +14,8 @@ object nivel{
 	// Objetos
 	const remera1 = new Remera (position = game.at(7,7))
 	const veneno1 = new Veneno (position = game.at(10,10))
-	const bomba1 = new Bomba (position = game.at(11,16), estado = explosiva, imageAux = "bomb")
-	const bombaHumo1 = new Bomba (position = game.at(17,20), estado = humo, imageAux = "smokeBomb")
+	const bomba1 = new Bomba (position = game.at(11,16), tipo = explosiva, imageAux = "bomb")
+	const bombaHumo1 = new Bomba (position = game.at(17,20), tipo = humo, imageAux = "smokeBomb")
 	const knife = new Cuchillo (position = game.at(28,2))
 	// Interactuables
 	const escotillaBanio = new Escotilla (position = game.at(3,23), identidad = "pared")

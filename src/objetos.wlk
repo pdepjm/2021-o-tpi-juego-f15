@@ -78,7 +78,7 @@ class Veneno inherits Objeto ( imageAux = "veneno" ){
 }
 
 class Bomba inherits Objeto { // habria que modificar radios de explosion o agrandar imagen
-	var estado
+	var tipo
 	
 	override method explotar(){}
 	
@@ -90,7 +90,7 @@ class Bomba inherits Objeto { // habria que modificar radios de explosion o agra
   		game.schedule(2000, {
   			game.removeTickEvent("explosion1")
   			game.removeTickEvent("explosion2")
-  			estado.explosion(self)
+  			tipo.explosion(self)
   		})
 	}
 	
