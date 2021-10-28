@@ -21,7 +21,7 @@ object direcciones {
 	
 	method direccionRandom() = listaDirecciones.anyOne()
 	
-	method cercanosA(persona, dist,objs) = objs.filter({ aux => persona.position().distance(aux.position()) <= dist })
+	method cercanosA(persona, dist, objs) = objs.filter({ aux => persona.position().distance(aux.position()) <= dist })
 }
 
 object izquierda {

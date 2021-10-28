@@ -9,6 +9,7 @@ import paredes.*
 import contador.*
 import interactuables.*
 import metodosGenericos.*
+import pantallas.*
 
 describe "testsUwU" {
 	
@@ -25,6 +26,14 @@ describe "testsUwU" {
 		//Visuales
 		objetos.forEach({ aux => nivel.agregar(aux) })
 	}
+	
+	test "Pantalla de carga" {
+		pantallaDeCarga.configuracionInicial()
+		assert.equals(game.origin(), pantallaDeCarga.position())
+	}
+	
+	// Quise hacer un test con la pantalla de carga para que al tocar "enter" verificar que se inicie el juego
+	// pero no se como hacer para ejecutar un bloque de codigo, {keyboard.enter()}
 	
 	test "Movimiento jugador" {
 		jugador.position(game.at(5,5))
@@ -48,10 +57,7 @@ describe "testsUwU" {
 	test "Matar NPC" {
 		jugador.position(game.at(3,3))
 		jugador.interactuar()
-		//assert.equals(knifeTest , jugador.objeto())
-		//assert.that(nivel.interactuables().contains(npcTest))
 		jugador.usarObjeto()
-		//assert.equals("muerto", npcTest.imageAux())
 		assert.equals( muerto, npcTest.estado() )
 	}
 	
@@ -62,6 +68,16 @@ describe "testsUwU" {
 		jugador.usarObjeto()
 		assert.that( jugador.estaVestido() )
 	}
+	/*
+	TESTS PARA HACER:
+	* 
+	* Policia => 1) test de verificacion de que saca un cuerpo del mapa
+	*         => 2) test de encontrar al jugador
+	*         => 3) test que falla si el policia esta ocupado
+	* 
+	* Jugador => 1) test de que si existen dos objetos cercanos al jugador, interactua con uno de ellos a la vez
+	*/
+	
 }
 
 describe "Metodos Genericos" {

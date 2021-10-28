@@ -26,7 +26,7 @@ class Escotilla inherits Interactuable (identidad = "trapdoor"){
 	method interaccion(){ jugador.position(destino.position()) }
 }
 
-class Escondite inherits Interactuable(identidad = "tacho"){
+class Escondite inherits Interactuable (identidad = "tacho"){
 	
 	method interaccion(){
 		direcciones.cercanosA(jugador,2,nivel.interactuables()).forEach({cadaver =>
