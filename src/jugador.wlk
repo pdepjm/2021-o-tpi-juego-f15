@@ -17,7 +17,9 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 	
 	method estaMuerto() = false
 
-	method explotar(){ game.schedule(3300, { game.stop() }) }
+	method explotar(){ 
+		game.schedule(3300, { game.stop() })
+	}
 
 	method inicializar() {
 		objeto = vacio
@@ -26,8 +28,6 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 		self.imageAux("default")
 	}
 	
-	method vioMuerto(){}
-
 	method interactuar(){
 		game.schedule(0, { (direcciones.cercanosA(self, 1,nivel.interactuables()) + [vacio]).head().interaccion() }) //no tiene sentido pero sino da error los test
 	}
