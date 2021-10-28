@@ -44,13 +44,7 @@ class Civil inherits SerVivo {
 	
 	method tirar(){ estado.tirar(self) }
 	
-	method estaCercaDelAsesino() = estado.estaCercaDelAsesino(self)
-	
-	method cadaverCercano() = estado.cadaverCercano(self)
-	
 	method moverse(){ estado.moverse(self) }
-    
-    method delatarAsesino(){ estado.delatarAsesino(self) }
     
     method interaccion() { estado.interaccion(self) }
     
@@ -121,9 +115,6 @@ object muerto{
 	
 	method vioMuerto(npc){}
 	
-	method estaCercaDelAsesino(npc){}
-	
-	method cadaverCercano(npc){}
 	
 	method morir(npc){}
     
@@ -133,7 +124,6 @@ object muerto{
     
     method interaccion(npc){ npc.cargado(npc.cargado().negate()) }
 	
-    method delatarAsesino(npc){}
 }
 
 object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de los schedule para que no salga el error de que ya esta el visual

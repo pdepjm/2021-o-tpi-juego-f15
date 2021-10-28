@@ -32,9 +32,6 @@ describe "testsUwU" {
 		assert.equals(game.origin(), pantallaDeCarga.position())
 	}
 	
-	// Quise hacer un test con la pantalla de carga para que al tocar "enter" verificar que se inicie el juego
-	// pero no se como hacer para ejecutar un bloque de codigo, {keyboard.enter()}
-	
 	test "Movimiento jugador" {
 		jugador.position(game.at(5,5))
 		jugador.moverPara(izquierda)
@@ -57,6 +54,7 @@ describe "testsUwU" {
 	test "Matar NPC" {
 		jugador.position(game.at(3,3))
 		jugador.interactuar()
+		jugador.position(game.at(2,2))
 		jugador.usarObjeto()
 		assert.equals( muerto, npcTest.estado() )
 	}
