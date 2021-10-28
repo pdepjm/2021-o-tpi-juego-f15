@@ -63,12 +63,15 @@ Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaj
 |filter     |Consulta       |
 |add        |Efecto         |
 |remove     |Efecto         |
-|size       |Consulta       |
 |head       |Consulta       |
 |           |               |
-
 **COMPLETAR**
 
+Se hace uso de "*forEach*" para ...
+"*anyOne*" es utilizado para elegir de forma aleatoria un numero para poder **COMPLETAR**
+"*head*" es utilizado con el fin de **COMPLETAR**
+"*add*" y "*remove*" son utilizados, por ejemplo, para **COMPLETAR**
+"*filter*"
 
 3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
 
@@ -89,10 +92,12 @@ Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaj
     ```
     Sin embargo, cada "*objeto*" posee un metodo "*usar()*" propio, ya que cada uno de ellos debe reaccionar de manera diferente.
 
-1. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
+5. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
+
+"*Bomba*" hace uso de la composicion e interactua con "*explosiva*" y "*humo*" mediante el atributo "*tipo*". **COMPLETAR**
 
 ## Diagrams
 
-**PEDRO ESTABA EQUIVOCADO**
+**DIAGRAMA MAS REDUCIDO**
 
-![Diagrama](https://imgur.com/MYnJHNH.png)
+![Diagrama]()
