@@ -21,10 +21,9 @@ describe "testsUwU" {
 	const objetos = [npcTest, knifeTest, remeraTest, escotillaEstudioTest, escotillaBanioTest]
 	
 	method initialize() { // Testear de polimorfismo
+		nivel.interactuables([])
 		//Visuales
 		objetos.forEach({ aux => nivel.agregar(aux) })
-		//Inicializaciones
-		todasLasParedes.cargar()
 	}
 	
 	test "Movimiento jugador" {
@@ -40,6 +39,7 @@ describe "testsUwU" {
 	}
 	
 	test "Movimiento obstaculizado por pared" {
+		todasLasParedes.cargar()
 		jugador.position(game.at(1,1))
 		jugador.moverPara(izquierda)
 		assert.equals(game.at(1,1), jugador.position())
@@ -48,7 +48,10 @@ describe "testsUwU" {
 	test "Matar NPC" {
 		jugador.position(game.at(3,3))
 		jugador.interactuar()
+		//assert.equals(knifeTest , jugador.objeto())
+		//assert.that(nivel.interactuables().contains(npcTest))
 		jugador.usarObjeto()
+		//assert.equals("muerto", npcTest.imageAux())
 		assert.equals( muerto, npcTest.estado() )
 	}
 	
@@ -62,12 +65,6 @@ describe "testsUwU" {
 }
 
 describe "Metodos Genericos" {
-	
-	test "repetirNVeces"{
-		var contador = 0
-		metodos.repetirNVeces(1, 5, {contador += 1})
-		assert.equals(5, contador)
-	}
 	
 	test "Numero Entre" {
 		const auxiliar = metodos.numeroEntre(0,10)

@@ -9,6 +9,7 @@ import metodosGenericos.*
 import contador.*
 
 class SerVivo {
+	var property estaVivo = true
 	const property esAtravesable = true
 	var property sentido = abajo
 	var property imageAux = "default"
@@ -27,7 +28,9 @@ class Civil inherits SerVivo {
 	var property cargado = false
 	var property asustado = false
 	
-	method explotar(){ self.morir() }
+	method explotar(){
+		self.morir()
+	}
 	
 	method efectoHumo(){
 		self.radioDeVision(0)
@@ -68,7 +71,7 @@ class Civil inherits SerVivo {
     
     method delatar(mort, suspect){}
     
-    method muertosCercanos() = direcciones.cercanosA( self, 6, nivel.interactuables() ).filter({ ob => ob.estaMuerto() })
+    method muertosCercanos() = direcciones.cercanosA(self, 6,nivel.interactuables()).filter({ ob => ob.estaMuerto() })
     
     method delatar() = self.muertosCercanos().any({ ob => ob.position().distance(jugador.position()) <= 4 })
 }
@@ -90,7 +93,7 @@ object vivo {
     
     method moverse(npc){
         npc.sentido( direcciones.direccionRandom() )
-        metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { npc.position( movimiento.mover(npc.sentido(), npc) ) })
+        metodos.repetirNVeces(1000, metodos.numeroEntre(5,20), { npc.position( movimiento.mover( npc.sentido(), npc ) ) } )
     }
      
     method vioMuerto(npc){
@@ -105,7 +108,7 @@ object vivo {
     		}else npc.desasustar()
     }
     
-    method cadaveresCerca(npc) = direcciones.cercanosA( npc, npc.radioDeVision(), nivel.interactuables() ).filter({ cad => cad.estaMuerto() })
+    method cadaveresCerca(npc) = direcciones.cercanosA(npc, npc.radioDeVision(),nivel.interactuables()).filter({ cad => cad.estaMuerto() })
     
     method interaccion(npc){}
 }
@@ -128,7 +131,7 @@ object muerto{
     
     method tirar(npc){ nivel.quitar(npc) }
     
-    method interaccion(npc){ npc.cargado( npc.cargado().negate() ) }
+    method interaccion(npc){ npc.cargado(npc.cargado().negate()) }
 	
     method delatarAsesino(npc){}
 }
@@ -142,38 +145,38 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 	method vioMuerto(){ nivel.interactuables().forEach({ ob => ob.vioMuerto() }) }
 	
 	method delatar(muertos, culpable){
-		if( ocupado.negate() ){
+		if( ocupado.negate()){
 			ocupado = true
 			sospechoso = jugador.imageAux()
-			self.buscarCadaver( muertos, culpable )
+			self.buscarCadaver(muertos,culpable)
 		}
 	}
 	
-	method encargarseDeJugador( culpable ){
+	method encargarseDeJugador(culpable){
 		game.addVisual(self)
-			game.say( self, "VOY A BUSCAR AL CANALLA" )
+			game.say(self, "VOY A BUSCAR AL CANALLA")
 			game.schedule(2000, {
-				game.removeVisual( self )
+				game.removeVisual(self)
 				if(culpable and jugador.imageAux() == sospechoso) self.eliminarJugador() else self.noLoEncontre()
 				ocupado = false
 			})
 	}
 	
 	method noLoEncontre(){
-		position = game.at(28, 2)
-		game.addVisual( self )
-		game.say( self, "Se escapo de nuevo" )
-		game.schedule(2000, { game.removeVisual(self) })	
+		position = game.at(28,2)
+		game.addVisual(self)
+		game.say(self, "Se escapo de nuevo")
+		game.schedule( 2000, { game.removeVisual(self) } )	
 	}
 	
 	method buscarCadaver(morts,culpable){
 		position = morts.head().position()
 		game.addVisual(self)
-		game.say(self, "me los llevo de aqui")
+		game.say(self,"me los llevo de aqui")
 		game.schedule( 2000, { 
-			morts.forEach({ mort => nivel.quitar(mort) }) 
-			game.removeVisual( self )
-			self.encargarseDeJugador( culpable )
+			morts.forEach({mort=>nivel.quitar(mort)}) 
+			game.removeVisual(self)
+			self.encargarseDeJugador(culpable)
 		} )
 	}
 	
