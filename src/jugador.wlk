@@ -15,12 +15,10 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 		game.schedule(7000,{vision= true})
 	}
 	
-	
 	method estaMuerto() = false
 
-	method explotar(){
-		game.removeVisual(self)
-		//terminar juego
+	method explotar(){ 
+		game.schedule(3300, { game.stop() })
 	}
 
 	method inicializar() {
@@ -30,15 +28,13 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 		self.imageAux("default")
 	}
 	
-	method vioMuerto(){}
-
 	method interactuar(){
 		game.schedule(0, { (direcciones.cercanosA(self, 1,nivel.interactuables()) + [vacio]).head().interaccion() }) //no tiene sentido pero sino da error los test
 	}
 	
 	method moverPara(direccion){
-			position = movimiento.mover(direccion, self)
-			self.sentido(direccion)
+		position = movimiento.mover(direccion, self)
+		self.sentido(direccion)
 	}
     
 	method reemplazarObjeto(ob){
