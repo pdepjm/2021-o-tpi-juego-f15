@@ -164,10 +164,14 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 		game.addVisual(self)
 		game.say(self,"me los llevo de aqui")
 		game.schedule( 2000, { 
-			morts.forEach({mort=>nivel.quitar(mort)}) 
+			self.quitarCadaveres(morts) 
 			game.removeVisual(self)
 			self.encargarseDeJugador(culpable)
 		} )
+	}
+	
+	method quitarCadaveres(morts){
+		morts.forEach({mort=>nivel.quitar(mort)})
 	}
 	
 	method eliminarJugador(){ //ARREGLAR
