@@ -9,7 +9,6 @@ import metodosGenericos.*
 import contador.*
 
 class SerVivo {
-	var property estaVivo = true
 	const property esAtravesable = true
 	var property sentido = abajo
 	var property imageAux = "default"
@@ -18,7 +17,6 @@ class SerVivo {
 	
 	method image() = "personajes/" + identidad + "_" + sentido + "_" + imageAux + ".png"
 	
-	method serAgarrado() {}
 }
 
 class Civil inherits SerVivo {
@@ -63,17 +61,12 @@ class Civil inherits SerVivo {
     
     method vioMuerto() = estado.vioMuerto(self)
     
-    method delatar(mort, suspect){}
-    
     method muertosCercanos() = direcciones.cercanosA(self, 6,nivel.interactuables()).filter({ ob => ob.estaMuerto() })
     
     method delatar() = self.muertosCercanos().any({ ob => ob.position().distance(jugador.position()) <= 4 })
 }
 
 object vivo {
-	method noVe(npc){npc.radioDeVision(0)}
-	
-	method ve(npc){npc.radioDeVision(7)}
 	
 	method morir(npc){
     	npc.ultimaPos( npc.position() )
@@ -101,18 +94,12 @@ object vivo {
     		})
     		}else npc.desasustar()
     }
-    
-    method cadaveresCerca(npc) = direcciones.cercanosA(npc, npc.radioDeVision(),nivel.interactuables()).filter({ cad => cad.estaMuerto() })
-    
+       
     method interaccion(npc){}
 }
 
 object muerto{
-	
-	method noVe(npc){}
-	
-	method ve(npc){}
-	
+		
 	method vioMuerto(npc){}
 	
 	

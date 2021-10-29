@@ -13,7 +13,6 @@ class Interactuable{
 	
 	method image() = "interactuables/" + identidad + ".png"
 	method morir(){}
-	method serAgarrado(){}
 	method tirar(){}
 	method vioMuerto(){}
 	method estaMuerto() = false
