@@ -111,7 +111,7 @@ describe "testsUwU" {
 		assert.equals(0, npcTest.radioDeVision())
 	}
 	
-	test "Npc ve muerto"{  //ver por que no se asusta
+	test "Npc ve muerto"{  
 		jugador.position(game.at(3,3))
 		jugador.interactuar()
 		jugador.position(game.at(2,2))
