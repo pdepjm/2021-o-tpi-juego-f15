@@ -64,7 +64,7 @@ object vacio {
 }
 
 class Veneno inherits Objeto ( imageAux = "veneno" ){
-	var usos = 3
+	var property usos = 3
 	
 	method usar() {
 		const aux = direcciones.cercanosA( jugador, 1, nivel.interactuables() )
