@@ -14,7 +14,6 @@ import pantallas.*
 describe "testsUwU" {
 	
 	const npcTest = new Civil(position = game.at(2,2))
-	const npcTest2 = new Civil(position = game.at(4,4))
 	const remeraTest = new Remera (position = game.at(7,7))
 	const knifeTest = new Cuchillo (position = game.at(3,3))
 	const escotillaBanioTest = new Escotilla (position = game.at(10,10), identidad = "pared")
@@ -94,7 +93,7 @@ describe "testsUwU" {
 		jugador.usarObjeto()
 		jugador.position(game.at(4,4))
 		policia.enojarse() // solo se enoja si encuentra el jugador
-		assert.equals("imageAux", policia.imageAux())
+		assert.equals("enojado", policia.imageAux())
 	}
 	
 }

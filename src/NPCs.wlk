@@ -178,12 +178,14 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 		position = jugador.position()
 		game.addVisual(self)
 		game.say(self, "Te encontramos pa, perdiste!!")
-		game.schedule(500, { self.enojarse() })
+		game.schedule(500, { 
+			self.enojarse()
+			soundProducer.horror()
+		})
 		game.schedule(3300, { game.stop() })
 	}
 	
 	method enojarse(){
 		imageAux = "enojado"
-		soundProducer.horror()
 	}
 }
