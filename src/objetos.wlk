@@ -74,10 +74,10 @@ class Veneno inherits Objeto ( imageAux = "veneno" ){
 		if( usos.equals(0) ) jugador.objeto(vacio)
 	}
 	
-	method envenenar(npc){ game.schedule(5000, {npc.morir()}) }
+	method envenenar(npc){ game.schedule(5000, { npc.morir() }) }
 }
 
-class Bomba inherits Objeto { // habria que modificar radios de explosion o agrandar imagen
+class Bomba inherits Objeto {
 	var tipo
 	
 	override method explotar(){}
@@ -119,51 +119,3 @@ object humo {
 		game.schedule(1000, { bomba.explotarse() })
 	}
 }
-
-/*class Bomba inherits Objeto{
-	method sonidoExplosion()
-	
-	method preExplosion(){
-		game.onTick(250, "explosion", { imageAux = "preExplosion"  })
-		game.onTick(300, "explosion", { imageAux = "bomb" })
-  		game.schedule(900, {
-  			game.removeTickEvent("explosion")
-  		})
-	}
-	
-	method explosion(){ game.schedule(1000, { nivel.quitar(self) }) }
-	
-	method usar() {
-		self.soltar()
-		// sonido y cambio de imagen pls, que sea un method para ambos asi podemos darle una imagen y sonido especial a cada tipo de bomba
-		self.preExplosion()
-		game.schedule(2000, { self.explosion() } )
-	}
-}
-
-
-class BombaExplosiva inherits Bomba (imageAux = "bomb") {
-	override method explosion(){ 
-		super()
-		direcciones.cercanosA(self, 5, nivel.interactuables()+[jugador]).forEach({npc=>npc.explotar()})
-  		self.sonidoExplosion()
-  		self.explotar()
-	}
-	
-	override method sonidoExplosion(){ soundProducer.explosionExplosion() }
-	
-	override method explotar(){ imageAux = "explosion" }
-}
-
-class BombaDeHumo inherits Bomba (imageAux = "Smokebomb"){
-	override method explosion(){
-		super()
-		direcciones.cercanosA(self, 5, nivel.interactuables()+[jugador]).forEach({npc=>npc.efectoHumo()})
-  		self.sonidoExplosion()
-  		self.explotar()
-	}
-		
-	override method sonidoExplosion(){ soundProducer.smokeExplosion() }
-	
-	override method explotar(){ imageAux = "smoke" }
-}*/

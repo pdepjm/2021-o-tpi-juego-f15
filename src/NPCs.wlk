@@ -26,9 +26,7 @@ class Civil inherits SerVivo {
 	var property cargado = false
 	var property asustado = false
 	
-	method explotar(){
-		self.morir()
-	}
+	method explotar(){ self.morir() }
 	
 	method efectoHumo(){
 		self.radioDeVision(0)
@@ -61,7 +59,7 @@ class Civil inherits SerVivo {
     
     method vioMuerto() = estado.vioMuerto(self)
     
-    method muertosCercanos() = direcciones.cercanosA(self, 6,nivel.interactuables()).filter({ ob => ob.estaMuerto() })
+    method muertosCercanos() = direcciones.cercanosA(self, 6, nivel.interactuables()).filter({ ob => ob.estaMuerto() })
     
     method delatar() = self.muertosCercanos().any({ ob => ob.position().distance(jugador.position()) <= 4 })
 }

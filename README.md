@@ -26,11 +26,8 @@
 |INSTRUCCIONES               |            |
 |---------------|------------|
 |Movimiento     | w, a, s, d |
-|Usar Cuchillo  |     r      |
-|Agarrar Objeto |     e      |
-|Soltar Objeto  |     q      |
-|Usar Objeto    |     f      |
-|Usar Escotilla |     g      |
+|Usar Objeto    |     e      |
+|Interactuar    |     f      |
 |               |            |
 
 **REGLAS**
@@ -46,12 +43,8 @@ Para *silenciar* a los jóvenes el jugador podra utilizar un cuchillo (que siemp
 
 1. **Polimorfismo**: ¿Cuál es el mensaje polimórfico? ¿Qué objetos lo implementan? ¿Qué objeto se aprovecha de ello?
 
-```wollok
-objeto.usar()
-```
-
-Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaje, y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual de ellos se trate.
-**COMPLETAR**
+Los objetos que pertenecen a la clase "*Objeto*" (remera, cuchillo, veneno, bomba) y el objeto "*vacio*" entienden el mensaje "*usar()*", y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual de ellos se trate.
+Cuando se presiona la tecla "*e*" del teclado, "*jugador*" recibe el mensaje "*usarObjeto()*", de manera que el "*objeto*" que tiene en la mano recibe el mensaje polimorfico.
 
 ---
 2. **Colecciones**: ¿Qué operaciones de colecciones se utilizan? ¿Usaron mensajes con y sin efecto? ¿Para qué?
@@ -60,18 +53,21 @@ Los objetos que pertenecen a la clase "*Objeto*" son los que entienden el mensaj
 |-----------|---------------|
 |forEach    |Efecto         |
 |anyOne     |Consulta       |
-|filter     |Consulta       |
 |add        |Efecto         |
 |remove     |Efecto         |
 |head       |Consulta       |
+|filter     |Consulta       |
 |           |               |
-**COMPLETAR**
 
-Se hace uso de "*forEach*" para ...
-"*anyOne*" es utilizado para elegir de forma aleatoria un numero para poder **COMPLETAR**
-"*head*" es utilizado con el fin de **COMPLETAR**
-"*add*" y "*remove*" son utilizados, por ejemplo, para **COMPLETAR**
-"*filter*"
+Todos los objetos del juego se encuentran agruapados en listas. Se hace uso de "**forEach**" en "nivel.wlk" para hacer "*addVisual()*" (efecto) de cada uno de ellos.
+
+"**anyOne**" es utilizado para consultar de forma aleatoria un numero para poder determinar la posicion en la que un NPC se movera en "*direccionRandom()*".
+
+"**head**" es utilizado con el fin de consultar con que objeto un jugador debe interactuar, cuando recibe el mensaje "*interactuar()*".
+
+"**add**" y "**remove**" son utilizados para agregar o quitar objetos de "interactuables" (efecto), lo que permite al jugador interactuar con los mismo.
+
+"**filter**" es utilizado para filtrar los objetos cercanos al jugador que se encuentran en la lista "interactuables", de manera que solo pueda interactuar con aquellos que cumplan con la condicion "*estaMuerto()*".
 
 3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
 
@@ -79,25 +75,56 @@ Se hace uso de "*forEach*" para ...
 
 4. **Herencia**: ¿Entre quiénes y por qué? ¿Qué comportamiento es común y cuál distinto?
 
-    Definimos la clase "*Objeto*" para poder codear una unica vez los atributos que definen a un "*objeto*", en vez de hacerlo para cada "*objeto*" en particular.
-    Los "*objetos*" se instancian en la configuracion inicial del nivel, luego de salir de la pantalla de carga.
+    Definimos la clase "*Objeto*" para poder definir la interfaz para todos los "*objetos*", en vez de hacerlo para cada uno de ellos individualmente, con el objetivo de evitar repetir logica y/o codigo.
+
+    Los "*objetos*" se instancian en la "*configuracionInicial()*" de "nivel.wlk", luego de salir de la pantalla de carga.
 
     Los "*objetos*" pertenecientes a la clase comparten los siguientes atributos / metodos:
-    ```wollok
-    property esObjeto
-    property esInteractuable
-    property esNPC
-    property objetoAtravesable
-    property position
+
+    ```javascript
+    const property esAtravesable = true
+	var property position = game.at(10,10)
+	var imageAux
+	
+	method imageAux(auxiliar) { imageAux = auxiliar } 
+	
+	method image() = "objetos/" + imageAux + ".png"
+	
+	method efectoHumo(){}
+	
+	method estaMuerto() = false
+
+	method interaccion() { jugador.reemplazarObjeto(self) }
+	
+	method vioMuerto(){}
+	
+	method explotar(){ nivel.quitar(self) }
+	
+	method soltar(){
+		position = jugador.position()
+		nivel.agregar(self)
+		jugador.objeto(vacio)
+	}
+	
+	method morir() {}
+	
+	method serAgarrado() {
+		jugador.objeto(self)
+		nivel.quitar(self)
+    }
+    
+    method tirar(){ game.say( jugador, "Podria servirme en un futuro el objeto " + self.toString() ) }
     ```
+
     Sin embargo, cada "*objeto*" posee un metodo "*usar()*" propio, ya que cada uno de ellos debe reaccionar de manera diferente.
 
 5. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
 
-"*Bomba*" hace uso de la composicion e interactua con "*explosiva*" y "*humo*" mediante el atributo "*tipo*". **COMPLETAR**
+"*Civil*" hace uso de la composicion e interactua con "*vivo*" y "*muerto*" mediante el atributo "estado".
+
+Se escogio utilizar composicion en lugar de herencia en esta ocasion debido a que necesitamos que el civil pueda cambiar de estado vivo a muerto cuando este es brutalmente aniquilado por el desquisiado asesino y el enfermo que lo controla.
+En caso de haber hecho uso de herencia, el "cambio de estado" no se podria haber dado como tal, y deberiamos haber instanciado a "CivilMuerto", por ejemplo, con los datos pertinentes de "CivilVivo" cada vez que este deje el plano fisico de existencia.
 
 ## Diagrams
 
-**DIAGRAMA MAS REDUCIDO**
-
-![Diagrama]()
+![Diagrama](https://imgur.com/kwLwnJq.png)
