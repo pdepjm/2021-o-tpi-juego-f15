@@ -21,6 +21,8 @@ class Objeto {
 	
 	method vioMuerto(){}
 	
+	method estaMuerto() = false
+	
 	method explotar(){ nivel.quitar(self) }
 	
 	method soltar(){

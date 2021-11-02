@@ -14,8 +14,6 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 		game.say(self, "No veoooo")
 		game.schedule(7000,{vision = true})
 	}
-	
-	method estaMuerto() = false
 
 	method explotar(){ 
 		game.schedule(3300, { game.stop() })

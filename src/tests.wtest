@@ -25,7 +25,7 @@ describe "testsUwU" {
 	
 	const objetos = [npcTest, knifeTest, remeraTest, escotillaEstudioTest, escotillaBanioTest, bombaTest, bombaHumoTest, venenoTest, npcTest2]
 	
-	method initialize() { // Testear de polimorfismo
+	method initialize() {
 		nivel.interactuables([])
 		//Visuales
 		objetos.forEach({ aux => nivel.agregar(aux) })
@@ -85,18 +85,18 @@ describe "testsUwU" {
 		jugador.position(game.at(2,2))
 		jugador.usarObjeto()
 		jugador.position(game.at(10,10))
-		policia.quitarCadaveres([npcTest])
-		assert.notThat(game.hasVisual(npcTest))
+		policia.quitarCadaveres( [npcTest] )
+		assert.notThat( game.hasVisual(npcTest) )
 	}
 	
-	test "Encontrar jugador"{ // ARREGLAR
+	test "Encontrar jugador"{
 		jugador.position(game.at(3,3))
 		jugador.interactuar()
 		jugador.position(game.at(2,2))
 		jugador.usarObjeto()
 		jugador.position(game.at(4,4))
 		policia.enojarse() // solo se enoja si encuentra el jugador
-		assert.equals("enojado", policia.imageAux())
+		assert.equals ("enojado", policia.imageAux() )
 	}
 	
 	test "Detonar bomba explosiva"{
@@ -111,7 +111,7 @@ describe "testsUwU" {
 		assert.equals(0, npcTest.radioDeVision())
 	}
 	
-	test "Npc ve muerto"{  
+	test "NPC ve muerto"{  
 		jugador.position(game.at(3,3))
 		jugador.interactuar()
 		jugador.position(game.at(2,2))
