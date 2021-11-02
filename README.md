@@ -37,7 +37,7 @@ Nuestro protagonista no soporta la música en la madrugada, los borrachos, las d
 Algo hace clic en su cabeza y entra a la accion: "el que no respira no molesta".
 El objetivo del jugador es intentar matar a todas las personas de la fiesta con la mayor discreción a fin de que la policía no lo atrape, todo esto, dentro de un lapso de 90 segundos.
 
-Para *silenciar* a los jóvenes el jugador podra utilizar un cuchillo (que siempre tiene a disposicion) u otros objetos que encuentre en el lugar. Ademas, para desplazarse con mayor rapidez puede hacer uso de escotillas, que le permiten moverse intantanseamente entre 2 posiciones del mapa.
+Para *silenciar* a los jóvenes el jugador podra hacer uso de divversos objetos que encuentre en el lugar. Ademas, para desplazarse con mayor rapidez puede hacer uso de escotillas, que le permiten moverse instantaneamente entre 2 posiciones del mapa.
 ## Respuestas teóricas
 ---
 
@@ -127,4 +127,4 @@ En caso de haber hecho uso de herencia, el "cambio de estado" no se podria haber
 
 ## Diagrams
 
-![Diagrama](https://imgur.com/kwLwnJq.png)
+![Diagrama](https://imgur.com/oYFvV2w.png)
