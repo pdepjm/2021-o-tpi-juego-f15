@@ -31,7 +31,7 @@ class Civil inherits SerVivo {
 	method efectoHumo(){
 		self.radioDeVision(0)
 		game.say(self,"No veoooo")
-		game.schedule(7000,{self.radioDeVision(7)})
+		game.schedule(7000, { self.radioDeVision(7) })
 	}
 	
 	method estaMuerto() = estado == muerto

@@ -123,6 +123,7 @@ Todos los objetos del juego se encuentran agruapados en listas. Se hace uso de "
 "*Civil*" hace uso de la composicion e interactua con "*vivo*" y "*muerto*" mediante el atributo "estado".
 
 Se escogio utilizar composicion en lugar de herencia en esta ocasion debido a que necesitamos que el civil pueda cambiar de estado vivo a muerto cuando este es brutalmente aniquilado por el desquisiado asesino y el enfermo que lo controla.
+
 En caso de haber hecho uso de herencia, el "cambio de estado" no se podria haber dado como tal, y deberiamos haber instanciado a "CivilMuerto", por ejemplo, con los datos pertinentes de "CivilVivo" cada vez que este deje el plano fisico de existencia.
 
 ## Diagrams

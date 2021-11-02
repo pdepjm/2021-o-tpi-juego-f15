@@ -16,8 +16,6 @@ class Objeto {
 	method image() = "objetos/" + imageAux + ".png"
 	
 	method efectoHumo(){}
-	
-	method estaMuerto() = false
 
 	method interaccion() { jugador.reemplazarObjeto(self) }
 	

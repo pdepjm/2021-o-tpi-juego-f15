@@ -5,7 +5,8 @@ class Pared{
 	const property position = null
 	const property esAtravesable = false
 	var property image = "hud_gui/pared.png"
-	method interaccion() {}
+	
+	
 }
 
 object horizontal{ 

@@ -29,7 +29,7 @@ object jugador inherits SerVivo ( identidad = "player", position = game.at(28,2)
 	}
 	
 	method interactuar(){
-		( direcciones.cercanosA(self, 1, nivel.interactuables()) + [vacio] ).head().interaccion() //no tiene sentido pero sino da error los test
+		( direcciones.cercanosA(self, 1, nivel.interactuables()) + [vacio] ).head().interaccion()
 	}
 	
 	method moverPara(direccion){

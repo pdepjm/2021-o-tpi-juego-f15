@@ -28,7 +28,7 @@ object nivel{
 	const npc4 = new Civil( position = game.at(10,7) )
 	
 	const objetos = [jugador, contadorTiempo, contadorKills, marcoContadorTiempo, marcoContadorKills]
-	var property interactuables = [bombaHumo1, remera1, veneno1, bomba1, knife,escotillaBanio, escotillaEstudio, tacho, npc1, npc2, npc3, npc4]
+	var property interactuables = [bombaHumo1, remera1, veneno1, bomba1, knife, escotillaBanio, escotillaEstudio, tacho, npc1, npc2, npc3, npc4]
 	const npcs = [npc1, npc2, npc3, npc4]
 	
 	method configuracionInicial(){
