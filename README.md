@@ -42,22 +42,13 @@ Para *silenciar* a los jóvenes el jugador podra hacer uso de divversos objetos 
 ---
 
 1. **Polimorfismo**: ¿Cuál es el mensaje polimórfico? ¿Qué objetos lo implementan? ¿Qué objeto se aprovecha de ello?
+---
 
 Los objetos que pertenecen a la clase "*Objeto*" (remera, cuchillo, veneno, bomba) y el objeto "*vacio*" entienden el mensaje "*usar()*", y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual de ellos se trate.
 Cuando se presiona la tecla "*e*" del teclado, "*jugador*" recibe el mensaje "*usarObjeto()*", de manera que el "*objeto*" que tiene en la mano recibe el mensaje polimorfico.
 
----
 2. **Colecciones**: ¿Qué operaciones de colecciones se utilizan? ¿Usaron mensajes con y sin efecto? ¿Para qué?
-
-|Operaciones|Efecto/Consulta|
-|-----------|---------------|
-|forEach    |Efecto         |
-|anyOne     |Consulta       |
-|add        |Efecto         |
-|remove     |Efecto         |
-|head       |Consulta       |
-|filter     |Consulta       |
-|           |               |
+---
 
 Todos los objetos del juego se encuentran agruapados en listas. Se hace uso de "**forEach**" en "nivel.wlk" para hacer "*addVisual()*" (efecto) de cada uno de ellos.
 
@@ -69,17 +60,29 @@ Todos los objetos del juego se encuentran agruapados en listas. Se hace uso de "
 
 "**filter**" es utilizado para filtrar los objetos cercanos al jugador que se encuentran en la lista "interactuables", de manera que solo pueda interactuar con aquellos que cumplan con la condicion "*estaMuerto()*".
 
-3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
+|Operaciones|Efecto/Consulta|
+|-----------|---------------|
+|forEach    |Efecto         |
+|anyOne     |Consulta       |
+|add        |Efecto         |
+|remove     |Efecto         |
+|head       |Consulta       |
+|filter     |Consulta       |
+|           |               |
 
-    Definimos la clase "*Civil*", que se instancia en "*nivel*" en la configuracion inicial del nivel para agregar multiples objetivos que tenemos que asesinar.
+3. **Clases**: ¿Usan clases? ¿Por qué? ¿Dónde o cuándo se instancian los objetos?
+---
+
+Definimos la clase "*Civil*", que se instancia en "*nivel*" en la configuracion inicial del nivel para agregar multiples objetivos que tenemos que asesinar.
 
 4. **Herencia**: ¿Entre quiénes y por qué? ¿Qué comportamiento es común y cuál distinto?
+---
 
-    Definimos la clase "*Objeto*" para poder definir la interfaz para todos los "*objetos*", en vez de hacerlo para cada uno de ellos individualmente, con el objetivo de evitar repetir logica y/o codigo.
+Definimos la clase "*Objeto*" para poder definir la interfaz para todos los "*objetos*", en vez de hacerlo para cada uno de ellos individualmente, con el objetivo de evitar repetir logica y/o codigo.
 
-    Los "*objetos*" se instancian en la "*configuracionInicial()*" de "nivel.wlk", luego de salir de la pantalla de carga.
+Los "*objetos*" se instancian en la "*configuracionInicial()*" de "nivel.wlk", luego de salir de la pantalla de carga.
 
-    Los "*objetos*" pertenecientes a la clase comparten los siguientes atributos / metodos:
+Los "*objetos*" pertenecientes a la clase comparten los siguientes atributos / metodos:
 
     ```javascript
     const property esAtravesable = true
@@ -119,6 +122,7 @@ Todos los objetos del juego se encuentran agruapados en listas. Se hace uso de "
     Sin embargo, cada "*objeto*" posee un metodo "*usar()*" propio, ya que cada uno de ellos debe reaccionar de manera diferente.
 
 5. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
+---
 
 "*Civil*" hace uso de la composicion e interactua con "*vivo*" y "*muerto*" mediante el atributo "estado".
 
@@ -126,6 +130,7 @@ Se escogio utilizar composicion en lugar de herencia en esta ocasion debido a qu
 
 En caso de haber hecho uso de herencia, el "cambio de estado" no se podria haber dado como tal, y deberiamos haber instanciado a "CivilMuerto", por ejemplo, con los datos pertinentes de "CivilVivo" cada vez que este deje el plano fisico de existencia.
 
-## Diagrams
+## Diagram
+---
 
 ![Diagrama](https://imgur.com/oYFvV2w.png)
