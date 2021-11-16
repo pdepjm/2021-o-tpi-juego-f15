@@ -13,15 +13,15 @@ import pantallas.*
 
 describe "testsUwU" {
 	
-	const npcTest = new Civil(position = game.at(2,2))
-	const remeraTest = new Remera (position = game.at(7,7))
-	const knifeTest = new Cuchillo (position = game.at(3,3))
-	const escotillaBanioTest = new Escotilla (position = game.at(10,10), identidad = "pared")
-	const escotillaEstudioTest = new Escotilla (position = game.at(5,5), destino = escotillaBanioTest)
+	const npcTest = new Civil( position = game.at(2,2) )
+	const remeraTest = new Remera ( position = game.at(7,7) )
+	const knifeTest = new Cuchillo ( position = game.at(3,3) )
+	const escotillaBanioTest = new Escotilla ( position = game.at(10,10), identidad = "pared" )
+	const escotillaEstudioTest = new Escotilla ( position = game.at(5,5), destino = escotillaBanioTest )
 	const bombaTest = new Bomba ( position = game.at(11,16), tipo = explosiva, imageAux = "bomb" )
 	const bombaHumoTest = new Bomba ( position = game.at(17,20), tipo = humo, imageAux = "smokeBomb" )
 	const venenoTest = new Veneno ( position = game.at(12,12) )
-	const npcTest2 = new Civil(position = game.at(3,3))
+	const npcTest2 = new Civil( position = game.at(3,3) )
 	
 	const objetos = [npcTest, knifeTest, remeraTest, escotillaEstudioTest, escotillaBanioTest, bombaTest, bombaHumoTest, venenoTest, npcTest2]
 	
@@ -112,14 +112,13 @@ describe "testsUwU" {
 	}
 	
 	test "NPC ve muerto"{  
-		jugador.position(game.at(3,3))
-		jugador.interactuar()
-		jugador.position(game.at(2,2))
-		jugador.usarObjeto()
+		jugador.position(game.at(3,3)) //Posicion de Cuchillo
+		jugador.interactuar() // Agarrar Cuchillo
+		jugador.position(game.at(2,2)) //Posicion de NPC
+		jugador.usarObjeto() //Matar NPC
 		policia.vioMuerto()
-		assert.that(npcTest2.asustado())
+		assert.that( npcTest2.asustado() )
 	}
-	
 	
 }
 

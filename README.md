@@ -37,17 +37,17 @@ Nuestro protagonista no soporta la música en la madrugada, los borrachos, las d
 Algo hace clic en su cabeza y entra a la accion: "el que no respira no molesta".
 El objetivo del jugador es intentar matar a todas las personas de la fiesta con la mayor discreción a fin de que la policía no lo atrape, todo esto, dentro de un lapso de 90 segundos.
 
-Para *silenciar* a los jóvenes el jugador podra hacer uso de divversos objetos que encuentre en el lugar. Ademas, para desplazarse con mayor rapidez puede hacer uso de escotillas, que le permiten moverse instantaneamente entre 2 posiciones del mapa.
+Para *silenciar* a los jóvenes el jugador podra hacer uso de diversos objetos que encuentre en el lugar. Ademas, para desplazarse con mayor rapidez puede hacer uso de escotillas, que le permiten moverse instantaneamente entre 2 posiciones del mapa.
 ## Respuestas teóricas
 ---
 
 1. **Polimorfismo**: ¿Cuál es el mensaje polimórfico? ¿Qué objetos lo implementan? ¿Qué objeto se aprovecha de ello?
 ---
 
-Los objetos que pertenecen a la clase "*Objeto*" (remera, cuchillo, veneno, bomba) y el objeto "*vacio*" entienden el mensaje "*usar()*", y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual de ellos se trate.
+Los objetos que pertenecen a la clase "*Objeto*" (remera, cuchillo, veneno, bomba) y el objeto "*vacio*" entienden el mensaje "*usar()*", y es el objeto "*jugador*" el que interactua con ellos indistintamente de cual se trate.
 Cuando se presiona la tecla "*e*" del teclado, "*jugador*" recibe el mensaje "*usarObjeto()*", de manera que el "*objeto*" que tiene en la mano recibe el mensaje polimorfico.
 
-2. **Colecciones**: ¿Qué operaciones de colecciones se utilizan? ¿Usaron mensajes con y sin efecto? ¿Para qué?
+1. **Colecciones**: ¿Qué operaciones de colecciones se utilizan? ¿Usaron mensajes con y sin efecto? ¿Para qué?
 ---
 
 Todos los objetos del juego se encuentran agruapados en listas. Se hace uso de "**forEach**" en "nivel.wlk" para hacer "*addVisual()*" (efecto) de cada uno de ellos.
@@ -84,7 +84,7 @@ Los "*objetos*" se instancian en la "*configuracionInicial()*" de "nivel.wlk", l
 
 Los "*objetos*" pertenecientes a la clase comparten los siguientes atributos / metodos:
 
-    ```javascript
+    ```
     const property esAtravesable = true
 	var property position = game.at(10,10)
 	var imageAux
@@ -119,7 +119,7 @@ Los "*objetos*" pertenecientes a la clase comparten los siguientes atributos / m
     method tirar(){ game.say( jugador, "Podria servirme en un futuro el objeto " + self.toString() ) }
     ```
 
-    Sin embargo, cada "*objeto*" posee un metodo "*usar()*" propio, ya que cada uno de ellos debe reaccionar de manera diferente.
+Sin embargo, cada "*objeto*" posee un metodo "*usar()*" propio, ya que cada uno de ellos debe reaccionar de manera diferente.
 
 5. **Composición**: ¿Qué objetos interactúan? ¿Dónde se delega? ¿Por qué no herencia?
 ---

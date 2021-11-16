@@ -100,7 +100,6 @@ object muerto{
 		
 	method vioMuerto(npc){}
 	
-	
 	method morir(npc){}
     
     method moverse(npc){}
@@ -155,11 +154,9 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 		} )
 	}
 	
-	method quitarCadaveres(morts){
-		morts.forEach({mort=>nivel.quitar(mort)})
-	}
+	method quitarCadaveres(morts){ morts.forEach({mort=>nivel.quitar(mort)}) }
 	
-	method eliminarJugador(){ //ARREGLAR
+	method eliminarJugador(){
 		position = jugador.position()
 		game.addVisual(self)
 		game.say(self, "Te encontramos pa, perdiste!!")
@@ -170,7 +167,5 @@ object policia inherits SerVivo { // Hay que arreglar el tema de los tiempos de 
 		game.schedule(3300, { game.stop() })
 	}
 	
-	method enojarse(){
-		imageAux = "enojado"
-	}
+	method enojarse(){ imageAux = "enojado" }
 }
