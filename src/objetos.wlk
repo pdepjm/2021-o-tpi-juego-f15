@@ -104,7 +104,7 @@ class Bomba inherits Objeto {
 
 object explosiva {
 	method explosion(bomba){
-		game.onTick(1 ,"explosion bomba", { soundProducer.explosionExplosion() }) // para que no rompan los tests de la bomba
+		game.schedule(0, { soundProducer.explosionExplosion() }) // para que no rompan los tests de la bomba
 		bomba.imageAux("explosion")
 		direcciones.cercanosA( bomba, 5, nivel.interactuables() + [jugador] ).forEach({ npc => npc.explotar() })
 		game.schedule(1000, { bomba.explotarse() })
@@ -113,7 +113,7 @@ object explosiva {
 
 object humo {
 	method explosion(bomba){
-		game.onTick(1 ,"explosion bomba humo", {soundProducer.smokeExplosion()})
+		game.schedule(0, { soundProducer.smokeExplosion() })
 		bomba.imageAux("smoke")
 		direcciones.cercanosA( bomba, 4, nivel.interactuables() + [jugador] ).forEach({ npc => npc.efectoHumo() })
 		game.schedule(1000, { bomba.explotarse() })
