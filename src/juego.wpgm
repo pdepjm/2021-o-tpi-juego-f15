@@ -1,10 +1,14 @@
 import wollok.game.*
-import pepita.*
-import texto.*
+import jugador.*
+import pantallas.*
+import nivel.*
+import soundProducer.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
-	game.addVisual(texto)
+	game.cellSize(40)
+	game.height(25)
+	game.width(50)
+	pantallaDeCarga.configuracionInicial()
+	game.boardGround("hud_gui/mapa.png")
 	game.start()
 }
